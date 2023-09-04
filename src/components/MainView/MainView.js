@@ -9,7 +9,12 @@ export const MainView = () => {
 
   return (
     <div className="App">
-      <WelcomeView />
+      <WelcomeView
+        onLogin={(user, token) => {
+          setUser(user);
+          setToken(token);
+        }}
+      />
     </div>
   );
 };

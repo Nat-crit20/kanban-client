@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-export const LoginView = () => {
+export const LoginView = ({onLogin}) => {
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -25,8 +25,13 @@ export const LoginView = () => {
     })
       .then((res) => {
         if (res.ok) {
-          alert("Sign up failed");
-          return setShow(false);
+          return res.json()
+        }
+      }).then(data=>{
+        if(data.user){
+          localStorage.setItem("user", JSON.stringify(data.user))
+          localStorage.setItem("token", JSON.stringify(data.token))
+          onLogin(data.user, data.token)
         }
       })
       .catch((error) => {
