@@ -4,9 +4,35 @@ import Modal from "react-bootstrap/Modal";
 
 export const LoginView = () => {
   const [show, setShow] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      Username: username,
+      Password: password,
+    };
+    fetch(`${}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        if (res.ok) {
+          alert("Sign up failed");
+          return setShow(false);
+        }
+      })
+      .catch((error) => {
+        alert("Sign up failed");
+      });
+  };
 
   return (
     <>
@@ -18,13 +44,40 @@ export const LoginView = () => {
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <Modal.Body>
+            <form method="post" className="form-signup" onSubmit={handleSubmit}>
+              <div className="form-signup">
+                <label htmlFor="name">Enter your username: </label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-signup">
+                <label htmlFor="password">Password: </label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="form-signup">
+                <input type="submit" value="Submit" />
+              </div>
+            </form>
+          </Modal.Body>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
