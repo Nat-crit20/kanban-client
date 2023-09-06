@@ -5,8 +5,8 @@ export const WelcomeView = ({ onLogin }) => {
   return (
     <div>
       <h1>Welcome</h1>
-      <SignUpView onLogin={onLogin} />
-      <LoginView />
+      <SignUpView />
+      <LoginView onLogin={onLogin} />
     </div>
   );
 };

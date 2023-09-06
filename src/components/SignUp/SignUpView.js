@@ -12,25 +12,30 @@ export const SignUpView = () => {
   const handleShow = () => setShow(true);
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const data = {
       Username: username,
       Email: email,
       Password: password,
     };
-    fetch(`${}/register`,{
-        method: "POST",
-        headers:{
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    }).then(res=>{
-        if(res.ok){
-            alert("Sign up failed")
-            return setShow(false)
-        }
-    }).catch(error=>{
-        alert("Sign up failed")
+    console.log(data);
+    fetch(`https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     })
+      .then((res) => {
+        if (res.ok) {
+          alert("Sign up failed");
+          return setShow(false);
+        }
+      })
+      .catch((error) => {
+        alert("Sign up failed");
+        console.log(error);
+      });
   };
 
   return (
@@ -44,7 +49,7 @@ export const SignUpView = () => {
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form method="post" className="form-signup" onSubmit={handleSubmit}>
+          <form action="post" className="form-signup" onSubmit={handleSubmit}>
             <div className="form-signup">
               <label htmlFor="name">Enter your username: </label>
               <input

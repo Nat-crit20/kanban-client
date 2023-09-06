@@ -1,20 +1,22 @@
-import { useState } from "react";
-import "./App.css";
-import { WelcomeView } from "./components/Welcome/WelcomeView";
-
+import { useEffect, useState } from "react";
+import { WelcomeView } from "../Welcome/WelcomeView";
 export const MainView = () => {
-  const [token, setToken] = useState();
-  const [user, setUser] = useState({});
+  const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null);
   const [boards, setBoards] = useState([]);
 
   return (
     <div className="App">
-      <WelcomeView
-        onLogin={(user, token) => {
-          setUser(user);
-          setToken(token);
-        }}
-      />
+      {user ? (
+        <h1>Welcome user</h1>
+      ) : (
+        <WelcomeView
+          onLogin={(user, token) => {
+            setUser(user);
+            setToken(token);
+          }}
+        />
+      )}
     </div>
   );
 };

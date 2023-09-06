@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-export const LoginView = ({onLogin}) => {
+export const LoginView = ({ onLogin }) => {
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +16,7 @@ export const LoginView = ({onLogin}) => {
       Username: username,
       Password: password,
     };
-    fetch(`${}/login`, {
+    fetch(`https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,17 +25,20 @@ export const LoginView = ({onLogin}) => {
     })
       .then((res) => {
         if (res.ok) {
-          return res.json()
+          return res.json();
         }
-      }).then(data=>{
-        if(data.user){
-          localStorage.setItem("user", JSON.stringify(data.user))
-          localStorage.setItem("token", JSON.stringify(data.token))
-          onLogin(data.user, data.token)
+      })
+      .then((data) => {
+        if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", JSON.stringify(data.token));
+          alert("Login successful");
+          setShow(false);
+          onLogin(data.user, data.token);
         }
       })
       .catch((error) => {
-        alert("Sign up failed");
+        alert("Login failed");
       });
   };
 
