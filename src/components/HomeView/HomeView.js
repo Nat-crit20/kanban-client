@@ -3,7 +3,13 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 import { useState } from "react";
-export const HomeView = ({ user, currentBoard, updateBoard }) => {
+export const HomeView = ({
+  user,
+  token,
+  currentBoard,
+  updateBoard,
+  updateUser,
+}) => {
   const [show, setShow] = useState(false);
   const [boardName, setBoardName] = useState(null);
   const handleClose = () => setShow(false);
@@ -11,15 +17,17 @@ export const HomeView = ({ user, currentBoard, updateBoard }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const data = {
       Name: boardName,
     };
+    console.log(data);
     fetch(
       `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/user/${user._id}/board`,
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       }
@@ -30,7 +38,8 @@ export const HomeView = ({ user, currentBoard, updateBoard }) => {
         }
       })
       .then((data) => {
-        console.log(data);
+        handleClose();
+        updateUser(data);
       })
       .catch((error) => {
         console.log(error);
@@ -40,8 +49,8 @@ export const HomeView = ({ user, currentBoard, updateBoard }) => {
   return (
     <>
       <div>
-        {user.Board.forEach((board) => {
-          <Button variant="primary">Board</Button>;
+        {user.Board.map((board) => {
+          return <Button variant="primary">Board</Button>;
         })}
         <Button variant="primary" onClick={handleShow}>
           Create Board

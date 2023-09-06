@@ -6,7 +6,10 @@ export const MainView = () => {
   const [user, setUser] = useState(null);
   const [board, setBoard] = useState([]);
 
-  const openCreateBoard = () => {};
+  useEffect(() => {
+    setUser(user);
+  }, [user]);
+
   return (
     <div className="App">
       {user ? (
@@ -15,8 +18,13 @@ export const MainView = () => {
           <HomeView
             user={user}
             currentBoard={board}
+            token={token}
             updateBoard={(board) => {
               setBoard(board);
+            }}
+            updateUser={(user) => {
+              localStorage.setItem("user", JSON.stringify(user));
+              setUser(user);
             }}
           />
         </>
