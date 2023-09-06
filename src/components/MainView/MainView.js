@@ -4,11 +4,33 @@ import { HomeView } from "../HomeView/HomeView";
 export const MainView = () => {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
-  const [board, setBoard] = useState([]);
+  const [boards, setBoards] = useState([]);
+  const [currentBoard, setCurrentBoard] = useState(null);
 
   useEffect(() => {
-    setUser(user);
-  }, [user]);
+    if (!token) {
+      return;
+    }
+    fetch(
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/user/${user._id}/board`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setBoards(data.Board);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [token, user]);
 
   return (
     <div className="App">
@@ -17,11 +39,9 @@ export const MainView = () => {
           <h1>Welcome user</h1>
           <HomeView
             user={user}
-            currentBoard={board}
+            currentBoard={currentBoard}
+            boards={boards}
             token={token}
-            updateBoard={(board) => {
-              setBoard(board);
-            }}
             updateUser={(user) => {
               localStorage.setItem("user", JSON.stringify(user));
               setUser(user);
