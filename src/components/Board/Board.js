@@ -1,7 +1,17 @@
+import Button from "react-bootstrap/Button";
+import { ColumnsView } from "../Columns/Columns";
 export const BoardView = ({ currentBoard }) => {
   return (
     <>
-      <h1>{currentBoard.Name}</h1>
+      <div>
+        <h1>{currentBoard.Name}</h1>
+        <Button>Add New Task</Button>
+      </div>
+      <div>
+        {currentBoard.Columns.map((column) => {
+          return <ColumnsView />;
+        })}
+      </div>
     </>
   );
 };
