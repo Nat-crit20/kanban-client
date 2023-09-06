@@ -3,7 +3,14 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 import { useState } from "react";
-export const HomeView = ({ user, token, currentBoard, updateUser, boards }) => {
+export const HomeView = ({
+  user,
+  token,
+  currentBoard,
+  updateUser,
+  updateCurrentBoard,
+  boards,
+}) => {
   const [show, setShow] = useState(false);
   const [boardName, setBoardName] = useState(null);
   const handleClose = () => setShow(false);
@@ -41,11 +48,24 @@ export const HomeView = ({ user, token, currentBoard, updateUser, boards }) => {
       });
   };
 
+  const handleCurrentBoard = (e) => {
+    e.preventDefault();
+    updateCurrentBoard(e.target.id);
+  };
+
   return (
     <>
       <div>
         {boards.map((board) => {
-          return <Button variant="primary">{board.Name}</Button>;
+          return (
+            <Button
+              variant="primary"
+              id={board._id}
+              onClick={handleCurrentBoard}
+            >
+              {board.Name}
+            </Button>
+          );
         })}
         <Button variant="primary" onClick={handleShow}>
           Create Board

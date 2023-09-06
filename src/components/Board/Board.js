@@ -1,7 +1,7 @@
-export const BoardView = () => {
+export const BoardView = ({ currentBoard }) => {
   return (
     <>
-      <h1>Board</h1>
+      <h1>{currentBoard}</h1>
     </>
   );
 };

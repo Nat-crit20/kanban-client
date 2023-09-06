@@ -40,6 +40,9 @@ export const MainView = () => {
           <HomeView
             user={user}
             currentBoard={currentBoard}
+            updateCurrentBoard={(board) => {
+              setCurrentBoard(board);
+            }}
             boards={boards}
             token={token}
             updateUser={(user) => {
