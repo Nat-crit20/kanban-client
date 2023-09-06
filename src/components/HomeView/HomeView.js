@@ -22,7 +22,7 @@ export const HomeView = ({
     const data = {
       Name: boardName,
     };
-    console.log(data);
+
     fetch(
       `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/user/${user._id}/board`,
       {
@@ -50,7 +50,25 @@ export const HomeView = ({
 
   const handleCurrentBoard = (e) => {
     e.preventDefault();
-    updateCurrentBoard(e.target.id);
+    fetch(
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${e.target.id}`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        updateCurrentBoard(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

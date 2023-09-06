@@ -1,7 +1,7 @@
 export const BoardView = ({ currentBoard }) => {
   return (
     <>
-      <h1>{currentBoard}</h1>
+      <h1>{currentBoard.Name}</h1>
     </>
   );
 };
