@@ -3,14 +3,15 @@ import { WelcomeView } from "../Welcome/WelcomeView";
 import { HomeView } from "../HomeView/HomeView";
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
-  const storedToken = localStorage.getItem("token");
+  const storedToken = JSON.parse(localStorage.getItem("token"));
   const [token, setToken] = useState(storedToken || null);
   const [user, setUser] = useState(storedUser || null);
   const [boards, setBoards] = useState([]);
   const [currentBoard, setCurrentBoard] = useState();
 
   useEffect(() => {
-    if (!token) {
+    console.log("This is the useEffect");
+    if (!token || !user) {
       return;
     }
     fetch(
@@ -24,43 +25,25 @@ export const MainView = () => {
       }
     )
       .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
         return res.json();
       })
       .then((data) => {
         setBoards(data.Board);
+        console.log(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Error fetching data:", error);
       });
   }, [token, user]);
-
-  const fetchBoard = (id) => {
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${id}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setCurrentBoard(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   return (
     <div className="App">
       {user ? (
         <>
-          <h1>Welcome user</h1>
+          <h1>Welcome {user.Username}</h1>
           <HomeView
             user={user}
             currentBoard={currentBoard}

@@ -2,7 +2,7 @@ import { BoardView } from "../Board/Board";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export const HomeView = ({
   user,
   token,

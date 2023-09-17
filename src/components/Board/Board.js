@@ -5,7 +5,7 @@ export const BoardView = ({ currentBoard }) => {
   useEffect(() => {}, [currentBoard]);
   return (
     <>
-      {currentBoard ? (
+      {/* {currentBoard ? (
         <>
           <div>
             <h1>{currentBoard.Name}</h1>
@@ -19,7 +19,7 @@ export const BoardView = ({ currentBoard }) => {
         </>
       ) : (
         <></>
-      )}
+      )} */}
     </>
   );
 };
