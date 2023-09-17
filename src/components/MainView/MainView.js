@@ -10,7 +10,6 @@ export const MainView = () => {
   const [currentBoard, setCurrentBoard] = useState();
 
   useEffect(() => {
-    console.log("This is the useEffect");
     if (!token || !user) {
       return;
     }
