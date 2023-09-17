@@ -2,7 +2,7 @@ import { BoardView } from "../Board/Board";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export const HomeView = ({
   user,
   token,
@@ -50,8 +50,12 @@ export const HomeView = ({
 
   const handleCurrentBoard = (e) => {
     e.preventDefault();
+    fetchBoard(e.target.id);
+  };
+
+  const fetchBoard = (id) => {
     fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${e.target.id}`,
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${id}`,
       {
         method: "GET",
         headers: {
