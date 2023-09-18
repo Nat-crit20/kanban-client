@@ -13,7 +13,8 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
   const handleTaskShow = () => setShowTask(true);
 
   const [columnName, setColumnName] = useState(null);
-  const [TaskName, setTaskName] = useState(null);
+  const [taskName, setTaskName] = useState(null);
+  const [taskDesctription, setTaskDesctription] = useState(null);
 
   const handleColumnSubmit = (e) => {
     e.preventDefault();
@@ -149,10 +150,27 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                         type="text"
                         name="username"
                         id="username"
-                        value={TaskName}
+                        value={taskName}
                         onChange={(e) => setTaskName(e.target.value)}
                         required
                       />
+                      <label htmlFor="name">Description: </label>
+                      <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        value={taskDesctription}
+                        onChange={(e) => setTaskDesctription(e.target.value)}
+                        required
+                      />
+                      <label htmlFor="status">Status: </label>
+                      <select id="status" name="status">
+                        {currentBoard.Columns.map((column) => {
+                          return (
+                            <option value={column._id}>{column.Name}</option>
+                          );
+                        })}
+                      </select>
                     </div>
 
                     <div className="form-signup">
