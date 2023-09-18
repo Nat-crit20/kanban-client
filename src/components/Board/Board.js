@@ -50,7 +50,7 @@ export const BoardView = ({ currentBoard, token }) => {
           </div>
           <div>
             {currentBoard.Columns.map((column) => {
-              return <ColumnsView />;
+              return <ColumnsView column={column} />;
             })}
             <Button variant="primary" onClick={handleShow}>
               Create Column

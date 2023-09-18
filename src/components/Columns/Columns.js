@@ -1,7 +1,7 @@
-export const ColumnsView = () => {
+export const ColumnsView = ({ column }) => {
   return (
     <>
-      <h1>Column</h1>
+      <h1>{column.Name}</h1>
     </>
   );
 };
