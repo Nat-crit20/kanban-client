@@ -3,7 +3,7 @@ import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
 
 import { useState } from "react";
-export const BoardView = ({ currentBoard, token }) => {
+export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,6 +34,7 @@ export const BoardView = ({ currentBoard, token }) => {
         }
       })
       .then((data) => {
+        updateCurrentBoard(data);
         handleClose();
       })
       .catch((error) => {
