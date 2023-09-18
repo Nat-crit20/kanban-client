@@ -134,7 +134,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
 
             <Modal show={showTask} onHide={handleTaskClose} centered>
               <Modal.Header closeButton>
-                <Modal.Title>Give the Column a name</Modal.Title>
+                <Modal.Title>Create Task</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Modal.Body>
