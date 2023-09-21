@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
   const [showColumn, setShowColumn] = useState(false);
   const handleColumnClose = () => setShowColumn(false);
@@ -14,7 +14,8 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
 
   const [columnName, setColumnName] = useState(null);
   const [taskName, setTaskName] = useState(null);
-  const [taskDesctription, setTaskDesctription] = useState(null);
+  const [taskDescription, setTaskDescription] = useState(null);
+  const taskStatus = useRef();
 
   const handleColumnSubmit = (e) => {
     e.preventDefault();
@@ -50,22 +51,21 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
 
   const handleTaskSubmit = (e) => {
     e.preventDefault();
-
     const data = {
-      Name: columnName,
+      Name: taskName,
+      Description: taskDescription,
+      Status: taskStatus.current.value,
     };
-
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}/column`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    console.log(data);
+    /*
+    fetch(`https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -78,6 +78,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
       .catch((error) => {
         console.log(error);
       });
+      */
   };
   return (
     <>
@@ -135,7 +136,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
 
             <Modal show={showTask} onHide={handleTaskClose} centered>
               <Modal.Header closeButton>
-                <Modal.Title>Create Task</Modal.Title>
+                <Modal.Title>Add New Task</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Modal.Body>
@@ -145,26 +146,34 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                     onSubmit={handleTaskSubmit}
                   >
                     <div className="form-signup">
-                      <label htmlFor="name">Name: </label>
+                      <label htmlFor="name">Title: </label>
                       <input
                         type="text"
-                        name="username"
-                        id="username"
+                        name="name"
+                        id="name"
                         value={taskName}
                         onChange={(e) => setTaskName(e.target.value)}
                         required
                       />
-                      <label htmlFor="name">Description: </label>
+                      <label htmlFor="description">Description: </label>
                       <input
                         type="text"
-                        name="username"
-                        id="username"
-                        value={taskDesctription}
-                        onChange={(e) => setTaskDesctription(e.target.value)}
+                        name="description"
+                        id="description"
+                        value={taskDescription}
+                        onChange={(e) => setTaskDescription(e.target.value)}
                         required
                       />
+                      <label htmlFor="subtask">Subtasks: </label>
+                      <input
+                        type="text"
+                        name="subtask"
+                        id="subtask"
+                        value={taskDescription}
+                        onChange={(e) => setTaskDescription(e.target.value)}
+                      />
                       <label htmlFor="status">Status: </label>
-                      <select id="status" name="status">
+                      <select id="status" name="status" ref={taskStatus}>
                         {currentBoard.Columns.map((column) => {
                           return (
                             <option value={column._id}>{column.Name}</option>
