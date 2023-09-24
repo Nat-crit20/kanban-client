@@ -1,7 +1,7 @@
 export const TaskView = () => {
   return (
     <>
-      <h1>Task</h1>
+      <h3>Task</h3>
     </>
   );
 };

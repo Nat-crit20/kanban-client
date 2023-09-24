@@ -15,6 +15,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
   const [columnName, setColumnName] = useState(null);
   const [taskName, setTaskName] = useState(null);
   const [taskDescription, setTaskDescription] = useState(null);
+  const [subtasks, setSubtasks] = useState([]);
   const taskStatus = useRef();
 
   const handleColumnSubmit = (e) => {
@@ -51,14 +52,20 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
 
   const handleTaskSubmit = (e) => {
     e.preventDefault();
+    const selectedOption = taskStatus.current;
+    const selectedId = selectedOption.value;
+    const columnName = currentBoard.Columns.filter((column) => {
+      return column._id === selectedId;
+    });
     const data = {
       Name: taskName,
       Description: taskDescription,
-      Status: taskStatus.current.value,
+      Status: { Name: columnName[0].Name, columnID: selectedId },
+      SubTasks: subtasks,
     };
     console.log(data);
     /*
-    fetch(`https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column`, {
+    fetch(`https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${taskStatus.current.value}`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -165,21 +172,54 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                         required
                       />
                       <label htmlFor="subtask">Subtasks: </label>
-                      <input
-                        type="text"
-                        name="subtask"
-                        id="subtask"
-                        value={taskDescription}
-                        onChange={(e) => setTaskDescription(e.target.value)}
-                      />
-                      <label htmlFor="status">Status: </label>
                       <select id="status" name="status" ref={taskStatus}>
-                        {currentBoard.Columns.map((column) => {
-                          return (
-                            <option value={column._id}>{column.Name}</option>
-                          );
-                        })}
+                        {currentBoard.Columns.map((column) => (
+                          <option
+                            key={column._id}
+                            value={column._id}
+                            data-name={column.Name} // Ensure this line sets the data-name attribute
+                          >
+                            {column.Name}
+                          </option>
+                        ))}
                       </select>
+                      <label htmlFor="status">Status: </label>
+                      {subtasks.map((subtask, i) => (
+                        <div key={i}>
+                          <input
+                            type="text"
+                            name="subtask"
+                            id={`subtask_${i}`} // Add a unique id for each input
+                            value={subtask}
+                            onChange={(e) => {
+                              const updatedSubtasks = [...subtasks]; // Create a copy of the subtasks array
+                              updatedSubtasks[i] = e.target.value; // Update the specific subtask
+                              setSubtasks(updatedSubtasks); // Update the state with the new array
+                            }}
+                          />
+                          <span
+                            onClick={() => {
+                              const updatedSubtasks = subtasks.filter(
+                                (subtask, j) => {
+                                  // Return true to keep the subtask, false to remove it
+                                  return i !== j; // Replace indexToRemove with the index you want to remove
+                                }
+                              );
+                              setSubtasks(updatedSubtasks);
+                            }}
+                          >
+                            x
+                          </span>
+                        </div>
+                      ))}
+                      <Button
+                        onClick={() => {
+                          const currentSubtasks = [...subtasks, ""];
+                          setSubtasks(currentSubtasks);
+                        }}
+                      >
+                        + Add New Subtask
+                      </Button>
                     </div>
 
                     <div className="form-signup">
