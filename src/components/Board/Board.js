@@ -63,7 +63,6 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
       Status: { name: columnName[0].Name, columnID: columnName[0]._id },
       SubTasks: subtasks,
     };
-    console.log("This is the data being sent", data);
 
     fetch(
       `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${columnName[0]._id}/task`,
@@ -83,7 +82,19 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
         }
       })
       .then((data) => {
-        console.log("This is the data being returned", data);
+        const columnIndex = currentBoard.Columns.findIndex(
+          (column) => column._id === data._id
+        );
+
+        if (columnIndex !== -1) {
+          // Create a shallow copy of boardState
+          const updatedBoard = { ...currentBoard };
+          // Replace the old column with the updated data
+          updatedBoard.Columns[columnIndex] = data;
+          // Update the board state with the new data
+          updateCurrentBoard(updatedBoard);
+        }
+
         handleTaskClose();
       })
       .catch((error) => {
