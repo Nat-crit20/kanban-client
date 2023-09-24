@@ -60,10 +60,11 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
     const data = {
       Title: taskName,
       Description: taskDescription,
-      Status: { name: "ToDo", columnID: columnName[0]._id },
+      Status: { name: columnName[0].Name, columnID: columnName[0]._id },
       SubTasks: subtasks,
     };
     console.log("This is the data being sent", data);
+
     fetch(
       `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${columnName[0]._id}/task`,
       {
@@ -71,7 +72,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "http://localhost:3000/",
+          "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify(data),
       }
@@ -204,17 +205,17 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                       ) : (
                         <p>Loading or no data available.</p>
                       )}
-                      <label htmlFor="status">Subtask: </label>
+                      <label htmlFor="subtask">Subtask: </label>
                       {subtasks.map((subtask, i) => (
                         <div key={i}>
                           <input
                             type="text"
                             name="subtask"
                             id={`subtask_${i}`} // Add a unique id for each input
-                            value={subtask}
+                            value={subtask.title}
                             onChange={(e) => {
                               const updatedSubtasks = [...subtasks]; // Create a copy of the subtasks array
-                              updatedSubtasks[i] = e.target.value; // Update the specific subtask
+                              updatedSubtasks[i] = { title: e.target.value }; // Update the specific subtask
                               setSubtasks(updatedSubtasks); // Update the state with the new array
                             }}
                           />
@@ -235,7 +236,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                       ))}
                       <Button
                         onClick={() => {
-                          const currentSubtasks = [...subtasks, ""];
+                          const currentSubtasks = [...subtasks, {}];
                           setSubtasks(currentSubtasks);
                         }}
                       >
