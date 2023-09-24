@@ -60,17 +60,18 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
     const data = {
       Title: taskName,
       Description: taskDescription,
-      Status: { Name: columnName[0].Name, columnID: selectedId },
+      Status: { name: "ToDo", columnID: columnName[0]._id },
       SubTasks: subtasks,
     };
     console.log("This is the data being sent", data);
     fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${selectedId}/task`,
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${columnName[0]._id}/task`,
       {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "http://localhost:3000/",
         },
         body: JSON.stringify(data),
       }
@@ -164,7 +165,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                 <Modal.Body>
                   <form
                     method="post"
-                    className="form-signup"
+                    className="form-task"
                     onSubmit={handleTaskSubmit}
                   >
                     <div className="form-signup">
