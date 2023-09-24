@@ -58,49 +58,64 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
       return column._id === selectedId;
     });
     const data = {
-      Name: taskName,
+      Title: taskName,
       Description: taskDescription,
       Status: { Name: columnName[0].Name, columnID: selectedId },
       SubTasks: subtasks,
     };
-    console.log(data);
-    /*
-    fetch(`https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${taskStatus.current.value}`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    console.log("This is the data being sent", data);
+    fetch(
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${selectedId}/task`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => {
         if (res.ok) {
           return res.json();
         }
       })
       .then((data) => {
-        updateCurrentBoard(data);
-        handleColumnClose();
+        console.log("This is the data being returned", data);
+        handleTaskClose();
       })
       .catch((error) => {
         console.log(error);
       });
-      */
   };
+
   return (
     <>
       {currentBoard ? (
         <>
           <div>
             <h1>{currentBoard.Name}</h1>
-            <Button variant="primary" onClick={handleTaskShow}>
-              Add New Task
-            </Button>
+            {currentBoard &&
+            currentBoard.Columns &&
+            currentBoard.Columns.length > 0 ? (
+              <Button variant="primary" onClick={handleTaskShow}>
+                Add New Task
+              </Button>
+            ) : (
+              <></>
+            )}
           </div>
           <div>
-            {currentBoard.Columns.map((column) => {
-              return <ColumnsView column={column} />;
-            })}
+            {currentBoard &&
+            currentBoard.Columns &&
+            currentBoard.Columns.length > 0 ? (
+              currentBoard.Columns.map((column) => {
+                return <ColumnsView column={column} />;
+              })
+            ) : (
+              <p>No columns to display.</p>
+            )}
+
             <Button variant="primary" onClick={handleColumnShow}>
               Create Column
             </Button>
@@ -171,19 +186,24 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                         onChange={(e) => setTaskDescription(e.target.value)}
                         required
                       />
-                      <label htmlFor="subtask">Subtasks: </label>
-                      <select id="status" name="status" ref={taskStatus}>
-                        {currentBoard.Columns.map((column) => (
-                          <option
-                            key={column._id}
-                            value={column._id}
-                            data-name={column.Name} // Ensure this line sets the data-name attribute
-                          >
-                            {column.Name}
-                          </option>
-                        ))}
-                      </select>
-                      <label htmlFor="status">Status: </label>
+                      <label htmlFor="subtask">Status: </label>
+
+                      {currentBoard && currentBoard.Columns ? (
+                        <select id="status" name="status" ref={taskStatus}>
+                          {currentBoard.Columns.map((column) => (
+                            <option
+                              key={column._id}
+                              value={column._id}
+                              data-name={column.Name}
+                            >
+                              {column.Name}
+                            </option>
+                          ))}
+                        </select>
+                      ) : (
+                        <p>Loading or no data available.</p>
+                      )}
+                      <label htmlFor="status">Subtask: </label>
                       {subtasks.map((subtask, i) => (
                         <div key={i}>
                           <input
@@ -237,7 +257,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
           </div>
         </>
       ) : (
-        <></>
+        <p>Loading...</p>
       )}
     </>
   );

@@ -129,13 +129,17 @@ export const HomeView = ({
           </Modal.Footer>
         </Modal>
       </div>
-      <BoardView
-        currentBoard={currentBoard}
-        updateCurrentBoard={(board) => {
-          updateCurrentBoard(board);
-        }}
-        token={token}
-      />
+      {currentBoard ? (
+        <BoardView
+          currentBoard={currentBoard}
+          updateCurrentBoard={(board) => {
+            updateCurrentBoard(board);
+          }}
+          token={token}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 };
