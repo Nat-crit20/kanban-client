@@ -1,7 +1,7 @@
-export const TaskView = () => {
+export const TaskView = ({ task }) => {
   return (
     <>
-      <h3>Task</h3>
+      <h3>{task.Title}</h3>
     </>
   );
 };
