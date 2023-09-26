@@ -126,10 +126,10 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                 return <ColumnsView column={column} />;
               })
             ) : (
-              <p>No columns to display.</p>
+              <p>This board is empty. Create a new column to get started.</p>
             )}
 
-            <Button variant="primary" onClick={handleColumnShow}>
+            <Button variant="secondary" onClick={handleColumnShow}>
               Create Column
             </Button>
 

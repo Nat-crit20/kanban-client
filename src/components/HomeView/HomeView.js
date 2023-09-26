@@ -1,6 +1,7 @@
 import { BoardView } from "../Board/Board";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
 
 import { useState } from "react";
 export const HomeView = ({
@@ -80,18 +81,13 @@ export const HomeView = ({
       <div>
         {boards.map((board) => {
           return (
-            <Button
-              variant="primary"
-              id={board._id}
-              onClick={handleCurrentBoard}
-            >
+            <Button id={board._id} onClick={handleCurrentBoard}>
+              <IconBoardSvg />
               {board.Name}
             </Button>
           );
         })}
-        <Button variant="primary" onClick={handleShow}>
-          Create Board
-        </Button>
+        <Button onClick={handleShow}>+ Create New Board</Button>
 
         <Modal show={show} onHide={handleClose} centered>
           <Modal.Header closeButton>
