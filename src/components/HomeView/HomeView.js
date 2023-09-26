@@ -1,6 +1,9 @@
 import { BoardView } from "../Board/Board";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
 
 import { useState } from "react";
@@ -78,17 +81,34 @@ export const HomeView = ({
 
   return (
     <>
-      <div>
-        {boards.map((board) => {
-          return (
-            <Button id={board._id} onClick={handleCurrentBoard}>
-              <IconBoardSvg />
-              {board.Name}
-            </Button>
-          );
-        })}
-        <Button onClick={handleShow}>+ Create New Board</Button>
+      <Container>
+        <Row>
+          <Col xs lg="2">
+            {boards.map((board) => {
+              return (
+                <Button id={board._id} onClick={handleCurrentBoard}>
+                  <IconBoardSvg />
+                  {board.Name}
+                </Button>
+              );
+            })}
+            <Button onClick={handleShow}>+ Create New Board</Button>
+          </Col>
 
+          <Col>
+            {currentBoard ? (
+              <BoardView
+                currentBoard={currentBoard}
+                updateCurrentBoard={(board) => {
+                  updateCurrentBoard(board);
+                }}
+                token={token}
+              />
+            ) : (
+              <></>
+            )}
+          </Col>
+        </Row>
         <Modal show={show} onHide={handleClose} centered>
           <Modal.Header closeButton>
             <Modal.Title>Give the Board a name</Modal.Title>
@@ -124,18 +144,7 @@ export const HomeView = ({
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
-      {currentBoard ? (
-        <BoardView
-          currentBoard={currentBoard}
-          updateCurrentBoard={(board) => {
-            updateCurrentBoard(board);
-          }}
-          token={token}
-        />
-      ) : (
-        <></>
-      )}
+      </Container>
     </>
   );
 };
