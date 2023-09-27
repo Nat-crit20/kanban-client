@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { ButtonGroup } from "react-bootstrap";
 import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
 
 import { useState } from "react";
@@ -84,15 +85,23 @@ export const HomeView = ({
       <Container>
         <Row>
           <Col xs lg="2">
-            {boards.map((board) => {
-              return (
-                <Button id={board._id} onClick={handleCurrentBoard}>
-                  <IconBoardSvg />
-                  {board.Name}
-                </Button>
-              );
-            })}
-            <Button onClick={handleShow}>+ Create New Board</Button>
+            <ButtonGroup vertical>
+              {boards.map((board) => {
+                return (
+                  <Button
+                    id={board._id}
+                    onClick={handleCurrentBoard}
+                    variant={
+                      currentBoard._id === board._id ? "primary" : "secondary"
+                    }
+                  >
+                    <IconBoardSvg />
+                    {board.Name}
+                  </Button>
+                );
+              })}
+              <Button onClick={handleShow}>+ Create New Board</Button>
+            </ButtonGroup>
           </Col>
 
           <Col>
