@@ -5,4 +5,7 @@
 
 .board-header {
   border-bottom: 2px solid #e4ebfa;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
