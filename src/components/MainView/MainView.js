@@ -42,7 +42,6 @@ export const MainView = () => {
     <div className="App">
       {user ? (
         <>
-          <h1>Welcome {user.Username}</h1>
           <HomeView
             user={user}
             currentBoard={currentBoard}

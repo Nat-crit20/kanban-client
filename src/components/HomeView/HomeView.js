@@ -92,7 +92,9 @@ export const HomeView = ({
                     id={board._id}
                     onClick={handleCurrentBoard}
                     variant={
-                      currentBoard._id === board._id ? "primary" : "secondary"
+                      currentBoard._id && currentBoard._id === board._id
+                        ? "primary"
+                        : "secondary"
                     }
                   >
                     <IconBoardSvg />

@@ -1,6 +1,8 @@
 import Button from "react-bootstrap/Button";
 import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { useRef, useState } from "react";
 export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
@@ -119,20 +121,26 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
             )}
           </div>
           <div>
-            {currentBoard &&
-            currentBoard.Columns &&
-            currentBoard.Columns.length > 0 ? (
-              currentBoard.Columns.map((column) => {
-                return <ColumnsView column={column} />;
-              })
-            ) : (
-              <p>This board is empty. Create a new column to get started.</p>
-            )}
-
-            <Button variant="secondary" onClick={handleColumnShow}>
-              Create Column
-            </Button>
-
+            <Row style={{ backgroundColor: "#F4F7FD" }}>
+              {currentBoard &&
+              currentBoard.Columns &&
+              currentBoard.Columns.length > 0 ? (
+                currentBoard.Columns.map((column) => {
+                  return (
+                    <Col>
+                      <ColumnsView column={column} />
+                    </Col>
+                  );
+                })
+              ) : (
+                <p>This board is empty. Create a new column to get started.</p>
+              )}
+              <Col>
+                <Button variant="secondary" onClick={handleColumnShow}>
+                  Create Column
+                </Button>
+              </Col>
+            </Row>
             <Modal show={showColumn} onHide={handleColumnClose} centered>
               <Modal.Header closeButton>
                 <Modal.Title>Give the Column a name</Modal.Title>
