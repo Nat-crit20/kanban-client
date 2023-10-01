@@ -3,6 +3,7 @@ import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { ReactComponent as VerticalEllipse } from "../../assets/icon-vertical-ellipsis.svg";
 import "./Board.css";
 
 import { useRef, useState } from "react";
@@ -114,9 +115,12 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
             {currentBoard &&
             currentBoard.Columns &&
             currentBoard.Columns.length > 0 ? (
-              <Button variant="primary" onClick={handleTaskShow}>
-                Add New Task
-              </Button>
+              <div>
+                <Button variant="primary" onClick={handleTaskShow}>
+                  Add New Task
+                </Button>
+                <VerticalEllipse />
+              </div>
             ) : (
               <></>
             )}
