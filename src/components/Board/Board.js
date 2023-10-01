@@ -3,6 +3,7 @@ import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import "./Board.css";
 
 import { useRef, useState } from "react";
 export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
@@ -121,7 +122,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
             )}
           </div>
           <div>
-            <Row style={{ backgroundColor: "#F4F7FD" }}>
+            <Row className="column-home">
               {currentBoard &&
               currentBoard.Columns &&
               currentBoard.Columns.length > 0 ? (

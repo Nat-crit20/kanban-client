@@ -6,8 +6,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { ButtonGroup } from "react-bootstrap";
 import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
-
+import { ReactComponent as LogoForLight } from "../../assets/logo-dark.svg";
+import "./HomeView.css";
 import { useState } from "react";
+
 export const HomeView = ({
   user,
   token,
@@ -82,9 +84,10 @@ export const HomeView = ({
 
   return (
     <>
-      <Container>
+      <Container className="home-screen">
         <Row>
           <Col xs lg="2">
+            <LogoForLight />
             <ButtonGroup vertical>
               {boards.map((board) => {
                 return (
@@ -92,7 +95,7 @@ export const HomeView = ({
                     id={board._id}
                     onClick={handleCurrentBoard}
                     variant={
-                      currentBoard._id && currentBoard._id === board._id
+                      currentBoard && currentBoard._id === board._id
                         ? "primary"
                         : "secondary"
                     }
