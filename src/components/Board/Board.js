@@ -109,7 +109,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
     <>
       {currentBoard ? (
         <>
-          <div>
+          <div className="board-header">
             <h1>{currentBoard.Name}</h1>
             {currentBoard &&
             currentBoard.Columns &&

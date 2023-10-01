@@ -86,7 +86,7 @@ export const HomeView = ({
     <>
       <Container className="home-screen">
         <Row>
-          <Col xs lg="2">
+          <Col xs lg="2" className="sidebar">
             <LogoForLight />
             <ButtonGroup vertical>
               {boards.map((board) => {
