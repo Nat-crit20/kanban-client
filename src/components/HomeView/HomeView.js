@@ -84,7 +84,7 @@ export const HomeView = ({
 
   return (
     <>
-      <Container className="home-screen">
+      <Container className="home-screen m-0 p-0">
         <Row>
           <Col xs md={2} className="sidebar">
             <LogoForLight />
