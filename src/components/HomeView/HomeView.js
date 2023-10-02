@@ -91,18 +91,19 @@ export const HomeView = ({
             <ButtonGroup vertical>
               {boards.map((board) => {
                 return (
-                  <Button
+                  <button
                     id={board._id}
                     onClick={handleCurrentBoard}
-                    variant={
-                      currentBoard && currentBoard._id === board._id
-                        ? "primary"
-                        : "secondary"
-                    }
+                    // variant={
+                    //   currentBoard && currentBoard._id === board._id
+                    //     ? "new-color"
+                    //     : "secondary"
+                    // }
+                    className="btn-custom"
                   >
                     <IconBoardSvg />
                     {board.Name}
-                  </Button>
+                  </button>
                 );
               })}
               <Button onClick={handleShow}>+ Create New Board</Button>

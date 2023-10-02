@@ -7,3 +7,9 @@
   background-color: #fff;
   padding: 2rem;
 }
+
+.btn-custom {
+  background-color: purple;
+  color: white;
+  border: none;
+}
