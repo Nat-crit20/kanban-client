@@ -1,8 +1,12 @@
 .home-screen {
   height: 100%;
+  margin: 0;
 }
-
+.container {
+  margin: 0;
+}
 .sidebar {
   border-right: 2px solid #e4ebfa;
   background-color: #fff;
+  padding: 2rem;
 }
