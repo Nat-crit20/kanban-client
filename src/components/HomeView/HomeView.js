@@ -99,7 +99,11 @@ export const HomeView = ({
                     //     ? "new-color"
                     //     : "secondary"
                     // }
-                    className="btn-custom"
+                    className={
+                      currentBoard && currentBoard._id === board._id
+                        ? "btn-active"
+                        : "btn-non"
+                    }
                   >
                     <IconBoardSvg />
                     {board.Name}

@@ -6,10 +6,21 @@
   border-right: 2px solid #e4ebfa;
   background-color: #fff;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.btn-custom {
-  background-color: purple;
+.btn-active {
+  background-color: #635fc7;
   color: white;
   border: none;
+  width: 18rem;
+  line-height: 2rem;
+}
+.btn-non {
+  background-color: #fff;
+  color: black;
+  border: none;
+  width: 18rem;
+  line-height: 2rem;
 }
