@@ -94,11 +94,6 @@ export const HomeView = ({
                   <button
                     id={board._id}
                     onClick={handleCurrentBoard}
-                    // variant={
-                    //   currentBoard && currentBoard._id === board._id
-                    //     ? "new-color"
-                    //     : "secondary"
-                    // }
                     className={
                       currentBoard && currentBoard._id === board._id
                         ? "btn-active"
