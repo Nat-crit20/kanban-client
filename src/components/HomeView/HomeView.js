@@ -93,7 +93,7 @@ export const HomeView = ({
     <>
       <Container className="home-screen m-0 p-0">
         <Row>
-          <Col xs md={3} className="sidebar">
+          <Col xs md={3} className="sidebar" style={{ display: "flex" }}>
             <LogoForLight className="sidebar-head" />
             <ButtonGroup vertical>
               <p className="sidebar-head">ALL BOARDS ({boards.length})</p>
@@ -124,14 +124,16 @@ export const HomeView = ({
                 New Board
               </button>
             </ButtonGroup>
-            <Form className="mode-switch">
-              <LightModeSvg />
-              <Form.Check type="switch" id="custom-switch" />
-              <DarkModeSvg />
-            </Form>
-            <div className="hide-sidebar">
-              <HideSidebarSvg />
-              <p>Hide Sidebar</p>
+            <div>
+              <Form className="mode-switch">
+                <LightModeSvg />
+                <Form.Check type="switch" id="custom-switch" />
+                <DarkModeSvg />
+              </Form>
+              <div className="hide-sidebar">
+                <HideSidebarSvg />
+                <p>Hide Sidebar</p>
+              </div>
             </div>
           </Col>
 

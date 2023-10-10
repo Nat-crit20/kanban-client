@@ -6,7 +6,6 @@
   border-right: 2px solid #e4ebfa;
   background-color: #fff;
   padding: 2rem;
-  display: flex;
   flex-direction: column;
 }
 
