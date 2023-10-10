@@ -56,3 +56,9 @@
   justify-self: center;
   align-self: center;
 }
+.sidebar-head p {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #828fa3;
+}
