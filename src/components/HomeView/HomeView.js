@@ -129,7 +129,10 @@ export const HomeView = ({
               <Form.Check type="switch" id="custom-switch" />
               <DarkModeSvg />
             </Form>
-            <HideSidebarSvg />
+            <div className="hide-sidebar">
+              <HideSidebarSvg />
+              <p>Hide Sidebar</p>
+            </div>
           </Col>
 
           <Col>

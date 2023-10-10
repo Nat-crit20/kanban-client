@@ -75,5 +75,21 @@ p.sidebar-head {
   align-self: center;
 }
 .form-switch {
-  padding: 0 1rem;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.hide-sidebar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem 0 0 2rem;
+  cursor: pointer;
+}
+.hide-sidebar p {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  color: #828fa3;
+  margin: 0 1rem;
 }
