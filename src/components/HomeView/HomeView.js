@@ -87,8 +87,9 @@ export const HomeView = ({
       <Container className="home-screen m-0 p-0">
         <Row>
           <Col xs md={3} className="sidebar">
-            <LogoForLight />
+            <LogoForLight className="sidebar-head" />
             <ButtonGroup vertical>
+              <p className="sidebar-head">ALL BOARDS ({boards.length})</p>
               {boards.map((board) => {
                 return (
                   <button
@@ -100,12 +101,21 @@ export const HomeView = ({
                         : "btn-non"
                     }
                   >
-                    <IconBoardSvg />
+                    <IconBoardSvg
+                      className={
+                        currentBoard && currentBoard._id === board._id
+                          ? "board-svg-active board-svg"
+                          : "board-svg-non board-svg"
+                      }
+                    />
                     {board.Name}
                   </button>
                 );
               })}
-              <Button onClick={handleShow}>+ Create New Board</Button>
+              <button className="btn-add-board" onClick={handleShow}>
+                <IconBoardSvg className="create-board-svg board-svg" /> + Create
+                New Board
+              </button>
             </ButtonGroup>
           </Col>
 
