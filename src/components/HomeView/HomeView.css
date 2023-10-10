@@ -63,3 +63,17 @@ p.sidebar-head {
   color: #828fa3;
   margin: 1rem 0 0 0;
 }
+
+.mode-switch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f7fd;
+  width: 80%;
+  line-height: 2rem;
+  align-self: center;
+}
+.form-switch {
+  padding: 0 1rem;
+}

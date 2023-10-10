@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
 import { ButtonGroup } from "react-bootstrap";
 import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
 import { ReactComponent as LogoForLight } from "../../assets/logo-dark.svg";
@@ -123,6 +124,12 @@ export const HomeView = ({
                 New Board
               </button>
             </ButtonGroup>
+            <Form className="mode-switch">
+              <LightModeSvg />
+              <Form.Check type="switch" id="custom-switch" />
+              <DarkModeSvg />
+            </Form>
+            <HideSidebarSvg />
           </Col>
 
           <Col>
