@@ -7,6 +7,12 @@ import Col from "react-bootstrap/Col";
 import { ButtonGroup } from "react-bootstrap";
 import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
 import { ReactComponent as LogoForLight } from "../../assets/logo-dark.svg";
+import { ReactComponent as LogoForDark } from "../../assets/logo-light.svg";
+import { ReactComponent as HideSidebarSvg } from "../../assets/icon-hide-sidebar.svg";
+import { ReactComponent as ShowSidebarSvg } from "../../assets/icon-show-sidebar.svg";
+import { ReactComponent as DarkModeSvg } from "../../assets/icon-dark-theme.svg";
+import { ReactComponent as LightModeSvg } from "../../assets/icon-light-theme.svg";
+
 import "./HomeView.css";
 import { useState } from "react";
 
