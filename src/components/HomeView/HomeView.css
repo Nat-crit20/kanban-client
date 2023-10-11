@@ -2,6 +2,21 @@
   height: 100%;
   margin: 0;
 }
+.board-header {
+  border-bottom: 2px solid #e4ebfa;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 97px;
+  background-color: #fff;
+  padding: 0;
+  z-index: 10;
+}
+.board-header h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
 .sidebar {
   border-right: 2px solid #e4ebfa;
   background-color: #fff;

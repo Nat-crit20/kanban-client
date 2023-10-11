@@ -152,7 +152,7 @@ export const HomeView = ({
 
   return (
     <>
-      <Container className="home-screen m-0 p-0">
+      <Container className="home-screen m-0 p-0" fluid>
         <Row>
           <div className="board-header">
             <LogoForLight className="sidebar-head" />
