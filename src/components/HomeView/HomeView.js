@@ -27,6 +27,7 @@ export const HomeView = ({
   boards,
 }) => {
   const [show, setShow] = useState(false);
+  const [showSideBar, setShowSideBar] = useState("flex");
   const [boardName, setBoardName] = useState(null);
   const [taskName, setTaskName] = useState(null);
   const [taskDescription, setTaskDescription] = useState(null);
@@ -155,7 +156,7 @@ export const HomeView = ({
       <Container className="home-screen m-0 p-0" fluid>
         <Row>
           <div className="board-header">
-            <LogoForLight className="sidebar-head" />
+            <LogoForLight />
             <h1>{currentBoard ? currentBoard.Name : ""}</h1>
             {currentBoard &&
             currentBoard.Columns &&
@@ -172,7 +173,7 @@ export const HomeView = ({
           </div>
         </Row>
         <Row>
-          <Col xs md={3} className="sidebar" style={{ display: "flex" }}>
+          <Col xs md={3} className="sidebar" style={{ display: showSideBar }}>
             <ButtonGroup vertical>
               <p className="sidebar-head">ALL BOARDS ({boards.length})</p>
               {boards.map((board) => {
@@ -209,11 +210,20 @@ export const HomeView = ({
                 <DarkModeSvg />
               </Form>
               <div className="hide-sidebar">
-                <HideSidebarSvg />
+                <HideSidebarSvg onClick={() => setShowSideBar("none")} />
                 <p>Hide Sidebar</p>
               </div>
             </div>
           </Col>
+          {showSideBar === "none" ? (
+            <div>
+              <button onClick={() => setShowSideBar("flex")}>
+                <ShowSidebarSvg />
+              </button>
+            </div>
+          ) : (
+            <></>
+          )}
 
           <Col>
             {currentBoard ? (
