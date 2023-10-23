@@ -217,7 +217,10 @@ export const HomeView = ({
           </Col>
           {showSideBar === "none" ? (
             <div>
-              <button onClick={() => setShowSideBar("flex")}>
+              <button
+                className="showSidebar-btn"
+                onClick={() => setShowSideBar("flex")}
+              >
                 <ShowSidebarSvg />
               </button>
             </div>

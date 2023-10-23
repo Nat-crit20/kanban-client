@@ -107,3 +107,17 @@ p.sidebar-head {
   color: #828fa3;
   margin: 0 1rem;
 }
+
+.showSidebar-btn {
+  background-color: #635fc7;
+  color: white;
+  border: none;
+  position: fixed;
+  width: 4rem;
+  line-height: 2rem;
+  bottom: 20px; /* Adjust this value to change the distance from the bottom */
+  left: 0px; /* Adjust this value to change the distance from the right */
+  z-index: 1;
+  border-top-right-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+}
