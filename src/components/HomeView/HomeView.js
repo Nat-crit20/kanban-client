@@ -156,20 +156,24 @@ export const HomeView = ({
       <Container className="home-screen m-0 p-0" fluid>
         <Row>
           <div className="board-header">
-            <LogoForLight />
-            <h1>{currentBoard ? currentBoard.Name : ""}</h1>
-            {currentBoard &&
-            currentBoard.Columns &&
-            currentBoard.Columns.length > 0 ? (
-              <div>
-                <Button variant="primary" onClick={handleTaskShow}>
-                  Add New Task
-                </Button>
-                <VerticalEllipse />
-              </div>
-            ) : (
-              <></>
-            )}
+            <Col xs md={3} className="logo">
+              <LogoForLight />
+            </Col>
+            <Col className="board-info">
+              <h1>{currentBoard ? currentBoard.Name : ""}</h1>
+              {currentBoard &&
+              currentBoard.Columns &&
+              currentBoard.Columns.length > 0 ? (
+                <div>
+                  <Button variant="primary" onClick={handleTaskShow}>
+                    Add New Task
+                  </Button>
+                  <VerticalEllipse />
+                </div>
+              ) : (
+                <></>
+              )}
+            </Col>
           </div>
         </Row>
         <Row>
