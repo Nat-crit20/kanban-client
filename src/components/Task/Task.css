@@ -1,0 +1,18 @@
+#task-info {
+  background-color: white;
+  margin: 1rem 0;
+  height: auto;
+  border-radius: 10px;
+  text-align: start;
+  width: 20rem;
+  cursor: pointer;
+}
+#task-info h3 {
+  font-size: 18px;
+}
+#task-info p {
+  font-size: 12px;
+}
+.task-info-text {
+  padding: 1rem 0.5rem;
+}
