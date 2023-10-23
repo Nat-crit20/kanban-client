@@ -165,9 +165,9 @@ export const HomeView = ({
               currentBoard.Columns &&
               currentBoard.Columns.length > 0 ? (
                 <div>
-                  <Button variant="primary" onClick={handleTaskShow}>
-                    Add New Task
-                  </Button>
+                  <button className="addTask-btn" onClick={handleTaskShow}>
+                    + Add New Task
+                  </button>
                   <VerticalEllipse />
                 </div>
               ) : (
