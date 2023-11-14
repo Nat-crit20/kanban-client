@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import "./Task.css";
-export const TaskView = ({ task }) => {
+export const TaskView = ({ task, boardColumns }) => {
   const [showTask, setShowColumn] = useState(false);
   const handleTaskClose = () => setShowColumn(false);
   const handleTaskShow = () => setShowColumn(true);
@@ -16,10 +16,40 @@ export const TaskView = ({ task }) => {
       </div>
       <Modal show={showTask} onHide={handleTaskClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Task</Modal.Title>
+          <Modal.Title>{task.Title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Modal.Body></Modal.Body>
+          <Modal.Body>
+            <div>
+              <p>{task.Description}</p>
+            </div>
+            <select id="status" name="status">
+              {boardColumns.map((column) => {
+                if (task.Status.columnID === column._id) {
+                  return (
+                    <option
+                      key={column._id}
+                      value={column._id}
+                      data-name={column.Name}
+                      selected
+                    >
+                      {column.Name}
+                    </option>
+                  );
+                } else {
+                  return (
+                    <option
+                      key={column._id}
+                      value={column._id}
+                      data-name={column.Name}
+                    >
+                      {column.Name}
+                    </option>
+                  );
+                }
+              })}
+            </select>
+          </Modal.Body>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleTaskClose}>

@@ -58,7 +58,10 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                 currentBoard.Columns.map((column) => {
                   return (
                     <Col>
-                      <ColumnsView column={column} />
+                      <ColumnsView
+                        column={column}
+                        boardColumns={currentBoard.Columns}
+                      />
                     </Col>
                   );
                 })
