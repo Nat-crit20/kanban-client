@@ -18,50 +18,65 @@ export const TaskView = ({ task, boardColumns }) => {
         <Modal.Header closeButton>
           <Modal.Title>{task.Title}</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
-          <Modal.Body>
-            <div>
-              <p>{task.Description}</p>
-            </div>
-            <div>
-              {task.SubTasks.map((subtask, i) => {
+          <div>
+            <p>{task.Description}</p>
+          </div>
+          <div>
+            <p>Subtasks:</p>
+            {task.SubTasks.map((subtask, i) => {
+              if (subtask.isComplete) {
+                return (
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="subtask"
+                      name={`subtask-${i}`}
+                      checked
+                    />
+                    <label for={`subtask-${i}`}>{subtask.title}</label>
+                  </div>
+                );
+              } else {
                 return (
                   <div>
                     <input type="checkbox" id="subtask" name={`subtask-${i}`} />
                     <label for={`subtask-${i}`}>{subtask.title}</label>
                   </div>
                 );
-              })}
-            </div>
-
-            <select id="status" name="status">
-              {boardColumns.map((column) => {
-                if (task.Status.columnID === column._id) {
-                  return (
-                    <option
-                      key={column._id}
-                      value={column._id}
-                      data-name={column.Name}
-                      selected
-                    >
-                      {column.Name}
-                    </option>
-                  );
-                } else {
-                  return (
-                    <option
-                      key={column._id}
-                      value={column._id}
-                      data-name={column.Name}
-                    >
-                      {column.Name}
-                    </option>
-                  );
-                }
-              })}
-            </select>
-          </Modal.Body>
+              }
+            })}
+          </div>
+          <p>Current Status</p>
+          <select id="status" name="status">
+            {boardColumns.map((column) => {
+              if (task.Status.columnID === column._id) {
+                return (
+                  <option
+                    key={column._id}
+                    value={column._id}
+                    data-name={column.Name}
+                    selected
+                  >
+                    {column.Name}
+                  </option>
+                );
+              } else {
+                return (
+                  <option
+                    key={column._id}
+                    value={column._id}
+                    data-name={column.Name}
+                  >
+                    {column.Name}
+                  </option>
+                );
+              }
+            })}
+          </select>
         </Modal.Body>
+
         <Modal.Footer>
           <Button variant="secondary" onClick={handleTaskClose}>
             Close
