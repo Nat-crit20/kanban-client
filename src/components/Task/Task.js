@@ -23,6 +23,17 @@ export const TaskView = ({ task, boardColumns }) => {
             <div>
               <p>{task.Description}</p>
             </div>
+            <div>
+              {task.SubTasks.map((subtask, i) => {
+                return (
+                  <div>
+                    <input type="checkbox" id="subtask" name={`subtask-${i}`} />
+                    <label for={`subtask-${i}`}>{subtask.title}</label>
+                  </div>
+                );
+              })}
+            </div>
+
             <select id="status" name="status">
               {boardColumns.map((column) => {
                 if (task.Status.columnID === column._id) {
