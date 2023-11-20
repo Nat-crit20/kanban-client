@@ -1,7 +1,7 @@
 import { BoardView } from "../Board/Board";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Container from "react-bootstrap/Container";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -153,233 +153,227 @@ export const HomeView = ({
 
   return (
     <>
-      <Container className="home-screen m-0 p-0" fluid>
-        <Row>
-          <div className="board-header">
-            <Col xs md={3} className="logo">
-              <LogoForLight />
-            </Col>
-            <Col className="board-info">
-              <h1>{currentBoard ? currentBoard.Name : ""}</h1>
-              {currentBoard &&
-              currentBoard.Columns &&
-              currentBoard.Columns.length > 0 ? (
-                <div>
-                  <button className="addTask-btn" onClick={handleTaskShow}>
-                    + Add New Task
-                  </button>
-                  <VerticalEllipse />
-                </div>
-              ) : (
-                <></>
-              )}
-            </Col>
-          </div>
-        </Row>
-        <Row>
-          <Col xs md={3} className="sidebar" style={{ display: showSideBar }}>
-            <ButtonGroup vertical>
-              <p className="sidebar-head">ALL BOARDS ({boards.length})</p>
-              {boards.map((board) => {
-                return (
-                  <button
-                    id={board._id}
-                    onClick={handleCurrentBoard}
-                    className={
-                      currentBoard && currentBoard._id === board._id
-                        ? "btn-active"
-                        : "btn-non"
-                    }
-                  >
-                    <IconBoardSvg
-                      className={
-                        currentBoard && currentBoard._id === board._id
-                          ? "board-svg-active board-svg"
-                          : "board-svg-non board-svg"
-                      }
-                    />
-                    {board.Name}
-                  </button>
-                );
-              })}
-              <button className="btn-add-board" onClick={handleShow}>
-                <IconBoardSvg className="create-board-svg board-svg" /> + Create
-                New Board
-              </button>
-            </ButtonGroup>
-            <div>
-              <Form className="mode-switch">
-                <LightModeSvg />
-                <Form.Check type="switch" id="custom-switch" />
-                <DarkModeSvg />
-              </Form>
-              <div className="hide-sidebar">
-                <HideSidebarSvg onClick={() => setShowSideBar("none")} />
-                <p>Hide Sidebar</p>
-              </div>
-            </div>
+      <Row>
+        <div className="board-header">
+          <Col xs md={3} className="logo">
+            <LogoForLight />
           </Col>
-          {showSideBar === "none" ? (
-            <div>
-              <button
-                className="showSidebar-btn"
-                onClick={() => setShowSideBar("flex")}
-              >
-                <ShowSidebarSvg />
-              </button>
-            </div>
-          ) : (
-            <></>
-          )}
-
-          <Col>
-            {currentBoard ? (
-              <BoardView
-                currentBoard={currentBoard}
-                updateCurrentBoard={(board) => {
-                  updateCurrentBoard(board);
-                }}
-                token={token}
-              />
+          <Col className="board-info">
+            <h1>{currentBoard ? currentBoard.Name : ""}</h1>
+            {currentBoard &&
+            currentBoard.Columns &&
+            currentBoard.Columns.length > 0 ? (
+              <div>
+                <button className="addTask-btn" onClick={handleTaskShow}>
+                  + Add New Task
+                </button>
+                <VerticalEllipse />
+              </div>
             ) : (
               <></>
             )}
           </Col>
-        </Row>
-        <Modal show={show} onHide={handleClose} centered>
-          <Modal.Header closeButton>
-            <Modal.Title>Give the Board a name</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Modal.Body>
-              <form
-                method="post"
-                className="form-signup"
-                onSubmit={handleSubmit}
-              >
-                <div className="form-signup">
-                  <label htmlFor="name">Enter your username: </label>
-                  <input
-                    type="text"
-                    name="username"
-                    id="username"
-                    value={boardName}
-                    onChange={(e) => setBoardName(e.target.value)}
-                    required
+        </div>
+      </Row>
+      <Row>
+        <Col className="sidebar" style={{ display: showSideBar }}>
+          <ButtonGroup vertical>
+            <p className="sidebar-head">ALL BOARDS ({boards.length})</p>
+            {boards.map((board) => {
+              return (
+                <button
+                  id={board._id}
+                  onClick={handleCurrentBoard}
+                  className={
+                    currentBoard && currentBoard._id === board._id
+                      ? "btn-active"
+                      : "btn-non"
+                  }
+                >
+                  <IconBoardSvg
+                    className={
+                      currentBoard && currentBoard._id === board._id
+                        ? "board-svg-active board-svg"
+                        : "board-svg-non board-svg"
+                    }
                   />
-                </div>
+                  {board.Name}
+                </button>
+              );
+            })}
+            <button className="btn-add-board" onClick={handleShow}>
+              <IconBoardSvg className="create-board-svg board-svg" /> + Create
+              New Board
+            </button>
+          </ButtonGroup>
+          <div>
+            <Form className="mode-switch">
+              <LightModeSvg />
+              <Form.Check type="switch" id="custom-switch" />
+              <DarkModeSvg />
+            </Form>
+            <div className="hide-sidebar">
+              <HideSidebarSvg onClick={() => setShowSideBar("none")} />
+              <p>Hide Sidebar</p>
+            </div>
+          </div>
+        </Col>
+        {showSideBar === "none" ? (
+          <div>
+            <button
+              className="showSidebar-btn"
+              onClick={() => setShowSideBar("flex")}
+            >
+              <ShowSidebarSvg />
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
 
-                <div className="form-signup">
-                  <input type="submit" value="Submit" />
-                </div>
-              </form>
-            </Modal.Body>
+        <Col>
+          {currentBoard ? (
+            <BoardView
+              currentBoard={currentBoard}
+              updateCurrentBoard={(board) => {
+                updateCurrentBoard(board);
+              }}
+              token={token}
+            />
+          ) : (
+            <></>
+          )}
+        </Col>
+      </Row>
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Give the Board a name</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Modal.Body>
+            <form method="post" className="form-signup" onSubmit={handleSubmit}>
+              <div className="form-signup">
+                <label htmlFor="name">Enter your username: </label>
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  value={boardName}
+                  onChange={(e) => setBoardName(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-signup">
+                <input type="submit" value="Submit" />
+              </div>
+            </form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-        <Modal show={showTask} onHide={handleTaskClose} centered>
-          <Modal.Header closeButton>
-            <Modal.Title>Add New Task</Modal.Title>
-          </Modal.Header>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <Modal show={showTask} onHide={handleTaskClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Task</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <Modal.Body>
-            <Modal.Body>
-              <form
-                method="post"
-                className="form-task"
-                onSubmit={handleTaskSubmit}
-              >
-                <div className="form-signup">
-                  <label htmlFor="name">Title: </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    value={taskName}
-                    onChange={(e) => setTaskName(e.target.value)}
-                    required
-                  />
-                  <label htmlFor="description">Description: </label>
-                  <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    value={taskDescription}
-                    onChange={(e) => setTaskDescription(e.target.value)}
-                    required
-                  />
-                  <label htmlFor="subtask">Status: </label>
+            <form
+              method="post"
+              className="form-task"
+              onSubmit={handleTaskSubmit}
+            >
+              <div className="form-signup">
+                <label htmlFor="name">Title: </label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={taskName}
+                  onChange={(e) => setTaskName(e.target.value)}
+                  required
+                />
+                <label htmlFor="description">Description: </label>
+                <input
+                  type="text"
+                  name="description"
+                  id="description"
+                  value={taskDescription}
+                  onChange={(e) => setTaskDescription(e.target.value)}
+                  required
+                />
+                <label htmlFor="subtask">Status: </label>
 
-                  {currentBoard && currentBoard.Columns ? (
-                    <select id="status" name="status" ref={taskStatus}>
-                      {currentBoard.Columns.map((column) => (
-                        <option
-                          key={column._id}
-                          value={column._id}
-                          data-name={column.Name}
-                        >
-                          {column.Name}
-                        </option>
-                      ))}
-                    </select>
-                  ) : (
-                    <p>Loading or no data available.</p>
-                  )}
-                  <label htmlFor="subtask">Subtask: </label>
-                  {subtasks.map((subtask, i) => (
-                    <div key={i}>
-                      <input
-                        type="text"
-                        name="subtask"
-                        id={`subtask_${i}`} // Add a unique id for each input
-                        value={subtask.title}
-                        onChange={(e) => {
-                          const updatedSubtasks = [...subtasks]; // Create a copy of the subtasks array
-                          updatedSubtasks[i] = { title: e.target.value }; // Update the specific subtask
-                          setSubtasks(updatedSubtasks); // Update the state with the new array
-                        }}
-                      />
-                      <span
-                        onClick={() => {
-                          const updatedSubtasks = subtasks.filter(
-                            (subtask, j) => {
-                              // Return true to keep the subtask, false to remove it
-                              return i !== j; // Replace indexToRemove with the index you want to remove
-                            }
-                          );
-                          setSubtasks(updatedSubtasks);
-                        }}
+                {currentBoard && currentBoard.Columns ? (
+                  <select id="status" name="status" ref={taskStatus}>
+                    {currentBoard.Columns.map((column) => (
+                      <option
+                        key={column._id}
+                        value={column._id}
+                        data-name={column.Name}
                       >
-                        x
-                      </span>
-                    </div>
-                  ))}
-                  <Button
-                    onClick={() => {
-                      const currentSubtasks = [...subtasks, {}];
-                      setSubtasks(currentSubtasks);
-                    }}
-                  >
-                    + Add New Subtask
-                  </Button>
-                </div>
+                        {column.Name}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <p>Loading or no data available.</p>
+                )}
+                <label htmlFor="subtask">Subtask: </label>
+                {subtasks.map((subtask, i) => (
+                  <div key={i}>
+                    <input
+                      type="text"
+                      name="subtask"
+                      id={`subtask_${i}`} // Add a unique id for each input
+                      value={subtask.title}
+                      onChange={(e) => {
+                        const updatedSubtasks = [...subtasks]; // Create a copy of the subtasks array
+                        updatedSubtasks[i] = { title: e.target.value }; // Update the specific subtask
+                        setSubtasks(updatedSubtasks); // Update the state with the new array
+                      }}
+                    />
+                    <span
+                      onClick={() => {
+                        const updatedSubtasks = subtasks.filter(
+                          (subtask, j) => {
+                            // Return true to keep the subtask, false to remove it
+                            return i !== j; // Replace indexToRemove with the index you want to remove
+                          }
+                        );
+                        setSubtasks(updatedSubtasks);
+                      }}
+                    >
+                      x
+                    </span>
+                  </div>
+                ))}
+                <Button
+                  onClick={() => {
+                    const currentSubtasks = [...subtasks, {}];
+                    setSubtasks(currentSubtasks);
+                  }}
+                >
+                  + Add New Subtask
+                </Button>
+              </div>
 
-                <div className="form-signup">
-                  <input type="submit" value="Submit" />
-                </div>
-              </form>
-            </Modal.Body>
+              <div className="form-signup">
+                <input type="submit" value="Submit" />
+              </div>
+            </form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleTaskClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      </Container>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleTaskClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

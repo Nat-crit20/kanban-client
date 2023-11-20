@@ -33,6 +33,9 @@
   padding: 2rem;
   flex-direction: column;
 }
+.sidebar .col {
+  width: 20%;
+}
 
 .addTask-btn {
   background-color: #635fc7;

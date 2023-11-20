@@ -1,3 +1,4 @@
+import Container from "react-bootstrap/Container";
 import { useEffect, useState } from "react";
 import { WelcomeView } from "../Welcome/WelcomeView";
 import { HomeView } from "../HomeView/HomeView";
@@ -38,33 +39,39 @@ export const MainView = () => {
       });
   }, [token, user]);
 
+  const logOut = () => {
+    localStorage.clear();
+  };
+
   return (
     <div className="App">
-      {user ? (
-        <>
-          <HomeView
-            user={user}
-            currentBoard={currentBoard}
-            updateCurrentBoard={(board) => {
-              setCurrentBoard(board);
-            }}
-            boards={boards}
-            token={token}
-            updateUser={(user) => {
-              localStorage.setItem("user", JSON.stringify(user));
+      <Container className="m-0 p-0" fluid>
+        {user ? (
+          <>
+            <HomeView
+              user={user}
+              currentBoard={currentBoard}
+              updateCurrentBoard={(board) => {
+                setCurrentBoard(board);
+              }}
+              boards={boards}
+              token={token}
+              updateUser={(user) => {
+                localStorage.setItem("user", JSON.stringify(user));
+                setUser(user);
+              }}
+            />
+          </>
+        ) : (
+          <WelcomeView
+            onLogin={(user, token) => {
               setUser(user);
+              setToken(token);
+              setCurrentBoard(user.Board[0]);
             }}
           />
-        </>
-      ) : (
-        <WelcomeView
-          onLogin={(user, token) => {
-            setUser(user);
-            setToken(token);
-            setCurrentBoard(user.Board[0]);
-          }}
-        />
-      )}
+        )}
+      </Container>
     </div>
   );
 };
