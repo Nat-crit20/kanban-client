@@ -77,6 +77,25 @@ export const HomeView = ({
     fetchBoard(e.target.id);
   };
 
+  const handleDeleteBoard = () => {
+    fetch(
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com//user/${user._id}/board/${currentBoard._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const fetchBoard = (id) => {
     fetch(
       `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${id}`,
