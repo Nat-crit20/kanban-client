@@ -39,8 +39,10 @@ export const MainView = () => {
       });
   }, [token, user]);
 
-  const logOut = () => {
+  const logout = () => {
     localStorage.clear();
+    setUser(null);
+    setToken(null);
   };
 
   return (
@@ -54,6 +56,7 @@ export const MainView = () => {
               updateCurrentBoard={(board) => {
                 setCurrentBoard(board);
               }}
+              logout={logout}
               boards={boards}
               token={token}
               updateUser={(user) => {

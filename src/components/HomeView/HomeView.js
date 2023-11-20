@@ -25,6 +25,7 @@ export const HomeView = ({
   updateUser,
   updateCurrentBoard,
   boards,
+  logout,
 }) => {
   const [show, setShow] = useState(false);
   const [showSideBar, setShowSideBar] = useState("flex");
@@ -234,6 +235,11 @@ export const HomeView = ({
             <div className="hide-sidebar">
               <HideSidebarSvg onClick={() => setShowSideBar("none")} />
               <p>Hide Sidebar</p>
+            </div>
+            <div>
+              <Button onClick={logout} variant="danger">
+                Log Out
+              </Button>
             </div>
           </div>
         </Col>
