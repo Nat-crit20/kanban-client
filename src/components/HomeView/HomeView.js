@@ -1,7 +1,6 @@
 import { BoardView } from "../Board/Board";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -33,6 +32,7 @@ export const HomeView = ({
   const [taskName, setTaskName] = useState(null);
   const [taskDescription, setTaskDescription] = useState(null);
   const [subtasks, setSubtasks] = useState([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const taskStatus = useRef();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -40,6 +40,10 @@ export const HomeView = ({
   const [showTask, setShowTask] = useState(false);
   const handleTaskClose = () => setShowTask(false);
   const handleTaskShow = () => setShowTask(true);
+  const handleDropdownToggle = () => {
+    setDropdownOpen(!dropdownOpen);
+    console.log("click", dropdownOpen);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -187,7 +191,18 @@ export const HomeView = ({
                 <button className="addTask-btn" onClick={handleTaskShow}>
                   + Add New Task
                 </button>
-                <VerticalEllipse />
+                <VerticalEllipse onClick={handleDropdownToggle} />
+
+                <div
+                  className="dropdown-menu"
+                  style={{
+                    display: dropdownOpen ? "block" : "none",
+                  }}
+                >
+                  <p>Action 1</p>
+                  <p>Action 2</p>
+                  <p>Action 3</p>
+                </div>
               </div>
             ) : (
               <></>

@@ -26,6 +26,9 @@
   font-weight: bold;
   margin: 0;
 }
+.dropdown-toggle::after {
+  display: none !important;
+}
 
 .sidebar {
   border-right: 2px solid #e4ebfa;
