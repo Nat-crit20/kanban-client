@@ -26,8 +26,19 @@
   font-weight: bold;
   margin: 0;
 }
-.dropdown-toggle::after {
-  display: none !important;
+.vertical-ellipse {
+  cursor: pointer;
+}
+
+.dropdown-nav {
+  position: absolute;
+  background-color: white;
+  width: 10rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: left;
+  right: 0;
+  top: 10%;
 }
 
 .sidebar {
@@ -48,7 +59,8 @@
   line-height: 3rem;
   border-radius: 10rem;
   text-align: center;
-  margin: 1rem;
+  margin: 2rem;
+  cursor: pointer;
 }
 
 .btn-active {

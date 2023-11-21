@@ -187,21 +187,23 @@ export const HomeView = ({
             {currentBoard &&
             currentBoard.Columns &&
             currentBoard.Columns.length > 0 ? (
-              <div>
+              <div className="board-actions">
                 <button className="addTask-btn" onClick={handleTaskShow}>
                   + Add New Task
                 </button>
-                <VerticalEllipse onClick={handleDropdownToggle} />
+                <VerticalEllipse
+                  className="vertical-ellipse"
+                  onClick={handleDropdownToggle}
+                />
 
                 <div
-                  className="dropdown-menu"
+                  className="dropdown-nav"
                   style={{
                     display: dropdownOpen ? "block" : "none",
                   }}
                 >
-                  <p>Action 1</p>
-                  <p>Action 2</p>
-                  <p>Action 3</p>
+                  <p className="edit-board">Edit Board</p>
+                  <p className="delete-board">Delete Board</p>
                 </div>
               </div>
             ) : (
