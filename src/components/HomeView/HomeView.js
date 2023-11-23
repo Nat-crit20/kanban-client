@@ -177,42 +177,41 @@ export const HomeView = ({
 
   return (
     <>
-     
-        <div className="board-header">
-          <div className="logo">
-            <LogoForLight />
-          </div>
-          <div className="board-info">
-            <h1>{currentBoard ? currentBoard.Name : ""}</h1>
-            {currentBoard &&
-            currentBoard.Columns &&
-            currentBoard.Columns.length > 0 ? (
-              <div className="board-actions">
-                <button className="addTask-btn" onClick={handleTaskShow}>
-                  + Add New Task
-                </button>
-
-                <VerticalEllipse
-                  className="vertical-ellipse"
-                  onClick={handleDropdownToggle}
-                />
-
-                <div
-                  className="dropdown-nav"
-                  style={{
-                    display: dropdownOpen ? "block" : "none",
-                  }}
-                >
-                  <p className="edit-board ">Edit Board</p>
-                  <p className="delete-board ">Delete Board</p>
-                </div>
-              </div>
-            ) : (
-              <></>
-            )}
-          </div>
+      <div className="board-header">
+        <div className="logo">
+          <LogoForLight />
         </div>
-      <div>
+        <div className="board-info">
+          <h1>{currentBoard ? currentBoard.Name : ""}</h1>
+          {currentBoard &&
+          currentBoard.Columns &&
+          currentBoard.Columns.length > 0 ? (
+            <div className="board-actions">
+              <button className="addTask-btn" onClick={handleTaskShow}>
+                + Add New Task
+              </button>
+
+              <VerticalEllipse
+                className="vertical-ellipse"
+                onClick={handleDropdownToggle}
+              />
+
+              <div
+                className="dropdown-nav"
+                style={{
+                  display: dropdownOpen ? "block" : "none",
+                }}
+              >
+                <p className="edit-board ">Edit Board</p>
+                <p className="delete-board ">Delete Board</p>
+              </div>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
+      <div className="main-view">
         <div className="sidebar" style={{ display: showSideBar }}>
           <ButtonGroup vertical>
             <p className="sidebar-head">ALL BOARDS ({boards.length})</p>

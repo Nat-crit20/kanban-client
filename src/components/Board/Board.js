@@ -57,7 +57,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
               currentBoard.Columns.length > 0 ? (
                 currentBoard.Columns.map((column) => {
                   return (
-                    <div>
+                    <div className="column-view">
                       <ColumnsView
                         column={column}
                         boardColumns={currentBoard.Columns}

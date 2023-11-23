@@ -29,6 +29,7 @@
 
 .vertical-ellipse {
   cursor: pointer;
+  margin: 1rem;
 }
 
 .dropdown-nav {
@@ -58,9 +59,14 @@
   background-color: #fff;
   padding: 2rem;
   flex-direction: column;
+  width: 25%;
 }
 .sidebar .col {
   width: 20%;
+}
+.main-view {
+  display: flex;
+  flex-direction: row;
 }
 
 .addTask-btn {
