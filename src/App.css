@@ -1,6 +1,15 @@
+#root {
+  height: inherit;
+  background-color: #f4f7fd;
+  display: flex;
+  flex-direction: column;
+  max-height: max-content;
+}
 .App {
   text-align: center;
   font-family: "Plus Jakarta Sans", sans-serif;
-  height: auto;
+  height: inherit;
   background-color: #f4f7fd;
+  flex-grow: 1;
+  max-height: max-content;
 }

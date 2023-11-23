@@ -2,10 +2,12 @@
   box-sizing: border-box;
 }
 html {
+  margin: 0;
   height: 100%;
 }
 body {
   margin: 0;
+  height: inherit;
   background-color: #4674d0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",

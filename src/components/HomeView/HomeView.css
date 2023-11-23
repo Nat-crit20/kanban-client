@@ -64,7 +64,8 @@
   background-color: #fff;
   padding: 2rem 2rem 2rem 0rem;
   flex-direction: column;
-  width: 25%;
+  width: 30%;
+  overflow-x: auto;
 }
 .sidebar .col {
   width: 20%;
@@ -72,6 +73,7 @@
 .main-view {
   display: flex;
   flex-direction: row;
+  height: inherit;
 }
 
 .addTask-btn {
@@ -191,6 +193,8 @@ p.sidebar-head {
 }
 
 .board-view {
-  overflow-x: scroll;
+  overflow-x: auto;
   width: 100%;
+  background-color: #f4f7fd;
+  height: inherit;
 }
