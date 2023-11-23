@@ -6,6 +6,7 @@
   text-align: start;
   width: 20rem;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 #task-info h3 {
   font-size: 18px;
