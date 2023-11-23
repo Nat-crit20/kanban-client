@@ -47,7 +47,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
     <>
       {currentBoard ? (
         <>
-          <div>
+          <div className="board-main-view">
             <div className="column-home">
               {currentBoard &&
               currentBoard.Columns &&
@@ -72,7 +72,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                   </div>
                 </>
               ) : (
-                <div>
+                <div className="empty-board">
                   <p>
                     This board is empty. Create a new column to get started.
                   </p>
