@@ -160,7 +160,7 @@ p.sidebar-head {
 .sidebar-footer {
   display: flex;
   flex-direction: column;
-  justify-self: flex-end;
+  margin-top: auto;
 }
 
 .hide-sidebar {
