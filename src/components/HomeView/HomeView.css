@@ -184,3 +184,7 @@ p.sidebar-head {
   border-top-right-radius: 10rem;
   border-bottom-right-radius: 10rem;
 }
+
+.board-view {
+  overflow-x: scroll;
+}

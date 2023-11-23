@@ -272,7 +272,7 @@ export const HomeView = ({
           <></>
         )}
 
-        <div>
+        <div className="board-view">
           {currentBoard ? (
             <BoardView
               currentBoard={currentBoard}
