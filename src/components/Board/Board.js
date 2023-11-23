@@ -1,9 +1,6 @@
 import Button from "react-bootstrap/Button";
 import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
 import "./Board.css";
 
 import { useState } from "react";
@@ -55,27 +52,38 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
               {currentBoard &&
               currentBoard.Columns &&
               currentBoard.Columns.length > 0 ? (
-                currentBoard.Columns.map((column) => {
-                  return (
-                    <div className="column-view">
+                <>
+                  {currentBoard.Columns.map((column) => (
+                    <div key={column.id} className="column-view">
                       <ColumnsView
+                        key={column.id}
                         column={column}
                         boardColumns={currentBoard.Columns}
                       />
                     </div>
-                  );
-                })
+                  ))}
+                  <div>
+                    <button
+                      className="create-column-btn"
+                      onClick={handleColumnShow}
+                    >
+                      + Create Column
+                    </button>
+                  </div>
+                </>
               ) : (
-                <p>This board is empty. Create a new column to get started.</p>
+                <div>
+                  <p>
+                    This board is empty. Create a new column to get started.
+                  </p>
+                  <button
+                    className="create-first-column-btn"
+                    onClick={handleColumnShow}
+                  >
+                    + Create Column
+                  </button>
+                </div>
               )}
-              <div>
-                <button
-                  className="create-column-btn"
-                  onClick={handleColumnShow}
-                >
-                  + Create Column
-                </button>
-              </div>
             </div>
             <Modal show={showColumn} onHide={handleColumnClose} centered>
               <Modal.Header closeButton>

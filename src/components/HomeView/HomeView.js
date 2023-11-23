@@ -1,8 +1,6 @@
 import { BoardView } from "../Board/Board";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import { ButtonGroup } from "react-bootstrap";
 import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
@@ -40,6 +38,9 @@ export const HomeView = ({
   const [showTask, setShowTask] = useState(false);
   const handleTaskClose = () => setShowTask(false);
   const handleTaskShow = () => setShowTask(true);
+
+
+  
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
     console.log("click", dropdownOpen);

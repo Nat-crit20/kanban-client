@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/Container";
 import { useEffect, useState } from "react";
 import { WelcomeView } from "../Welcome/WelcomeView";
 import { HomeView } from "../HomeView/HomeView";
