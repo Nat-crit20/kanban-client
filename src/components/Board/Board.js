@@ -68,11 +68,14 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
               ) : (
                 <p>This board is empty. Create a new column to get started.</p>
               )}
-              <Col>
-                <Button variant="secondary" onClick={handleColumnShow}>
-                  Create Column
-                </Button>
-              </Col>
+              <div>
+                <button
+                  className="create-column-btn"
+                  onClick={handleColumnShow}
+                >
+                  + Create Column
+                </button>
+              </div>
             </div>
             <Modal show={showColumn} onHide={handleColumnClose} centered>
               <Modal.Header closeButton>

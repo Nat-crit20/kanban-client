@@ -181,8 +181,8 @@ export const HomeView = ({
         <div className="logo">
           <LogoForLight />
         </div>
+        <h1 className="board-title">{currentBoard ? currentBoard.Name : ""}</h1>
         <div className="board-info">
-          <h1>{currentBoard ? currentBoard.Name : ""}</h1>
           {currentBoard &&
           currentBoard.Columns &&
           currentBoard.Columns.length > 0 ? (

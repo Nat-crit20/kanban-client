@@ -7,3 +7,15 @@
   width: 20rem;
   margin: 2rem 1rem;
 }
+
+.create-column-btn {
+  height: 85%;
+  width: 20rem;
+  background-color: #e4ebfa;
+  border: none;
+  border-radius: 10px;
+  margin: 5rem 2rem 0 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #828fa3;
+}
