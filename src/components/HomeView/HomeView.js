@@ -177,12 +177,12 @@ export const HomeView = ({
 
   return (
     <>
-      <Row>
+     
         <div className="board-header">
-          <Col xs md={3} className="logo">
+          <div className="logo">
             <LogoForLight />
-          </Col>
-          <Col className="board-info">
+          </div>
+          <div className="board-info">
             <h1>{currentBoard ? currentBoard.Name : ""}</h1>
             {currentBoard &&
             currentBoard.Columns &&
@@ -210,11 +210,10 @@ export const HomeView = ({
             ) : (
               <></>
             )}
-          </Col>
+          </div>
         </div>
-      </Row>
-      <Row>
-        <Col className="sidebar" style={{ display: showSideBar }}>
+      <div>
+        <div className="sidebar" style={{ display: showSideBar }}>
           <ButtonGroup vertical>
             <p className="sidebar-head">ALL BOARDS ({boards.length})</p>
             {boards.map((board) => {
@@ -260,7 +259,7 @@ export const HomeView = ({
               </Button>
             </div>
           </div>
-        </Col>
+        </div>
         {showSideBar === "none" ? (
           <div>
             <button
@@ -274,7 +273,7 @@ export const HomeView = ({
           <></>
         )}
 
-        <Col>
+        <div>
           {currentBoard ? (
             <BoardView
               currentBoard={currentBoard}
@@ -286,8 +285,8 @@ export const HomeView = ({
           ) : (
             <></>
           )}
-        </Col>
-      </Row>
+        </div>
+      </div>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Give the Board a name</Modal.Title>

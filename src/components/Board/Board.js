@@ -51,18 +51,18 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
       {currentBoard ? (
         <>
           <div>
-            <Row className="column-home">
+            <div className="column-home">
               {currentBoard &&
               currentBoard.Columns &&
               currentBoard.Columns.length > 0 ? (
                 currentBoard.Columns.map((column) => {
                   return (
-                    <Col>
+                    <div>
                       <ColumnsView
                         column={column}
                         boardColumns={currentBoard.Columns}
                       />
-                    </Col>
+                    </div>
                   );
                 })
               ) : (
@@ -73,7 +73,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                   Create Column
                 </Button>
               </Col>
-            </Row>
+            </div>
             <Modal show={showColumn} onHide={handleColumnClose} centered>
               <Modal.Header closeButton>
                 <Modal.Title>Give the Column a name</Modal.Title>

@@ -47,34 +47,32 @@ export const MainView = () => {
 
   return (
     <div className="App">
-      <Container className="m-0 p-0" fluid>
-        {user ? (
-          <>
-            <HomeView
-              user={user}
-              currentBoard={currentBoard}
-              updateCurrentBoard={(board) => {
-                setCurrentBoard(board);
-              }}
-              logout={logout}
-              boards={boards}
-              token={token}
-              updateUser={(user) => {
-                localStorage.setItem("user", JSON.stringify(user));
-                setUser(user);
-              }}
-            />
-          </>
-        ) : (
-          <WelcomeView
-            onLogin={(user, token) => {
+      {user ? (
+        <>
+          <HomeView
+            user={user}
+            currentBoard={currentBoard}
+            updateCurrentBoard={(board) => {
+              setCurrentBoard(board);
+            }}
+            logout={logout}
+            boards={boards}
+            token={token}
+            updateUser={(user) => {
+              localStorage.setItem("user", JSON.stringify(user));
               setUser(user);
-              setToken(token);
-              setCurrentBoard(user.Board[0]);
             }}
           />
-        )}
-      </Container>
+        </>
+      ) : (
+        <WelcomeView
+          onLogin={(user, token) => {
+            setUser(user);
+            setToken(token);
+            setCurrentBoard(user.Board[0]);
+          }}
+        />
+      )}
     </div>
   );
 };
