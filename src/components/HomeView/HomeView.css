@@ -57,7 +57,7 @@
 .sidebar {
   border-right: 2px solid #e4ebfa;
   background-color: #fff;
-  padding: 2rem 0rem;
+  padding: 2rem 2rem 2rem 0rem;
   flex-direction: column;
   width: 25%;
 }
@@ -187,4 +187,5 @@ p.sidebar-head {
 
 .board-view {
   overflow-x: scroll;
+  width: 100%;
 }
