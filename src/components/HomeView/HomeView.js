@@ -191,6 +191,7 @@ export const HomeView = ({
                 <button className="addTask-btn" onClick={handleTaskShow}>
                   + Add New Task
                 </button>
+
                 <VerticalEllipse
                   className="vertical-ellipse"
                   onClick={handleDropdownToggle}
@@ -202,8 +203,8 @@ export const HomeView = ({
                     display: dropdownOpen ? "block" : "none",
                   }}
                 >
-                  <p className="edit-board">Edit Board</p>
-                  <p className="delete-board">Delete Board</p>
+                  <p className="edit-board ">Edit Board</p>
+                  <p className="delete-board ">Delete Board</p>
                 </div>
               </div>
             ) : (
