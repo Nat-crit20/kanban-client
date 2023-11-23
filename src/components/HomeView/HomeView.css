@@ -150,11 +150,17 @@ p.sidebar-head {
   margin-top: 0.5rem;
 }
 
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-end;
+}
+
 .hide-sidebar {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 1rem 0 0 2rem;
+  margin: 1rem 0 2rem 2rem;
   cursor: pointer;
 }
 .hide-sidebar p {

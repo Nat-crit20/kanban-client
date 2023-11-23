@@ -242,7 +242,7 @@ export const HomeView = ({
               New Board
             </button>
           </ButtonGroup>
-          <div>
+          <div className="sidebar-footer">
             <Form className="mode-switch">
               <LightModeSvg />
               <Form.Check type="switch" id="custom-switch" />
