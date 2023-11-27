@@ -33,3 +33,16 @@
   position: relative;
   top: 40vh;
 }
+
+.empty-board p {
+  color: #828fa3;
+  font-weight: bold;
+}
+.create-first-column-btn {
+  padding: 0 2rem;
+  line-height: 3rem;
+  border-radius: 2rem;
+  border: none;
+  background-color: #635fc7;
+  color: white;
+}

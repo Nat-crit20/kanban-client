@@ -80,7 +80,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                     className="create-first-column-btn"
                     onClick={handleColumnShow}
                   >
-                    + Create Column
+                    + Add New Column
                   </button>
                 </div>
               )}
