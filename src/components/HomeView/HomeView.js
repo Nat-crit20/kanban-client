@@ -39,8 +39,6 @@ export const HomeView = ({
   const handleTaskClose = () => setShowTask(false);
   const handleTaskShow = () => setShowTask(true);
 
-
-  
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
     console.log("click", dropdownOpen);
@@ -287,36 +285,39 @@ export const HomeView = ({
           )}
         </div>
       </div>
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal id="create-board-modal" show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Give the Board a name</Modal.Title>
+          <Modal.Title>Add New Board</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Modal.Body>
-            <form method="post" className="form-signup" onSubmit={handleSubmit}>
-              <div className="form-signup">
-                <label htmlFor="name">Enter your username: </label>
-                <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  value={boardName}
-                  onChange={(e) => setBoardName(e.target.value)}
-                  required
-                />
-              </div>
+            <form
+              method="post"
+              className="create-board-form"
+              onSubmit={handleSubmit}
+            >
+              <label className="board-name" htmlFor="board-name-input">
+                Name{" "}
+              </label>
+              <input
+                type="text"
+                name="board-name-input"
+                id="board-name-input"
+                value={boardName}
+                placeholder="e.g. Web Design"
+                onChange={(e) => setBoardName(e.target.value)}
+                required
+              />
 
-              <div className="form-signup">
-                <input type="submit" value="Submit" />
-              </div>
+              <input
+                className="create-board-submit"
+                type="submit"
+                value="Create New Board"
+                onClick={handleClose}
+              />
             </form>
           </Modal.Body>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
       <Modal show={showTask} onHide={handleTaskClose} centered>
         <Modal.Header closeButton>
