@@ -362,6 +362,7 @@ export const HomeView = ({
                   <div key={i}>
                     <input
                       type="text"
+                      className="create-subtask"
                       name="subtask"
                       id={`subtask_${i}`} // Add a unique id for each input
                       value={subtask.title}
