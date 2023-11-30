@@ -311,7 +311,7 @@ export const HomeView = ({
               />
 
               <input
-                className="create-board-submit"
+                className="form-submit"
                 type="submit"
                 value="Create New Board"
                 onClick={handleClose}
@@ -347,31 +347,16 @@ export const HomeView = ({
                   required
                 />
                 <label htmlFor="description">Description: </label>
-                <input
+                <textarea
                   type="text"
                   name="description"
+                  rows="4"
+                  cols="5"
                   id="description"
                   value={taskDescription}
                   onChange={(e) => setTaskDescription(e.target.value)}
-                  required
                 />
-                <label htmlFor="status">Status: </label>
 
-                {currentBoard && currentBoard.Columns ? (
-                  <select id="status" name="status" ref={taskStatus}>
-                    {currentBoard.Columns.map((column) => (
-                      <option
-                        key={column._id}
-                        value={column._id}
-                        data-name={column.Name}
-                      >
-                        {column.Name}
-                      </option>
-                    ))}
-                  </select>
-                ) : (
-                  <p>Loading or no data available.</p>
-                )}
                 <label htmlFor="subtask">Subtask: </label>
                 {subtasks.map((subtask, i) => (
                   <div key={i}>
@@ -385,6 +370,7 @@ export const HomeView = ({
                         updatedSubtasks[i] = { title: e.target.value }; // Update the specific subtask
                         setSubtasks(updatedSubtasks); // Update the state with the new array
                       }}
+                      required
                     />
                     <span
                       onClick={() => {
@@ -402,6 +388,7 @@ export const HomeView = ({
                   </div>
                 ))}
                 <button
+                  className="add-subtask"
                   onClick={() => {
                     const currentSubtasks = [...subtasks, {}];
                     setSubtasks(currentSubtasks);
@@ -409,19 +396,33 @@ export const HomeView = ({
                 >
                   + Add New Subtask
                 </button>
+                <label htmlFor="status">Status: </label>
+
+                {currentBoard && currentBoard.Columns ? (
+                  <select id="status" name="status" ref={taskStatus}>
+                    {currentBoard.Columns.map((column) => (
+                      <option
+                        key={column._id}
+                        value={column._id}
+                        data-name={column.Name}
+                      >
+                        {column.Name}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <p>Loading or no data available.</p>
+                )}
               </div>
 
-              <div className="form-signup">
-                <input type="submit" value="Create New Task" />
-              </div>
+              <input
+                className="form-submit"
+                type="submit"
+                value="Create New Task"
+              />
             </form>
           </Modal.Body>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleTaskClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
