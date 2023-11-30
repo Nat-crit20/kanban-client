@@ -230,3 +230,13 @@ p.sidebar-head {
   color: white;
   font-size: 1.3rem;
 }
+
+/* Create Task modal */
+.form-task {
+  display: flex;
+  flex-direction: column;
+}
+.form-create-task {
+  display: flex;
+  flex-direction: column;
+}

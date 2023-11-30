@@ -6,6 +6,7 @@ import { ButtonGroup } from "react-bootstrap";
 import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
 import { ReactComponent as LogoForLight } from "../../assets/logo-dark.svg";
 import { ReactComponent as LogoForDark } from "../../assets/logo-light.svg";
+import { ReactComponent as IconCross } from "../../assets/icon-cross.svg";
 import { ReactComponent as HideSidebarSvg } from "../../assets/icon-hide-sidebar.svg";
 import { ReactComponent as ShowSidebarSvg } from "../../assets/icon-show-sidebar.svg";
 import { ReactComponent as VerticalEllipse } from "../../assets/icon-vertical-ellipsis.svg";
@@ -319,7 +320,12 @@ export const HomeView = ({
           </Modal.Body>
         </Modal.Body>
       </Modal>
-      <Modal show={showTask} onHide={handleTaskClose} centered>
+      <Modal
+        id="create-task-modal"
+        show={showTask}
+        onHide={handleTaskClose}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add New Task</Modal.Title>
         </Modal.Header>
@@ -330,7 +336,7 @@ export const HomeView = ({
               className="form-task"
               onSubmit={handleTaskSubmit}
             >
-              <div className="form-signup">
+              <div className="form-create-task">
                 <label htmlFor="name">Title: </label>
                 <input
                   type="text"
@@ -349,7 +355,7 @@ export const HomeView = ({
                   onChange={(e) => setTaskDescription(e.target.value)}
                   required
                 />
-                <label htmlFor="subtask">Status: </label>
+                <label htmlFor="status">Status: </label>
 
                 {currentBoard && currentBoard.Columns ? (
                   <select id="status" name="status" ref={taskStatus}>
@@ -391,22 +397,22 @@ export const HomeView = ({
                         setSubtasks(updatedSubtasks);
                       }}
                     >
-                      x
+                      <IconCross />
                     </span>
                   </div>
                 ))}
-                <Button
+                <button
                   onClick={() => {
                     const currentSubtasks = [...subtasks, {}];
                     setSubtasks(currentSubtasks);
                   }}
                 >
                   + Add New Subtask
-                </Button>
+                </button>
               </div>
 
               <div className="form-signup">
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Create New Task" />
               </div>
             </form>
           </Modal.Body>
