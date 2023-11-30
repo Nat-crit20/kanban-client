@@ -245,9 +245,10 @@ p.sidebar-head {
 .form-create-task label {
   color: #828fa3;
   font-weight: bold;
+  margin-top: 1rem;
 }
 .form-create-task #name {
-  line-height: 2rem;
+  line-height: 2.2rem;
   font-size: 1.1rem;
   border-radius: 0.5rem;
   padding: 0 1rem;
@@ -268,9 +269,12 @@ p.sidebar-head {
   padding: 0 1rem;
   border: 2px solid #e4ebfa;
   color: #828fa3;
+  line-height: 2.2rem;
+  width: 92%;
+  margin: 0 1rem 0 0;
 }
 .form-create-task .add-subtask {
-  margin: 2rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   line-height: 3rem;
   border-radius: 10rem;
   border: none;
@@ -279,4 +283,17 @@ p.sidebar-head {
   color: #635fc7;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+.form-create-task span {
+  cursor: pointer;
+}
+
+.form-create-task #status {
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #e4ebfa;
+  color: #828fa3;
+  line-height: 2.2rem;
 }

@@ -326,11 +326,9 @@ export const HomeView = ({
         onHide={handleTaskClose}
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Add New Task</Modal.Title>
-        </Modal.Header>
         <Modal.Body>
           <Modal.Body>
+            <h3>Add New Task</h3>
             <form
               method="post"
               className="form-task"
