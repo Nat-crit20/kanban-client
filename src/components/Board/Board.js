@@ -88,7 +88,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
             <Modal show={showColumn} onHide={handleColumnClose} centered>
               <Modal.Body>
                 <Modal.Body>
-                  <h3>Give the Column a name</h3>
+                  <h3>Add New Column</h3>
                   <form
                     method="post"
                     className="form-create-column"
@@ -113,11 +113,6 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                   </form>
                 </Modal.Body>
               </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleColumnClose}>
-                  Close
-                </Button>
-              </Modal.Footer>
             </Modal>
           </div>
         </>
