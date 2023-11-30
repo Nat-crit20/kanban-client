@@ -86,31 +86,30 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
               )}
             </div>
             <Modal show={showColumn} onHide={handleColumnClose} centered>
-              <Modal.Header closeButton>
-                <Modal.Title>Give the Column a name</Modal.Title>
-              </Modal.Header>
               <Modal.Body>
                 <Modal.Body>
+                  <h3>Give the Column a name</h3>
                   <form
                     method="post"
-                    className="form-signup"
+                    className="form-create-column"
                     onSubmit={handleColumnSubmit}
                   >
-                    <div className="form-signup">
-                      <label htmlFor="name">Name: </label>
-                      <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        value={columnName}
-                        onChange={(e) => setColumnName(e.target.value)}
-                        required
-                      />
-                    </div>
+                    <label htmlFor="column-name">Name: </label>
+                    <input
+                      type="text"
+                      name="column-name"
+                      id="column-name"
+                      value={columnName}
+                      onChange={(e) => setColumnName(e.target.value)}
+                      required
+                    />
 
-                    <div className="form-signup">
-                      <input type="submit" value="Submit" />
-                    </div>
+                    <input
+                      className="form-submit"
+                      // The style for this is in the HomeView.css
+                      type="submit"
+                      value="Create Column"
+                    />
                   </form>
                 </Modal.Body>
               </Modal.Body>
