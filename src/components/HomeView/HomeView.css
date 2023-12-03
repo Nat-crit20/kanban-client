@@ -67,6 +67,14 @@
   width: 30%;
   overflow-x: auto;
 }
+.sidebar::-webkit-scrollbar {
+  width: 2.5px;
+  height: 8px;
+  background-color: #e4ebfa; /* or add it to the track */
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
 .sidebar .col {
   width: 20%;
 }
@@ -196,6 +204,15 @@ p.sidebar-head {
   width: 100%;
   background-color: #f4f7fd;
   height: inherit;
+}
+
+.board-view::-webkit-scrollbar {
+  width: 2.5px;
+  height: 8px;
+  background-color: #e4ebfa; /* or add it to the track */
+}
+.board-view::-webkit-scrollbar-thumb {
+  background: #aaa;
 }
 
 /* Modals */

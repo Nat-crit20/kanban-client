@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import "./Task.css";
 export const TaskView = ({ task, boardColumns }) => {
   const [showTask, setShowColumn] = useState(false);
   const [currentTask, setCurrentTask] = useState(task);
+  const taskStatus = useRef();
+
   const handleTaskClose = () => setShowColumn(false);
   const handleTaskShow = () => setShowColumn(true);
 
@@ -21,9 +23,22 @@ export const TaskView = ({ task, boardColumns }) => {
     }));
     console.log("After Update:", currentTask);
   };
+
   const handleTaskUpdateSubmit = (e) => {
     e.preventDefault();
-    console.log(currentTask);
+    const selectedOption = taskStatus.current;
+    const selectedId = selectedOption.value;
+    const columnName = boardColumns.filter((column) => {
+      return column._id === selectedId;
+    });
+    // Need to finish the fetch for this
+    setCurrentTask((prevInfo) => ({
+      ...prevInfo,
+      Status: {
+        name: columnName[0].Name,
+        columnID: columnName[0]._id,
+      },
+    }));
   };
   return (
     <>
@@ -63,7 +78,7 @@ export const TaskView = ({ task, boardColumns }) => {
               })}
             </div>
             <p>Current Status</p>
-            <select id="status" name="status">
+            <select id="status" name="status" ref={taskStatus}>
               {boardColumns.map((column) => {
                 if (currentTask.Status.columnID === column._id) {
                   return (
