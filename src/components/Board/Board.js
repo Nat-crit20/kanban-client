@@ -58,6 +58,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                       <ColumnsView
                         key={column.id}
                         column={column}
+                        token={token}
                         boardColumns={currentBoard.Columns}
                       />
                     </div>

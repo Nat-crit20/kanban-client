@@ -1,17 +1,18 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import "./Task.css";
-export const TaskView = ({ task, boardColumns }) => {
+export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
   const [showTask, setShowColumn] = useState(false);
   const [currentTask, setCurrentTask] = useState(task);
-  const taskStatus = useRef();
 
-  const handleTaskClose = () => setShowColumn(false);
+  const handleTaskClose = () => {
+    handleTaskUpdate();
+    setShowColumn(false);
+  };
   const handleTaskShow = () => setShowColumn(true);
 
   const handleCheckboxChange = (subtaskId) => {
-    console.log("Before Update:", currentTask);
     setCurrentTask((prevInfo) => ({
       ...prevInfo,
       SubTasks: prevInfo.SubTasks.map((subtask) => {
@@ -21,30 +22,56 @@ export const TaskView = ({ task, boardColumns }) => {
         return subtask;
       }),
     }));
-    console.log("After Update:", currentTask);
   };
 
-  const handleTaskUpdateSubmit = (e) => {
-    e.preventDefault();
-    const selectedOption = taskStatus.current;
-    const selectedId = selectedOption.value;
-    const columnName = boardColumns.filter((column) => {
-      return column._id === selectedId;
+  const handleColumnChange = (e) => {
+    const changedColumnID = e.target.value;
+    const changedColumn = boardColumns.filter((column) => {
+      return column._id === changedColumnID;
     });
-    // Need to finish the fetch for this
     setCurrentTask((prevInfo) => ({
       ...prevInfo,
       Status: {
-        name: columnName[0].Name,
-        columnID: columnName[0]._id,
+        name: changedColumn[0].Name,
+        columnID: changedColumn[0]._id,
       },
     }));
   };
+
+  const handleTaskUpdate = () => {
+    console.log(currentTask);
+    console.log(currentColumn._id, currentColumn.Name);
+
+    fetch(
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${currentTask._id}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(currentTask),
+      }
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((res) => {
+        console.log("after fetch");
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <div id="task-info" onClick={handleTaskShow}>
         <div className="task-info-text">
-          <h3>{task.Title}</h3>
+          <h3>{currentTask.Title}</h3>
           <p>Number of subtask completed</p>
         </div>
       </div>
@@ -54,7 +81,7 @@ export const TaskView = ({ task, boardColumns }) => {
         </Modal.Header>
 
         <Modal.Body>
-          <form onSubmit={handleTaskUpdateSubmit}>
+          <form>
             <div>
               <p>{currentTask.Description}</p>
             </div>
@@ -78,7 +105,7 @@ export const TaskView = ({ task, boardColumns }) => {
               })}
             </div>
             <p>Current Status</p>
-            <select id="status" name="status" ref={taskStatus}>
+            <select id="status" name="status" onChange={handleColumnChange}>
               {boardColumns.map((column) => {
                 if (currentTask.Status.columnID === column._id) {
                   return (

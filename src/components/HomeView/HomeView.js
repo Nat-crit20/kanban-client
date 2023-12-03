@@ -42,7 +42,6 @@ export const HomeView = ({
 
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
-    console.log("click", dropdownOpen);
   };
 
   const handleSubmit = (e) => {
