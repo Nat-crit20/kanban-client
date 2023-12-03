@@ -6,6 +6,9 @@ import "./Board.css";
 import { useState } from "react";
 export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
   const [showColumn, setShowColumn] = useState(false);
+  const [currentBoardColumns, setCurrentBoardColumns] = useState(
+    currentBoard.Columns
+  );
   const handleColumnClose = () => setShowColumn(false);
   const handleColumnShow = () => setShowColumn(true);
 
@@ -59,7 +62,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                         key={column.id}
                         column={column}
                         token={token}
-                        boardColumns={currentBoard.Columns}
+                        boardColumns={currentBoardColumns}
                       />
                     </div>
                   ))}

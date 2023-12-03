@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
 import "./Task.css";
@@ -39,9 +39,7 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
   };
 
   const handleTaskUpdate = () => {
-    console.log(currentTask);
-    console.log(currentColumn._id, currentColumn.Name);
-
+    console.log(currentColumn);
     fetch(
       `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${currentTask._id}`,
       {
