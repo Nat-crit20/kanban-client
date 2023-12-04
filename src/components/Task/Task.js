@@ -9,9 +9,11 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
   const [showEditTask, setEditShowTask] = useState(false);
   const [currentTask, setCurrentTask] = useState(task);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [taskName, setTaskName] = useState(null);
-  const [taskDescription, setTaskDescription] = useState(null);
-  const [subtasks, setSubtasks] = useState([]);
+  const [taskName, setTaskName] = useState(currentTask.Title);
+  const [taskDescription, setTaskDescription] = useState(
+    currentTask.Description
+  );
+  const [subtasks, setSubtasks] = useState(currentTask.SubTasks);
 
   const handleDropdownTask = () => {
     setDropdownOpen(!dropdownOpen);
