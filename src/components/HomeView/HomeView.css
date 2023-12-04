@@ -299,7 +299,7 @@ form label {
   cursor: pointer;
 }
 
-.form-create-task #status {
+form #status {
   font-size: 1.1rem;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
