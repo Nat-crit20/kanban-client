@@ -161,32 +161,36 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
                 })}
               </div>
               <p className="modify-task-section">Current Status</p>
-              <select id="status" name="status" onChange={handleColumnChange}>
-                {boardColumns.map((column) => {
-                  if (currentTask.Status.columnID === column._id) {
-                    return (
-                      <option
-                        key={column._id}
-                        value={column._id}
-                        data-name={column.Name}
-                        selected
-                      >
-                        {column.Name}
-                      </option>
-                    );
-                  } else {
-                    return (
-                      <option
-                        key={column._id}
-                        value={column._id}
-                        data-name={column.Name}
-                      >
-                        {column.Name}
-                      </option>
-                    );
-                  }
-                })}
-              </select>
+              {currentColumn && boardColumns ? (
+                <select id="status" name="status" onChange={handleColumnChange}>
+                  {boardColumns.map((column) => {
+                    if (currentTask.Status.columnID === column._id) {
+                      return (
+                        <option
+                          key={column._id}
+                          value={column._id}
+                          data-name={column.Name}
+                          selected
+                        >
+                          {column.Name}
+                        </option>
+                      );
+                    } else {
+                      return (
+                        <option
+                          key={column._id}
+                          value={column._id}
+                          data-name={column.Name}
+                        >
+                          {column.Name}
+                        </option>
+                      );
+                    }
+                  })}
+                </select>
+              ) : (
+                <p>Loading or no data available.</p>
+              )}
             </form>
           </div>
         </Modal.Body>

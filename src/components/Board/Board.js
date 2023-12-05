@@ -1,14 +1,19 @@
-import Button from "react-bootstrap/Button";
+import { useState, useEffect } from "react";
 import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
 import "./Board.css";
 
-import { useState } from "react";
 export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
   const [showColumn, setShowColumn] = useState(false);
   const [currentBoardColumns, setCurrentBoardColumns] = useState(
     currentBoard.Columns
   );
+
+  useEffect(() => {
+    // Update currentBoardColumns when currentBoard.Columns changes
+    setCurrentBoardColumns(currentBoard.Columns);
+  }, [currentBoard.Columns]);
+
   const handleColumnClose = () => setShowColumn(false);
   const handleColumnShow = () => setShowColumn(true);
 
