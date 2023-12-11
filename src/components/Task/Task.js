@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ReactComponent as VerticalEllipse } from "../../assets/icon-vertical-ellipsis.svg";
 import { ReactComponent as IconCross } from "../../assets/icon-cross.svg";
 
@@ -14,15 +14,26 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
     currentTask.Description
   );
   const [subtasks, setSubtasks] = useState(currentTask.SubTasks);
+  const [taskStatus, setTaskStatus] = useState(currentColumn);
+  const [shouldUpdateTask, setShouldUpdateTask] = useState(false);
+
+  useEffect(() => {
+    if (shouldUpdateTask) {
+      console.log("Updated currentTask:", currentTask);
+      handleTaskUpdate();
+      setShouldUpdateTask(false);
+    }
+  }, [currentTask, shouldUpdateTask]);
 
   const handleDropdownTask = () => {
     setDropdownOpen(!dropdownOpen);
   };
   const handleTaskClose = () => {
-    handleTaskUpdate();
+    setShouldUpdateTask(true);
     setShowTask(false);
   };
   const handleEditTaskClose = () => {
+    setShouldUpdateTask(true);
     setEditShowTask(false);
   };
   const handleTaskShow = () => setShowTask(true);
@@ -57,6 +68,14 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
     }));
   };
 
+  const handleEditColumnChange = (e) => {
+    const changedColumnID = e.target.value;
+    const changedColumn = boardColumns.filter((column) => {
+      return column._id === changedColumnID;
+    });
+    setTaskStatus(changedColumn[0]);
+  };
+
   const handleTaskUpdate = () => {
     fetch(
       `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${currentTask._id}`,
@@ -81,6 +100,21 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleEditTaskSubmit = (e) => {
+    e.preventDefault();
+    setCurrentTask((prevInfo) => ({
+      ...prevInfo,
+      Title: taskName,
+      Description: taskDescription,
+      SubTasks: subtasks,
+      Status: {
+        columnID: taskStatus._id,
+        name: taskStatus.Name,
+      },
+    }));
+    handleEditTaskClose();
   };
 
   return (
@@ -203,8 +237,12 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
       >
         <Modal.Body>
           <Modal.Body>
-            <h3>Add New Task</h3>
-            <form method="post" className="form-task">
+            <h3>Edit Task</h3>
+            <form
+              method="post"
+              className="form-task"
+              onSubmit={handleEditTaskSubmit}
+            >
               <div className="form-create-task">
                 <label htmlFor="name">Title: </label>
                 <input
@@ -272,7 +310,7 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
                   <select
                     id="status"
                     name="status"
-                    onChange={handleColumnChange}
+                    onChange={handleEditColumnChange}
                   >
                     {boardColumns.map((column) => {
                       if (currentTask.Status.columnID === column._id) {
@@ -307,7 +345,7 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
               <input
                 className="form-submit"
                 type="submit"
-                value="Create New Task"
+                value="Save Changes"
               />
             </form>
           </Modal.Body>
