@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import "./Task.css";
 export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
   const [showTask, setShowTask] = useState(false);
+  const [showDeleteTask, setShowDeleteTask] = useState(false);
   const [showEditTask, setEditShowTask] = useState(false);
   const [currentTask, setCurrentTask] = useState(task);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -19,24 +20,57 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
 
   useEffect(() => {
     if (shouldUpdateTask) {
-      console.log("Updated currentTask:", currentTask);
-      handleTaskUpdate();
+      fetch(
+        `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${currentTask._id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(currentTask),
+        }
+      )
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+        })
+        .then((res) => {
+          console.log("after fetch");
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       setShouldUpdateTask(false);
     }
-  }, [currentTask, shouldUpdateTask]);
+  }, [currentTask, shouldUpdateTask, currentColumn._id, token]);
 
   const handleDropdownTask = () => {
     setDropdownOpen(!dropdownOpen);
   };
-  const handleTaskClose = () => {
+  const handleTaskCloseAndUpdate = () => {
     setShouldUpdateTask(true);
     setShowTask(false);
   };
+  const handleTaskClose = () => {
+    setShowTask(false);
+  };
   const handleEditTaskClose = () => {
+    setShouldUpdateTask(false);
+    setEditShowTask(false);
+  };
+  const handleEditTaskCloseAndUpdate = () => {
     setShouldUpdateTask(true);
     setEditShowTask(false);
   };
   const handleTaskShow = () => setShowTask(true);
+  const handleDeleteTaskShow = () => {
+    handleTaskClose();
+    setShowDeleteTask(true);
+  };
+  const handleDeleteTaskClose = () => setShowDeleteTask(false);
   const handleEditTaskShow = () => {
     handleTaskClose();
     setEditShowTask(true);
@@ -76,32 +110,6 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
     setTaskStatus(changedColumn[0]);
   };
 
-  const handleTaskUpdate = () => {
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${currentTask._id}`,
-      {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(currentTask),
-      }
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((res) => {
-        console.log("after fetch");
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const handleEditTaskSubmit = (e) => {
     e.preventDefault();
     setCurrentTask((prevInfo) => ({
@@ -114,7 +122,7 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
         name: taskStatus.Name,
       },
     }));
-    handleEditTaskClose();
+    handleEditTaskCloseAndUpdate();
   };
 
   return (
@@ -131,7 +139,7 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
           </p>
         </div>
       </div>
-      <Modal show={showTask} onHide={handleTaskClose} centered>
+      <Modal show={showTask} onHide={handleTaskCloseAndUpdate} centered>
         <Modal.Body>
           <div className="modify-task">
             <div className="modify-task-header">
@@ -150,7 +158,9 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
                   <p className="edit-board " onClick={handleEditTaskShow}>
                     Edit Task
                   </p>
-                  <p className="delete-board ">Delete Task</p>
+                  <p className="delete-board " onClick={handleDeleteTaskShow}>
+                    Delete Task
+                  </p>
                 </div>
               </div>
             </div>
@@ -349,6 +359,19 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
               />
             </form>
           </Modal.Body>
+        </Modal.Body>
+      </Modal>
+      <Modal show={showDeleteTask} onHide={handleDeleteTaskClose} centered>
+        <Modal.Body>
+          <h3>Delete Task</h3>
+          <p>
+            Are you sure you want to delete the ‘{currentTask.Title}’ task and
+            its subtasks? This action cannot be reversed.
+          </p>
+          <div>
+            <button>Delete</button>
+            <button>Cancel</button>
+          </div>
         </Modal.Body>
       </Modal>
     </>
