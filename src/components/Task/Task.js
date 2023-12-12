@@ -4,7 +4,13 @@ import { ReactComponent as IconCross } from "../../assets/icon-cross.svg";
 
 import Modal from "react-bootstrap/Modal";
 import "./Task.css";
-export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
+export const TaskView = ({
+  currentColumn,
+  task,
+  boardColumns,
+  token,
+  handleDeleteTask,
+}) => {
   const [showTask, setShowTask] = useState(false);
   const [showDeleteTask, setShowDeleteTask] = useState(false);
   const [showEditTask, setEditShowTask] = useState(false);
@@ -369,8 +375,8 @@ export const TaskView = ({ currentColumn, task, boardColumns, token }) => {
             its subtasks? This action cannot be reversed.
           </p>
           <div>
-            <button>Delete</button>
-            <button>Cancel</button>
+            <button onClick={handleDeleteTask}>Delete</button>
+            <button onClick={handleDeleteTaskClose}>Cancel</button>
           </div>
         </Modal.Body>
       </Modal>
