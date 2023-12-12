@@ -367,16 +367,25 @@ export const TaskView = ({
           </Modal.Body>
         </Modal.Body>
       </Modal>
-      <Modal show={showDeleteTask} onHide={handleDeleteTaskClose} centered>
+      <Modal
+        id="delete-task"
+        show={showDeleteTask}
+        onHide={handleDeleteTaskClose}
+        centered
+      >
         <Modal.Body>
-          <h3>Delete Task</h3>
+          <h3>Delete this Task?</h3>
           <p>
             Are you sure you want to delete the ‘{currentTask.Title}’ task and
             its subtasks? This action cannot be reversed.
           </p>
-          <div>
-            <button onClick={handleDeleteTask}>Delete</button>
-            <button onClick={handleDeleteTaskClose}>Cancel</button>
+          <div className="delete-btn-actions">
+            <button className="delete-task-btn" onClick={handleDeleteTask}>
+              Delete
+            </button>
+            <button className="cancel-task-btn" onClick={handleDeleteTaskClose}>
+              Cancel
+            </button>
           </div>
         </Modal.Body>
       </Modal>

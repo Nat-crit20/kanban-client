@@ -71,3 +71,24 @@ input[type="checkbox"] {
 .task-checkbox-container input {
   margin: 0 0 0 1rem;
 }
+
+/* Delete task modal */
+#delete-task h3 {
+  color: #ea5555;
+}
+#delete-task button {
+  border: none;
+  width: 40%;
+  line-height: 2.5rem;
+  border-radius: 10rem;
+}
+#delete-task .delete-btn-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#delete-task .delete-task-btn {
+  background-color: #ea5555;
+  color: white;
+}
