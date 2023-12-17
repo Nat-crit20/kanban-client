@@ -24,6 +24,7 @@ export const HomeView = ({
   updateCurrentBoard,
   boards,
   logout,
+  removeBoardFromList,
 }) => {
   const [show, setShow] = useState(false);
   const [showSideBar, setShowSideBar] = useState("flex");
@@ -32,6 +33,7 @@ export const HomeView = ({
   const [taskDescription, setTaskDescription] = useState(null);
   const [subtasks, setSubtasks] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [showDeleteBoard, setShowDeleteBoard] = useState(false);
   const taskStatus = useRef();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -39,7 +41,8 @@ export const HomeView = ({
   const [showTask, setShowTask] = useState(false);
   const handleTaskClose = () => setShowTask(false);
   const handleTaskShow = () => setShowTask(true);
-
+  const handleDeleteBoardClose = () => setShowDeleteBoard(false);
+  const handleDeleteBoardShow = () => setShowDeleteBoard(true);
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -83,7 +86,7 @@ export const HomeView = ({
 
   const handleDeleteBoard = () => {
     fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com//user/${user._id}/board/${currentBoard._id}`,
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/user/${user._id}/board/${currentBoard._id}`,
       {
         method: "DELETE",
         headers: {
@@ -93,7 +96,12 @@ export const HomeView = ({
       }
     )
       .then((res) => {
-        return res.json();
+        if (res.ok) {
+          handleDeleteBoardClose();
+          removeBoardFromList(currentBoard._id);
+          updateCurrentBoard(null);
+          return res.json();
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -202,7 +210,9 @@ export const HomeView = ({
                 }}
               >
                 <p className="edit-board ">Edit Board</p>
-                <p className="delete-board ">Delete Board</p>
+                <p className="delete-board " onClick={handleDeleteBoardShow}>
+                  Delete Board
+                </p>
               </div>
             </div>
           ) : (
@@ -273,13 +283,44 @@ export const HomeView = ({
 
         <div className="board-view">
           {currentBoard ? (
-            <BoardView
-              currentBoard={currentBoard}
-              updateCurrentBoard={(board) => {
-                updateCurrentBoard(board);
-              }}
-              token={token}
-            />
+            <>
+              <BoardView
+                currentBoard={currentBoard}
+                updateCurrentBoard={(board) => {
+                  updateCurrentBoard(board);
+                }}
+                token={token}
+              />
+              <Modal
+                id="delete-task"
+                show={showDeleteBoard}
+                onHide={handleDeleteBoardClose}
+                centered
+              >
+                <Modal.Body>
+                  <h3>Delete this Board?</h3>
+                  <p>
+                    Are you sure you want to delete the ‘{currentBoard.Name}’
+                    board? This action will remove all columns and tasks and
+                    cannot be reversed.
+                  </p>
+                  <div className="delete-btn-actions">
+                    <button
+                      className="delete-task-btn"
+                      onClick={handleDeleteBoard}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className="cancel-task-btn"
+                      onClick={handleDeleteBoardClose}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </Modal.Body>
+              </Modal>
+            </>
           ) : (
             <></>
           )}

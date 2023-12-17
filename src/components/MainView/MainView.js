@@ -54,6 +54,13 @@ export const MainView = () => {
             updateCurrentBoard={(board) => {
               setCurrentBoard(board);
             }}
+            removeBoardFromList={(boardID) => {
+              setBoards((prev) => {
+                return prev.filter((b) => {
+                  return b._id !== boardID;
+                });
+              });
+            }}
             logout={logout}
             boards={boards}
             token={token}
