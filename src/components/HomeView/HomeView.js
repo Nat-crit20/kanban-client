@@ -381,7 +381,7 @@ export const HomeView = ({
                       <input
                         className="form-submit"
                         type="submit"
-                        value="Create New Board"
+                        value="Save Changes"
                         onClick={handleClose}
                       />
                     </form>
