@@ -34,15 +34,19 @@ export const HomeView = ({
   const [subtasks, setSubtasks] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showDeleteBoard, setShowDeleteBoard] = useState(false);
+  const [showEditBoard, setShowEditBoard] = useState(false);
   const taskStatus = useRef();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const [showTask, setShowTask] = useState(false);
   const handleTaskClose = () => setShowTask(false);
   const handleTaskShow = () => setShowTask(true);
   const handleDeleteBoardClose = () => setShowDeleteBoard(false);
   const handleDeleteBoardShow = () => setShowDeleteBoard(true);
+
+  const handleEditBoardClose = () => setShowEditBoard(false);
+  const handleEditBoardShow = () => setShowEditBoard(true);
+
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -182,6 +186,11 @@ export const HomeView = ({
       });
   };
 
+  const handleEditBoardSubmit = (e) => {
+    e.preventDefault();
+    console.log("Edit Board");
+  };
+
   return (
     <>
       <div className="board-header">
@@ -209,7 +218,9 @@ export const HomeView = ({
                   display: dropdownOpen ? "block" : "none",
                 }}
               >
-                <p className="edit-board ">Edit Board</p>
+                <p className="edit-board " onClick={handleEditBoardShow}>
+                  Edit Board
+                </p>
                 <p className="delete-board " onClick={handleDeleteBoardShow}>
                   Delete Board
                 </p>
@@ -318,6 +329,63 @@ export const HomeView = ({
                       Cancel
                     </button>
                   </div>
+                </Modal.Body>
+              </Modal>
+              <Modal
+                id="Edit-board-modal"
+                show={showEditBoard}
+                onHide={handleEditBoardClose}
+                centered
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Edit Board</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Modal.Body>
+                    <form
+                      method="post"
+                      className="edit-board-form"
+                      onSubmit={handleEditBoardSubmit}
+                    >
+                      <label className="board-name" htmlFor="board-name-input">
+                        Board Name{" "}
+                      </label>
+                      <input
+                        type="text"
+                        name="board-name-input"
+                        id="board-name-input"
+                        value={boardName}
+                        placeholder="e.g. Web Design"
+                        onChange={(e) => setBoardName(e.target.value)}
+                        required
+                      />
+                      <label htmlFor="columns">Board Columns: </label>
+                      {currentBoard.Columns.map((col, i) => (
+                        <div key={i}>
+                          <p>{col.Name}</p>
+                          <span
+                          // onClick={() => {
+                          //   const updatedSubtasks = subtasks.filter(
+                          //     (subtask, j) => {
+                          //       // Return true to keep the subtask, false to remove it
+                          //       return i !== j; // Replace indexToRemove with the index you want to remove
+                          //     }
+                          //   );
+                          //   setSubtasks(updatedSubtasks);
+                          // }}
+                          >
+                            <IconCross />
+                          </span>
+                        </div>
+                      ))}
+                      <input
+                        className="form-submit"
+                        type="submit"
+                        value="Create New Board"
+                        onClick={handleClose}
+                      />
+                    </form>
+                  </Modal.Body>
                 </Modal.Body>
               </Modal>
             </>
