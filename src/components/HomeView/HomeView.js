@@ -191,9 +191,63 @@ export const HomeView = ({
       });
   };
 
-  const handleEditBoardSubmit = (e) => {
+  const handleEditBoardSubmit = async (e) => {
     e.preventDefault();
-    console.log("Edit Board");
+    console.log(boardName, columnsToRemove);
+    try {
+      if (columnsToRemove.length > 0) {
+        await Promise.all(
+          columnsToRemove.map(async (colId) => {
+            await removeColumn(colId);
+          })
+        );
+      }
+      const data = {
+        Name: boardName,
+      };
+      fetch(
+        `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+        })
+        .then((data) => {
+          console.log(data);
+          updateCurrentBoard(data);
+          handleEditBoardClose();
+        });
+    } catch (error) {
+      console.error("Error", error);
+    }
+  };
+
+  const removeColumn = (colID) => {
+    fetch(
+      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}/column/${colID}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    ).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
   };
 
   return (
