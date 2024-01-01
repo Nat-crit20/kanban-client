@@ -35,6 +35,8 @@ export const HomeView = ({
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showDeleteBoard, setShowDeleteBoard] = useState(false);
   const [showEditBoard, setShowEditBoard] = useState(false);
+  const [columnsToRemove, setColumnsToRemove] = useState([]);
+
   const taskStatus = useRef();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -44,7 +46,10 @@ export const HomeView = ({
   const handleDeleteBoardClose = () => setShowDeleteBoard(false);
   const handleDeleteBoardShow = () => setShowDeleteBoard(true);
 
-  const handleEditBoardClose = () => setShowEditBoard(false);
+  const handleEditBoardClose = () => {
+    setColumnsToRemove([]);
+    setShowEditBoard(false);
+  };
   const handleEditBoardShow = () => setShowEditBoard(true);
 
   const handleDropdownToggle = () => {
@@ -360,24 +365,31 @@ export const HomeView = ({
                         required
                       />
                       <label htmlFor="columns">Board Columns: </label>
-                      {currentBoard.Columns.map((col, i) => (
-                        <div key={i}>
-                          <p>{col.Name}</p>
-                          <span
-                          // onClick={() => {
-                          //   const updatedSubtasks = subtasks.filter(
-                          //     (subtask, j) => {
-                          //       // Return true to keep the subtask, false to remove it
-                          //       return i !== j; // Replace indexToRemove with the index you want to remove
-                          //     }
-                          //   );
-                          //   setSubtasks(updatedSubtasks);
-                          // }}
-                          >
-                            <IconCross />
-                          </span>
-                        </div>
-                      ))}
+                      {currentBoard ? (
+                        currentBoard.Columns.map((col, i) => {
+                          if (!columnsToRemove.includes(col._id)) {
+                            return (
+                              <div key={i}>
+                                <p>{col.Name}</p>
+                                <span
+                                  onClick={() => {
+                                    setColumnsToRemove((prev) => {
+                                      console.log(col._id, [...prev]);
+                                      return [...prev, col._id];
+                                    });
+                                  }}
+                                >
+                                  <IconCross />
+                                </span>
+                              </div>
+                            );
+                          } else {
+                            return null;
+                          }
+                        })
+                      ) : (
+                        <></>
+                      )}
                       <input
                         className="form-submit"
                         type="submit"
