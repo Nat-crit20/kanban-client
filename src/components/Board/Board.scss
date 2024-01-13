@@ -1,3 +1,9 @@
+$color_1: #828fa3;
+$color_2: white;
+$background-color_1: #e4ebfa;
+$background-color_2: #635fc7;
+
+/* Create column modal */
 .board-main-view {
   height: 100%;
 }
@@ -6,24 +12,21 @@
   flex-direction: row;
   height: auto;
 }
-
 .column-view {
   width: 20rem;
   margin: 2rem 1rem;
 }
-
 .create-column-btn {
   height: 85%;
   width: 20rem;
-  background-color: #e4ebfa;
+  background-color: $background-color_1;
   border: none;
   border-radius: 10px;
   margin: 5rem 2rem 0 0;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #828fa3;
+  color: $color_1;
 }
-
 .empty-board {
   display: flex;
   flex-direction: column;
@@ -32,32 +35,28 @@
   width: 100%;
   position: relative;
   top: 40vh;
-}
-
-.empty-board p {
-  color: #828fa3;
-  font-weight: bold;
+  p {
+    color: $color_1;
+    font-weight: bold;
+  }
 }
 .create-first-column-btn {
   padding: 0 2rem;
   line-height: 3rem;
   border-radius: 2rem;
   border: none;
-  background-color: #635fc7;
-  color: white;
+  background-color: $background-color_2;
+  color: $color_2;
 }
-
-/* Create column modal */
 .form-create-column {
   display: flex;
   flex-direction: column;
-}
-
-.form-create-column #column-name {
-  line-height: 2.2rem;
-  font-size: 1.1rem;
-  border-radius: 0.5rem;
-  padding: 0 1rem;
-  border: 2px solid #e4ebfa;
-  color: #828fa3;
+  #column-name {
+    line-height: 2.2rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    border: 2px solid #e4ebfa;
+    color: $color_1;
+  }
 }

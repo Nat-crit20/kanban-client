@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
-import "./Board.css";
+import "./Board.scss";
 
 export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
   const [showColumn, setShowColumn] = useState(false);

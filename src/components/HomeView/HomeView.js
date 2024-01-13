@@ -13,7 +13,7 @@ import { ReactComponent as VerticalEllipse } from "../../assets/icon-vertical-el
 import { ReactComponent as DarkModeSvg } from "../../assets/icon-dark-theme.svg";
 import { ReactComponent as LightModeSvg } from "../../assets/icon-light-theme.svg";
 
-import "./HomeView.css";
+import "./HomeView.scss";
 import { useRef, useState } from "react";
 
 export const HomeView = ({

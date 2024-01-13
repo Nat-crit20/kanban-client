@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { TaskView } from "../Task/Task";
-import "./Column.css";
+import "./Column.scss";
 
 export const ColumnsView = ({
   column,

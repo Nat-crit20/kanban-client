@@ -3,7 +3,7 @@ import { ReactComponent as VerticalEllipse } from "../../assets/icon-vertical-el
 import { ReactComponent as IconCross } from "../../assets/icon-cross.svg";
 
 import Modal from "react-bootstrap/Modal";
-import "./Task.css";
+import "./Task.scss";
 export const TaskView = ({
   currentColumn,
   task,

@@ -1,3 +1,15 @@
+$color_1: #828fa3;
+$color_2: #ea5555;
+$color_3: white;
+$color_4: #635fc7;
+$background-color_1: #fff;
+$background-color_2: white;
+$background-color_3: #e4ebfa;
+$background-color_4: #635fc7;
+$background-color_5: #f4f7fd;
+
+/* Modals */
+/* Create Task modal */
 .home-screen {
   height: 100vh;
   margin: 0;
@@ -9,37 +21,32 @@
   justify-content: space-between;
   align-items: center;
   height: 97px;
-  background-color: #fff;
+  background-color: $background-color_1;
   padding: 0;
   z-index: 10;
 }
-
 .logo {
   margin-left: 2rem;
 }
-
 .board-info {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
-
 .board-title {
   font-size: 30px;
   font-weight: bold;
   margin: 0;
   justify-self: start;
 }
-
 .vertical-ellipse {
   cursor: pointer;
   margin: 1rem;
 }
-
 .dropdown-nav {
   position: absolute;
-  background-color: white;
+  background-color: $background-color_2;
   z-index: 2;
   width: 10em;
   border-radius: 1em;
@@ -47,46 +54,43 @@
   text-align: left;
   right: 0;
   top: 13%;
+  p {
+    cursor: pointer;
+  }
 }
-.dropdown-nav p {
-  cursor: pointer;
-}
-
 .edit-board {
-  color: #828fa3;
+  color: $color_1;
 }
 .delete-board {
-  color: #ea5555;
+  color: $color_2;
 }
-
 .sidebar {
   border-right: 2px solid #e4ebfa;
-  background-color: #fff;
+  background-color: $background-color_1;
   padding: 2rem 2rem 2rem 0rem;
   flex-direction: column;
   width: 30%;
   overflow-x: auto;
-}
-.sidebar::-webkit-scrollbar {
-  width: 2.5px;
-  height: 8px;
-  background-color: #e4ebfa; /* or add it to the track */
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background: #aaa;
-}
-.sidebar .col {
-  width: 20%;
+  &::-webkit-scrollbar {
+    width: 2.5px;
+    height: 8px;
+    background-color: $background-color_3;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #aaa;
+  }
+  .col {
+    width: 20%;
+  }
 }
 .main-view {
   display: flex;
   flex-direction: row;
   height: inherit;
 }
-
 .addTask-btn {
-  background-color: #635fc7;
-  color: white;
+  background-color: $background-color_4;
+  color: $color_3;
   border: none;
   width: 10rem;
   line-height: 3rem;
@@ -95,10 +99,9 @@
   margin: 2rem;
   cursor: pointer;
 }
-
 .btn-active {
-  background-color: #635fc7;
-  color: white;
+  background-color: $background-color_4;
+  color: $color_3;
   border: none;
   width: 17rem;
   line-height: 3rem;
@@ -107,12 +110,14 @@
   padding-left: 3rem;
   text-align: left;
 }
-.board-svg-active path {
-  fill: white;
+.board-svg-active {
+  path {
+    fill: white;
+  }
 }
 .btn-non {
-  background-color: #fff;
-  color: #828fa3;
+  background-color: $background-color_1;
+  color: $color_1;
   border: none;
   width: 18rem;
   line-height: 3rem;
@@ -122,22 +127,25 @@
 .board-svg {
   margin-right: 1rem;
 }
-.board-svg-non path {
-  fill: #828fa3;
+.board-svg-non {
+  path {
+    fill: #828fa3;
+  }
 }
-.create-board-svg path {
-  fill: #635fc7;
+.create-board-svg {
+  path {
+    fill: #635fc7;
+  }
 }
 .btn-add-board {
-  background-color: #fff;
-  color: #635fc7;
+  background-color: $background-color_1;
+  color: $color_4;
   border: none;
   width: 18rem;
   line-height: 3rem;
   text-align: left;
   padding-left: 3rem;
 }
-
 .sidebar-head {
   justify-self: center;
   align-self: center;
@@ -146,16 +154,15 @@ p.sidebar-head {
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
-  color: #828fa3;
+  color: $color_1;
   margin: 1rem 0 0 0;
 }
-
 .mode-switch {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: #f4f7fd;
+  background-color: $background-color_5;
   width: 80%;
   line-height: 2rem;
   align-self: center;
@@ -163,87 +170,75 @@ p.sidebar-head {
 .form-switch {
   margin-top: 0.5rem;
 }
-
 .sidebar-footer {
   display: flex;
   flex-direction: column;
   margin-top: auto;
 }
-
 .hide-sidebar {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin: 1rem 0 2rem 2rem;
   cursor: pointer;
+  p {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: $color_1;
+    margin: 0 1rem;
+  }
 }
-.hide-sidebar p {
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  color: #828fa3;
-  margin: 0 1rem;
-}
-
 .showSidebar-btn {
-  background-color: #635fc7;
-  color: white;
+  background-color: $background-color_4;
+  color: $color_3;
   border: none;
   position: fixed;
   width: 4rem;
   line-height: 2rem;
-  bottom: 20px; /* Adjust this value to change the distance from the bottom */
-  left: 0px; /* Adjust this value to change the distance from the right */
+  bottom: 20px;
+  left: 0px;
   z-index: 1;
   border-top-right-radius: 10rem;
   border-bottom-right-radius: 10rem;
 }
-
 .board-view {
   overflow-x: scroll;
   width: 100%;
-  background-color: #f4f7fd;
+  background-color: $background-color_5;
   height: inherit;
+  &::-webkit-scrollbar {
+    width: 2.5px;
+    height: 8px;
+    background-color: $background-color_3;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #aaa;
+  }
 }
-
-.board-view::-webkit-scrollbar {
-  width: 2.5px;
-  height: 8px;
-  background-color: #e4ebfa; /* or add it to the track */
-}
-.board-view::-webkit-scrollbar-thumb {
-  background: #aaa;
-}
-
-/* Modals */
-
 .create-board-form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-
 #board-name-input {
   line-height: 3rem;
   font-size: 1.1rem;
   border-radius: 0.5rem;
   padding: 0 1rem;
   border: 2px solid #e4ebfa;
-  color: #828fa3;
+  color: $color_1;
 }
-
 .form-submit {
   margin: 2rem 0 1rem 0;
   line-height: 3rem;
   border-radius: 10rem;
   border: none;
-  background-color: #635fc7;
-  color: white;
+  background-color: $background-color_4;
+  color: $color_3;
   font-size: 1.2rem;
   font-weight: bold;
 }
-
-/* Create Task modal */
 .form-task {
   display: flex;
   flex-direction: column;
@@ -251,59 +246,57 @@ p.sidebar-head {
 .form-create-task {
   display: flex;
   flex-direction: column;
+  #name {
+    line-height: 2.2rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    border: 2px solid #e4ebfa;
+    color: $color_1;
+  }
+  #description {
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    border: 2px solid #e4ebfa;
+    color: $color_1;
+  }
+  .create-subtask {
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    border: 2px solid #e4ebfa;
+    color: $color_1;
+    line-height: 2.2rem;
+    width: 92%;
+    margin: 0 1rem 0 0;
+  }
+  .add-subtask {
+    margin: 1rem 0 1rem 0;
+    line-height: 3rem;
+    border-radius: 10rem;
+    border: none;
+    background-color: $background-color_3;
+    color: $color_4;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  span {
+    cursor: pointer;
+  }
 }
-
-form label {
-  color: #828fa3;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-.form-create-task #name {
-  line-height: 2.2rem;
-  font-size: 1.1rem;
-  border-radius: 0.5rem;
-  padding: 0 1rem;
-  border: 2px solid #e4ebfa;
-  color: #828fa3;
-}
-
-.form-create-task #description {
-  font-size: 1.1rem;
-  border-radius: 0.5rem;
-  padding: 0 1rem;
-  border: 2px solid #e4ebfa;
-  color: #828fa3;
-}
-.form-create-task .create-subtask {
-  font-size: 1.1rem;
-  border-radius: 0.5rem;
-  padding: 0 1rem;
-  border: 2px solid #e4ebfa;
-  color: #828fa3;
-  line-height: 2.2rem;
-  width: 92%;
-  margin: 0 1rem 0 0;
-}
-.form-create-task .add-subtask {
-  margin: 1rem 0 1rem 0;
-  line-height: 3rem;
-  border-radius: 10rem;
-  border: none;
-  background-color: #e4ebfa;
-  color: #635fc7;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.form-create-task span {
-  cursor: pointer;
-}
-
-form #status {
-  font-size: 1.1rem;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: 2px solid #e4ebfa;
-  color: #828fa3;
-  line-height: 2.2rem;
+form {
+  label {
+    color: $color_1;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  #status {
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #e4ebfa;
+    color: $color_1;
+    line-height: 2.2rem;
+  }
 }

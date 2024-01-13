@@ -1,0 +1,97 @@
+$color_1: #828fa3;
+$color_2: #ea5555;
+$color_3: white;
+$background-color_1: white;
+$background-color_2: #f4f7fd;
+$background-color_3: #ea5555;
+
+/* modify task modal */
+/* Delete task modal */
+#task-info {
+  background-color: $background-color_1;
+  margin: 1rem 0;
+  height: auto;
+  border-radius: 10px;
+  text-align: start;
+  width: 20rem;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  h3 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 12px;
+  }
+}
+.task-info-text {
+  padding: 1rem 0.5rem;
+}
+.modify-task {
+  display: flex;
+  flex-direction: column;
+}
+.modify-task-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown-task {
+  position: absolute;
+  background-color: $background-color_1;
+  z-index: 2;
+  width: 10em;
+  border-radius: 1em;
+  padding: 0rem 1em;
+  text-align: left;
+  right: -10%;
+  top: 18%;
+  p {
+    cursor: pointer;
+  }
+}
+#modify-task-form {
+  display: flex;
+  flex-direction: column;
+  p {
+    color: $color_1;
+  }
+  .modify-task-section {
+    font-weight: bold;
+  }
+}
+.task-checkbox-container {
+  background-color: $background-color_2;
+  border-radius: 5px;
+  margin: 1rem 0;
+  label {
+    margin: 0.5rem;
+  }
+  input {
+    margin: 0 0 0 1rem;
+  }
+}
+input[type="checkbox"] {
+  accent-color: #635fc7;
+}
+#delete-task {
+  h3 {
+    color: $color_2;
+  }
+  button {
+    border: none;
+    width: 40%;
+    line-height: 2.5rem;
+    border-radius: 10rem;
+  }
+  .delete-btn-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .delete-task-btn {
+    background-color: $background-color_3;
+    color: $color_3;
+  }
+}
