@@ -12,6 +12,10 @@ export const ColumnsView = ({
   const [currentColumn, setCurrentColumn] = useState(column);
 
   useEffect(() => {
+    setCurrentColumn(column);
+  }, [column]);
+
+  useEffect(() => {
     const fetchColumns = async () => {
       try {
         console.log(column._id);
