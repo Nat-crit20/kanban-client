@@ -414,7 +414,13 @@ export const TaskView = ({
             its subtasks? This action cannot be reversed.
           </p>
           <div className="delete-btn-actions">
-            <button className="delete-task-btn" onClick={handleDeleteTask}>
+            <button
+              className="delete-task-btn"
+              onClick={() => {
+                handleDeleteTask();
+                handleDeleteTaskClose();
+              }}
+            >
               Delete
             </button>
             <button className="cancel-task-btn" onClick={handleDeleteTaskClose}>

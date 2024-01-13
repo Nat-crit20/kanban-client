@@ -32,7 +32,7 @@ export const ColumnsView = ({
         }
       })
       .then((data) => {
-        console.log(data);
+        setCurrentColumn(data);
       })
       .catch((err) => {
         console.log(err);
