@@ -25,6 +25,12 @@ export const TaskView = ({
   const [shouldUpdateTask, setShouldUpdateTask] = useState(false);
 
   useEffect(() => {
+    if (task._id !== currentTask._id) {
+      setCurrentTask(task);
+    }
+  }, [task, currentTask]);
+
+  useEffect(() => {
     if (shouldUpdateTask) {
       fetch(
         `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${task._id}`,
@@ -43,8 +49,6 @@ export const TaskView = ({
           }
         })
         .then((updatedTask) => {
-          console.log("Task updated:", updatedTask);
-
           // Fetch the updated board data after the task is updated
           fetch(
             `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}`,
@@ -62,7 +66,6 @@ export const TaskView = ({
               }
             })
             .then((updatedBoard) => {
-              console.log("Board updated:", updatedBoard);
               updateCurrentBoard(updatedBoard);
             })
             .catch((error) => {
@@ -74,7 +77,15 @@ export const TaskView = ({
         });
       setShouldUpdateTask(false);
     }
-  }, [currentTask, shouldUpdateTask, currentColumn._id, token]);
+  }, [
+    currentTask,
+    shouldUpdateTask,
+    currentColumn._id,
+    currentBoard._id,
+    task,
+    token,
+    updateCurrentBoard,
+  ]);
 
   const handleDropdownTask = () => {
     setDropdownOpen(!dropdownOpen);
