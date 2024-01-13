@@ -10,6 +10,8 @@ export const TaskView = ({
   boardColumns,
   token,
   handleDeleteTask,
+  updateCurrentBoard,
+  currentBoard,
 }) => {
   const [showTask, setShowTask] = useState(false);
   const [showDeleteTask, setShowDeleteTask] = useState(false);
@@ -40,9 +42,32 @@ export const TaskView = ({
             return res.json();
           }
         })
-        .then((res) => {
-          console.log("after fetch");
-          console.log(res);
+        .then((updatedTask) => {
+          console.log("Task updated:", updatedTask);
+
+          // Fetch the updated board data after the task is updated
+          fetch(
+            `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}`,
+            {
+              method: "GET",
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          )
+            .then((res) => {
+              if (res.ok) {
+                return res.json();
+              }
+            })
+            .then((updatedBoard) => {
+              console.log("Board updated:", updatedBoard);
+              updateCurrentBoard(updatedBoard);
+            })
+            .catch((error) => {
+              console.error("Error fetching updated board:", error);
+            });
         })
         .catch((error) => {
           console.log(error);

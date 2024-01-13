@@ -68,6 +68,8 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                         key={column.id}
                         column={column}
                         token={token}
+                        currentBoard={currentBoard}
+                        updateCurrentBoard={updateCurrentBoard}
                         boardColumns={currentBoardColumns}
                       />
                     </div>

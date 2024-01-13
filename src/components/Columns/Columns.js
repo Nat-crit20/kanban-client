@@ -2,7 +2,13 @@ import { useState, useEffect } from "react";
 import { TaskView } from "../Task/Task";
 import "./Column.css";
 
-export const ColumnsView = ({ column, boardColumns, token }) => {
+export const ColumnsView = ({
+  column,
+  boardColumns,
+  token,
+  updateCurrentBoard,
+  currentBoard,
+}) => {
   const [currentColumn, setCurrentColumn] = useState(column);
 
   useEffect(() => {
@@ -64,9 +70,11 @@ export const ColumnsView = ({ column, boardColumns, token }) => {
       {currentColumn.Tasks.map((task) => {
         return (
           <TaskView
+            updateCurrentBoard={updateCurrentBoard}
             currentColumn={currentColumn}
             token={token}
             task={task}
+            currentBoard={currentBoard}
             boardColumns={boardColumns}
             handleDeleteTask={() => deleteTask(task._id)}
           />
