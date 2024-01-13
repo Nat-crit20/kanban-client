@@ -51,8 +51,11 @@ export const MainView = () => {
           <HomeView
             user={user}
             currentBoard={currentBoard}
-            updateCurrentBoard={(board) => {
-              setCurrentBoard(board);
+            updateCurrentBoard={(data) => {
+              setCurrentBoard((prevBoard) => ({
+                ...prevBoard,
+                ...data,
+              }));
             }}
             removeBoardFromList={(boardID) => {
               setBoards((prev) => {

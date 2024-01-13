@@ -11,6 +11,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
 
   useEffect(() => {
     // Update currentBoardColumns when currentBoard.Columns changes
+    console.log(currentBoard.Columns);
     setCurrentBoardColumns(currentBoard.Columns);
   }, [currentBoard.Columns]);
 

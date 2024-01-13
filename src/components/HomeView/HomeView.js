@@ -28,8 +28,8 @@ export const HomeView = ({
 }) => {
   const [show, setShow] = useState(false);
   const [showSideBar, setShowSideBar] = useState("flex");
-  const [boardName, setBoardName] = useState(null);
-  const [taskName, setTaskName] = useState(null);
+  const [boardName, setBoardName] = useState("");
+  const [taskName, setTaskName] = useState("");
   const [taskDescription, setTaskDescription] = useState(null);
   const [subtasks, setSubtasks] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -195,17 +195,11 @@ export const HomeView = ({
     e.preventDefault();
     console.log(boardName, columnsToRemove);
     try {
-      if (columnsToRemove.length > 0) {
-        await Promise.all(
-          columnsToRemove.map(async (colId) => {
-            await removeColumn(colId);
-          })
-        );
-      }
       const data = {
         Name: boardName,
       };
-      fetch(
+
+      const response = await fetch(
         `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}`,
         {
           method: "PUT",
@@ -216,24 +210,28 @@ export const HomeView = ({
           },
           body: JSON.stringify(data),
         }
-      )
-        .then((res) => {
-          if (res.ok) {
-            return res.json();
-          }
-        })
-        .then((data) => {
-          console.log(data);
-          updateCurrentBoard(data);
-          handleEditBoardClose();
-        });
+      );
+
+      if (response.ok) {
+        const updatedData = await response.json();
+        updateCurrentBoard(updatedData);
+        handleEditBoardClose();
+      }
+
+      if (columnsToRemove.length > 0) {
+        await Promise.all(
+          columnsToRemove.map(async (colId) => {
+            await removeColumn(colId);
+          })
+        );
+      }
     } catch (error) {
       console.error("Error", error);
     }
   };
 
   const removeColumn = (colID) => {
-    fetch(
+    return fetch(
       `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}/column/${colID}`,
       {
         method: "DELETE",
@@ -243,11 +241,18 @@ export const HomeView = ({
           "Access-Control-Allow-Origin": "*",
         },
       }
-    ).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-    });
+    )
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((data) => {
+        updateCurrentBoard(data);
+      })
+      .catch((error) => {
+        console.error(`Error: ${error}`);
+      });
   };
 
   return (
@@ -352,7 +357,7 @@ export const HomeView = ({
         )}
 
         <div className="board-view">
-          {currentBoard ? (
+          {currentBoard && currentBoard.Columns ? (
             <>
               <BoardView
                 currentBoard={currentBoard}

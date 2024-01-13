@@ -16,18 +16,16 @@ export const TaskView = ({
   const [showEditTask, setEditShowTask] = useState(false);
   const [currentTask, setCurrentTask] = useState(task);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [taskName, setTaskName] = useState(currentTask.Title);
-  const [taskDescription, setTaskDescription] = useState(
-    currentTask.Description
-  );
-  const [subtasks, setSubtasks] = useState(currentTask.SubTasks);
+  const [taskName, setTaskName] = useState(task.Title);
+  const [taskDescription, setTaskDescription] = useState(task.Description);
+  const [subtasks, setSubtasks] = useState(task.SubTasks);
   const [taskStatus, setTaskStatus] = useState(currentColumn);
   const [shouldUpdateTask, setShouldUpdateTask] = useState(false);
 
   useEffect(() => {
     if (shouldUpdateTask) {
       fetch(
-        `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${currentTask._id}`,
+        `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${task._id}`,
         {
           method: "PUT",
           headers: {

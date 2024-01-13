@@ -9,7 +9,7 @@ export const ColumnsView = ({ column, boardColumns, token }) => {
     const fetchColumns = async () => {
       try {
         await fetch(
-          `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}`,
+          `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${column._id}`,
           {
             method: "GET",
             headers: {
