@@ -14,7 +14,8 @@ export const ColumnsView = ({
   useEffect(() => {
     const fetchColumns = async () => {
       try {
-        await fetch(
+        console.log(column._id);
+        const response = await fetch(
           `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${column._id}`,
           {
             method: "GET",
@@ -23,22 +24,22 @@ export const ColumnsView = ({
               "Content-Type": "application/json",
             },
           }
-        )
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            }
-          })
-          .then((data) => {
-            setCurrentColumn(data);
-          });
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(`This is my data:`, data);
+          setCurrentColumn(data);
+        } else {
+          console.error(`Error fetching data. Status: ${response.status}`);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchColumns();
-  });
+  }, [column._id, token, setCurrentColumn]);
 
   const deleteTask = async (taskID) => {
     await fetch(
