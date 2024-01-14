@@ -317,7 +317,9 @@ export const HomeView = ({
                         : "board-svg-non board-svg"
                     }
                   />
-                  {board.Name}
+                  {currentBoard._id === board._id
+                    ? currentBoard.Name
+                    : board.Name}
                 </button>
               );
             })}
