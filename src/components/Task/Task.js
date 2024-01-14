@@ -12,6 +12,7 @@ export const TaskView = ({
   handleDeleteTask,
   updateCurrentBoard,
   currentBoard,
+  colorMode,
 }) => {
   const [showTask, setShowTask] = useState(false);
   const [showDeleteTask, setShowDeleteTask] = useState(false);
@@ -167,7 +168,7 @@ export const TaskView = ({
 
   return (
     <>
-      <div id="task-info" onClick={handleTaskShow}>
+      <div className={`${colorMode}`} id="task-info" onClick={handleTaskShow}>
         <div className="task-info-text">
           <h3>{currentTask.Title}</h3>
           <p>
@@ -179,9 +180,14 @@ export const TaskView = ({
           </p>
         </div>
       </div>
-      <Modal show={showTask} onHide={handleTaskCloseAndUpdate} centered>
+      <Modal
+        colorMode={`${colorMode}`}
+        show={showTask}
+        onHide={handleTaskCloseAndUpdate}
+        centered
+      >
         <Modal.Body>
-          <div className="modify-task">
+          <div className={`modify-task ${colorMode}`}>
             <div className="modify-task-header">
               <h4>{currentTask.Title}</h4>
               <div>
@@ -280,13 +286,13 @@ export const TaskView = ({
         </Modal.Body>
       </Modal>
       <Modal
-        id="create-task-modal"
+        colorMode={`${colorMode}`}
         show={showEditTask}
         onHide={handleEditTaskClose}
         centered
       >
         <Modal.Body>
-          <Modal.Body>
+          <div id="edit-task-modal">
             <h3>Edit Task</h3>
             <form
               method="post"
@@ -398,34 +404,39 @@ export const TaskView = ({
                 value="Save Changes"
               />
             </form>
-          </Modal.Body>
+          </div>
         </Modal.Body>
       </Modal>
       <Modal
-        id="delete-task"
+        colorMode={`${colorMode}`}
         show={showDeleteTask}
         onHide={handleDeleteTaskClose}
         centered
       >
         <Modal.Body>
-          <h3>Delete this Task?</h3>
-          <p>
-            Are you sure you want to delete the ‘{currentTask.Title}’ task and
-            its subtasks? This action cannot be reversed.
-          </p>
-          <div className="delete-btn-actions">
-            <button
-              className="delete-task-btn"
-              onClick={() => {
-                handleDeleteTask();
-                handleDeleteTaskClose();
-              }}
-            >
-              Delete
-            </button>
-            <button className="cancel-task-btn" onClick={handleDeleteTaskClose}>
-              Cancel
-            </button>
+          <div id="delete-task">
+            <h3>Delete this Task?</h3>
+            <p>
+              Are you sure you want to delete the ‘{currentTask.Title}’ task and
+              its subtasks? This action cannot be reversed.
+            </p>
+            <div className="delete-btn-actions">
+              <button
+                className="delete-task-btn"
+                onClick={() => {
+                  handleDeleteTask();
+                  handleDeleteTaskClose();
+                }}
+              >
+                Delete
+              </button>
+              <button
+                className="cancel-task-btn"
+                onClick={handleDeleteTaskClose}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </Modal.Body>
       </Modal>

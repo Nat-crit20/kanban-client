@@ -362,7 +362,7 @@ export const HomeView = ({
           <></>
         )}
 
-        <div className="board-view">
+        <div className={`board-view ${colorMode} }`}>
           {currentBoard && currentBoard.Columns ? (
             <>
               <BoardView
@@ -371,8 +371,10 @@ export const HomeView = ({
                   updateCurrentBoard(board);
                 }}
                 token={token}
+                colorMode={colorMode}
               />
               <Modal
+                className={`${colorMode}`}
                 id="delete-task"
                 show={showDeleteBoard}
                 onHide={handleDeleteBoardClose}
@@ -402,6 +404,7 @@ export const HomeView = ({
                 </Modal.Body>
               </Modal>
               <Modal
+                className={`${colorMode}`}
                 id="Edit-board-modal"
                 show={showEditBoard}
                 onHide={handleEditBoardClose}
@@ -471,7 +474,13 @@ export const HomeView = ({
           )}
         </div>
       </div>
-      <Modal id="create-board-modal" show={show} onHide={handleClose} centered>
+      <Modal
+        className={`${colorMode}`}
+        id="create-board-modal"
+        show={show}
+        onHide={handleClose}
+        centered
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add New Board</Modal.Title>
         </Modal.Header>
@@ -506,6 +515,7 @@ export const HomeView = ({
         </Modal.Body>
       </Modal>
       <Modal
+        className={`${colorMode}`}
         id="create-task-modal"
         show={showTask}
         onHide={handleTaskClose}

@@ -1,3 +1,8 @@
-.column-name {
+.light .column-name {
+  color: black;
+  width: 20rem;
+}
+.dark .column-name {
+  color: white;
   width: 20rem;
 }

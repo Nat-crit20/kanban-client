@@ -8,6 +8,7 @@ export const ColumnsView = ({
   token,
   updateCurrentBoard,
   currentBoard,
+  colorMode,
 }) => {
   const [currentColumn, setCurrentColumn] = useState(column);
 
@@ -41,7 +42,7 @@ export const ColumnsView = ({
 
   return (
     <>
-      <h1 className="column-name">{currentColumn.Name}</h1>
+      <h1 className={`column-name ${colorMode}`}>{currentColumn.Name}</h1>
       {currentColumn.Tasks.map((task) => {
         return (
           <TaskView
@@ -51,6 +52,7 @@ export const ColumnsView = ({
             task={task}
             currentBoard={currentBoard}
             boardColumns={boardColumns}
+            colorMode={colorMode}
             handleDeleteTask={() => deleteTask(task._id)}
           />
         );

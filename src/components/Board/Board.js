@@ -3,7 +3,12 @@ import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
 import "./Board.scss";
 
-export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
+export const BoardView = ({
+  currentBoard,
+  token,
+  updateCurrentBoard,
+  colorMode,
+}) => {
   const [showColumn, setShowColumn] = useState(false);
   const [currentBoardColumns, setCurrentBoardColumns] = useState(
     currentBoard.Columns
@@ -71,6 +76,7 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                         currentBoard={currentBoard}
                         updateCurrentBoard={updateCurrentBoard}
                         boardColumns={currentBoardColumns}
+                        colorMode={colorMode}
                       />
                     </div>
                   ))}
@@ -97,7 +103,12 @@ export const BoardView = ({ currentBoard, token, updateCurrentBoard }) => {
                 </div>
               )}
             </div>
-            <Modal show={showColumn} onHide={handleColumnClose} centered>
+            <Modal
+              className={`${colorMode}`}
+              show={showColumn}
+              onHide={handleColumnClose}
+              centered
+            >
               <Modal.Body>
                 <Modal.Body>
                   <h3>Add New Column</h3>
