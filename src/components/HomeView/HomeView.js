@@ -25,6 +25,8 @@ export const HomeView = ({
   boards,
   logout,
   removeBoardFromList,
+  updateColorMode,
+  colorMode,
 }) => {
   const [show, setShow] = useState(false);
   const [showSideBar, setShowSideBar] = useState("flex");
@@ -259,7 +261,7 @@ export const HomeView = ({
     <>
       <div className="board-header">
         <div className="logo">
-          <LogoForLight />
+          {colorMode === "light" ? <LogoForLight /> : <LogoForDark />}
         </div>
         <h1 className="board-title">{currentBoard ? currentBoard.Name : ""}</h1>
         <div className="board-info">
@@ -317,9 +319,7 @@ export const HomeView = ({
                         : "board-svg-non board-svg"
                     }
                   />
-                  {currentBoard._id === board._id
-                    ? currentBoard.Name
-                    : board.Name}
+                  {board.Name}
                 </button>
               );
             })}
@@ -331,7 +331,11 @@ export const HomeView = ({
           <div className="sidebar-footer">
             <Form className="mode-switch">
               <LightModeSvg />
-              <Form.Check type="switch" id="custom-switch" />
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                onChange={() => updateColorMode()}
+              />
               <DarkModeSvg />
             </Form>
             <div className="hide-sidebar">

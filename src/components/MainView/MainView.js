@@ -8,6 +8,7 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser || null);
   const [boards, setBoards] = useState([]);
   const [currentBoard, setCurrentBoard] = useState();
+  const [colorMode, setColorMode] = useState("light");
 
   useEffect(() => {
     if (!token || !user) {
@@ -44,11 +45,15 @@ export const MainView = () => {
   };
 
   return (
-    <div className="App">
+    <div className={`App ${colorMode}`}>
       {user ? (
         <>
           <HomeView
             user={user}
+            updateColorMode={() => {
+              setColorMode((prev) => (prev === "light" ? "dark" : "light"));
+            }}
+            colorMode={colorMode}
             currentBoard={currentBoard}
             updateCurrentBoard={(data) => {
               setCurrentBoard((prevBoard) => ({
