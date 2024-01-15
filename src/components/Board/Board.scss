@@ -2,6 +2,10 @@ $color_1: #828fa3;
 $color_2: white;
 $background-color_1: #e4ebfa;
 $background-color_2: #635fc7;
+$color_dark_1: #828fa3;
+$color_2: white;
+$background-dark-color_1: #252531;
+$background-color_2: #635fc7;
 
 /* Create column modal */
 .board-main-view {
@@ -16,7 +20,7 @@ $background-color_2: #635fc7;
   width: 20rem;
   margin: 2rem 1rem;
 }
-.create-column-btn {
+.light .create-column-btn {
   height: 85%;
   width: 20rem;
   background-color: $background-color_1;
@@ -26,6 +30,21 @@ $background-color_2: #635fc7;
   font-size: 1.5rem;
   font-weight: bold;
   color: $color_1;
+}
+
+.dark .create-column-btn {
+  height: 85%;
+  width: 20rem;
+  background-color: $background-dark-color_1;
+  border: none;
+  border-radius: 10px;
+  margin: 5rem 2rem 0 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $color_dark_1;
+}
+.create-column-btn:hover {
+  color: #635fc7;
 }
 .empty-board {
   display: flex;

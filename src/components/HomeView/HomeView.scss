@@ -89,6 +89,7 @@ $background-dark-color_5: #20212c;
     background-color: $background-color_1;
     padding: 2rem 2rem 2rem 0rem;
     flex-direction: column;
+    align-items: space-around;
     width: 30%;
     overflow-x: auto;
     &::-webkit-scrollbar {
@@ -613,4 +614,32 @@ $background-dark-color_5: #20212c;
       line-height: 2.2rem;
     }
   }
+}
+
+.showSidebar-btn:hover {
+  background-color: #a8a4ff;
+}
+
+.addTask-btn:hover {
+  background-color: #a8a4ff;
+}
+.btn-non:hover {
+  background-color: #a8a4ff;
+  opacity: 0.5;
+  color: $color_4;
+  border: none;
+  width: 17rem;
+  line-height: 3rem;
+  border-top-right-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+  padding-left: 3rem;
+  text-align: left;
+  .board-svg-non {
+    path {
+      fill: $color_4;
+    }
+  }
+}
+.hide-sidebar:hover p {
+  color: #a8a4ff;
 }

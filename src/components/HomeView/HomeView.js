@@ -338,8 +338,11 @@ export const HomeView = ({
               />
               <DarkModeSvg />
             </Form>
-            <div className="hide-sidebar">
-              <HideSidebarSvg onClick={() => setShowSideBar("none")} />
+            <div
+              className="hide-sidebar"
+              onClick={() => setShowSideBar("none")}
+            >
+              <HideSidebarSvg />
               <p>Hide Sidebar</p>
             </div>
             <div>

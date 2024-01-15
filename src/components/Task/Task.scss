@@ -31,6 +31,7 @@ $background-dark-color_5: #e4ebfa;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     h3 {
       font-size: 18px;
+      font-weight: bold;
     }
     p {
       font-size: 12px;
@@ -102,6 +103,7 @@ $background-dark-color_5: #e4ebfa;
     h3 {
       font-size: 18px;
       color: white;
+      font-weight: bold;
     }
     p {
       font-size: 12px;
@@ -253,5 +255,11 @@ form {
   .delete-task-btn {
     background-color: $background-color_3;
     color: $color_3;
+  }
+}
+
+.task-info-text:hover {
+  h3 {
+    color: $color_4;
   }
 }

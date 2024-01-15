@@ -80,9 +80,9 @@ export const BoardView = ({
                       />
                     </div>
                   ))}
-                  <div>
+                  <div className={` ${colorMode}`}>
                     <button
-                      className="create-column-btn"
+                      className={`create-column-btn`}
                       onClick={handleColumnShow}
                     >
                       + Create Column
