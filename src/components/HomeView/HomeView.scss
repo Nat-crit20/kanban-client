@@ -78,6 +78,31 @@ $background-dark-color_5: #20212c;
       cursor: pointer;
     }
   }
+  #edit-board-modal {
+    .column-rm-btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      p {
+        width: 50%;
+      }
+    }
+    .edit-board-form {
+      display: flex;
+      flex-direction: column;
+      .change-board {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-submit {
+        width: 80%;
+        align-self: center;
+      }
+      .form-submit:hover {
+        background-color: #a8a4ff;
+      }
+    }
+  }
   .edit-board {
     color: $color_1;
   }
@@ -158,6 +183,7 @@ $background-dark-color_5: #20212c;
       fill: #635fc7;
     }
   }
+
   .btn-add-board {
     background-color: $background-color_1;
     color: $color_4;
@@ -597,6 +623,31 @@ $background-dark-color_5: #20212c;
     }
     span {
       cursor: pointer;
+    }
+  }
+  #edit-board-modal {
+    .column-rm-btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      p {
+        width: 50%;
+      }
+    }
+    .edit-board-form {
+      display: flex;
+      flex-direction: column;
+      .change-board {
+        display: flex;
+        flex-direction: column;
+      }
+      .form-submit {
+        width: 80%;
+        align-self: center;
+      }
+      .form-submit:hover {
+        background-color: #a8a4ff;
+      }
     }
   }
   form {

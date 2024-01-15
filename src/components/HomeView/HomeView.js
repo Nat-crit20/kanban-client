@@ -408,7 +408,7 @@ export const HomeView = ({
               </Modal>
               <Modal
                 className={`${colorMode}`}
-                id="Edit-board-modal"
+                id="edit-board-modal"
                 show={showEditBoard}
                 onHide={handleEditBoardClose}
                 centered
@@ -423,44 +423,52 @@ export const HomeView = ({
                       className="edit-board-form"
                       onSubmit={handleEditBoardSubmit}
                     >
-                      <label className="board-name" htmlFor="board-name-input">
-                        Board Name{" "}
-                      </label>
-                      <input
-                        type="text"
-                        name="board-name-input"
-                        id="board-name-input"
-                        value={boardName}
-                        placeholder="e.g. Web Design"
-                        onChange={(e) => setBoardName(e.target.value)}
-                        required
-                      />
-                      <label htmlFor="columns">Board Columns: </label>
-                      {currentBoard ? (
-                        currentBoard.Columns.map((col, i) => {
-                          if (!columnsToRemove.includes(col._id)) {
-                            return (
-                              <div key={i}>
-                                <p>{col.Name}</p>
-                                <span
-                                  onClick={() => {
-                                    setColumnsToRemove((prev) => {
-                                      console.log(col._id, [...prev]);
-                                      return [...prev, col._id];
-                                    });
-                                  }}
-                                >
-                                  <IconCross />
-                                </span>
-                              </div>
-                            );
-                          } else {
-                            return null;
-                          }
-                        })
-                      ) : (
-                        <></>
-                      )}
+                      <div className="change-board">
+                        <label
+                          className="board-name"
+                          htmlFor="board-name-input"
+                        >
+                          Board Name{" "}
+                        </label>
+                        <input
+                          type="text"
+                          name="board-name-input"
+                          id="board-name-input"
+                          value={boardName}
+                          placeholder="e.g. Web Design"
+                          onChange={(e) => setBoardName(e.target.value)}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="columns">Board Columns: </label>
+                        {currentBoard ? (
+                          currentBoard.Columns.map((col, i) => {
+                            if (!columnsToRemove.includes(col._id)) {
+                              return (
+                                <div className="column-rm-btn" key={i}>
+                                  <p>{col.Name}</p>
+                                  <span
+                                    onClick={() => {
+                                      setColumnsToRemove((prev) => {
+                                        console.log(col._id, [...prev]);
+                                        return [...prev, col._id];
+                                      });
+                                    }}
+                                  >
+                                    <IconCross />
+                                  </span>
+                                </div>
+                              );
+                            } else {
+                              return null;
+                            }
+                          })
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+
                       <input
                         className="form-submit"
                         type="submit"
