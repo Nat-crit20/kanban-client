@@ -91,12 +91,24 @@ export const TaskView = ({
   const handleDropdownTask = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  //Task Modal Show Functions
+  const handleTaskShow = () => {
+    setShowTask(true);
+  };
   const handleTaskCloseAndUpdate = () => {
     setShouldUpdateTask(true);
     setShowTask(false);
   };
   const handleTaskClose = () => {
     setShowTask(false);
+  };
+
+  //Edit Task Modal Functions
+  const handleEditTaskShow = () => {
+    handleTaskClose();
+    setDropdownOpen(!dropdownOpen);
+    setEditShowTask(true);
   };
   const handleEditTaskClose = () => {
     setShouldUpdateTask(false);
@@ -106,17 +118,16 @@ export const TaskView = ({
     setShouldUpdateTask(true);
     setEditShowTask(false);
   };
-  const handleTaskShow = () => setShowTask(true);
+
+  //Delete Task Functions
   const handleDeleteTaskShow = () => {
     handleTaskClose();
+    setDropdownOpen(!dropdownOpen);
     setShowDeleteTask(true);
   };
   const handleDeleteTaskClose = () => setShowDeleteTask(false);
-  const handleEditTaskShow = () => {
-    handleTaskClose();
-    setEditShowTask(true);
-  };
 
+  //Subtask completion method
   const handleCheckboxChange = (subtaskId) => {
     setCurrentTask((prevInfo) => ({
       ...prevInfo,
@@ -128,7 +139,7 @@ export const TaskView = ({
       }),
     }));
   };
-
+  //This is for the basic task change modal
   const handleColumnChange = (e) => {
     const changedColumnID = e.target.value;
     const changedColumn = boardColumns.filter((column) => {
@@ -143,6 +154,7 @@ export const TaskView = ({
     }));
   };
 
+  //This is for the Edit modal Task Status input
   const handleEditColumnChange = (e) => {
     const changedColumnID = e.target.value;
     const changedColumn = boardColumns.filter((column) => {
