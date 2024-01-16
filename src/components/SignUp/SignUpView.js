@@ -18,7 +18,6 @@ export const SignUpView = () => {
       Email: email,
       Password: password,
     };
-    console.log(data);
     fetch(`https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/register`, {
       method: "POST",
       headers: {
@@ -28,7 +27,7 @@ export const SignUpView = () => {
     })
       .then((res) => {
         if (res.ok) {
-          alert("Sign up failed");
+          alert("Sign up Succeeded");
           return setShow(false);
         }
       })
