@@ -68,9 +68,9 @@ export const BoardView = ({
               currentBoard.Columns.length > 0 ? (
                 <>
                   {currentBoard.Columns.map((column) => (
-                    <div key={column.id} className="column-view">
+                    <div key={column._id} className="column-view">
                       <ColumnsView
-                        key={column.id}
+                        key={column._id}
                         column={column}
                         token={token}
                         currentBoard={currentBoard}

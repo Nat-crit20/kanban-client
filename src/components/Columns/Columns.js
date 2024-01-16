@@ -46,6 +46,7 @@ export const ColumnsView = ({
       {currentColumn.Tasks.map((task) => {
         return (
           <TaskView
+            key={task._id}
             updateCurrentBoard={updateCurrentBoard}
             currentColumn={currentColumn}
             token={token}

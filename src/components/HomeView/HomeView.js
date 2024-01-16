@@ -305,6 +305,7 @@ export const HomeView = ({
               return (
                 <button
                   id={board._id}
+                  key={board._id}
                   onClick={handleCurrentBoard}
                   className={
                     currentBoard && currentBoard._id === board._id
