@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { WelcomeView } from "../Welcome/WelcomeView";
 import { HomeView } from "../HomeView/HomeView";
+import { API } from "../../constants";
+
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = JSON.parse(localStorage.getItem("token"));
@@ -14,16 +16,13 @@ export const MainView = () => {
     if (!token || !user) {
       return;
     }
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/user/${user._id}/board`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${API}/user/${user._id}/board`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");

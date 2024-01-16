@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ColumnsView } from "../Columns/Columns";
 import Modal from "react-bootstrap/Modal";
+import { API } from "../../constants";
 import "./Board.scss";
 
 export const BoardView = ({
@@ -32,17 +33,14 @@ export const BoardView = ({
       Name: columnName,
     };
 
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}/column`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch(`${API}/board/${currentBoard._id}/column`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();

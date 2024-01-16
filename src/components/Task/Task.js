@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ReactComponent as VerticalEllipse } from "../../assets/icon-vertical-ellipsis.svg";
 import { ReactComponent as IconCross } from "../../assets/icon-cross.svg";
+import { API } from "../../constants";
 
 import Modal from "react-bootstrap/Modal";
 import "./Task.scss";
@@ -33,17 +34,14 @@ export const TaskView = ({
 
   useEffect(() => {
     if (shouldUpdateTask) {
-      fetch(
-        `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${task._id}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(currentTask),
-        }
-      )
+      fetch(`${API}/column/${currentColumn._id}/task/${task._id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(currentTask),
+      })
         .then((res) => {
           if (res.ok) {
             return res.json();
@@ -51,16 +49,13 @@ export const TaskView = ({
         })
         .then((updatedTask) => {
           // Fetch the updated board data after the task is updated
-          fetch(
-            `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}`,
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${token}`,
-                "Content-Type": "application/json",
-              },
-            }
-          )
+          fetch(`${API}/board/${currentBoard._id}`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          })
             .then((res) => {
               if (res.ok) {
                 return res.json();

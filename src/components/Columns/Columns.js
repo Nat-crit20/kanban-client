@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { TaskView } from "../Task/Task";
+import { API } from "../../constants";
 import "./Column.scss";
 
 export const ColumnsView = ({
@@ -17,16 +18,13 @@ export const ColumnsView = ({
   }, [column]);
 
   const deleteTask = async (taskID) => {
-    await fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${currentColumn._id}/task/${taskID}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    await fetch(`${API}/column/${currentColumn._id}/task/${taskID}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();

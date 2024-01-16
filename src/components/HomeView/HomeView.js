@@ -2,6 +2,7 @@ import { BoardView } from "../Board/Board";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import { API } from "../../constants";
 import { ButtonGroup } from "react-bootstrap";
 import { ReactComponent as IconBoardSvg } from "../../assets/icon-board.svg";
 import { ReactComponent as LogoForLight } from "../../assets/logo-dark.svg";
@@ -65,17 +66,14 @@ export const HomeView = ({
       Name: boardName,
     };
 
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/user/${user._id}/board`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch(`${API}/user/${user._id}/board`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -96,16 +94,13 @@ export const HomeView = ({
   };
 
   const handleDeleteBoard = () => {
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/user/${user._id}/board/${currentBoard._id}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${API}/user/${user._id}/board/${currentBoard._id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
         if (res.ok) {
           handleDeleteBoardClose();
@@ -120,16 +115,13 @@ export const HomeView = ({
   };
 
   const fetchBoard = (id) => {
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${id}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`${API}/board/${id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
         return res.json();
       })
@@ -155,18 +147,15 @@ export const HomeView = ({
       SubTasks: subtasks,
     };
 
-    fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/column/${columnName[0]._id}/task`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    fetch(`${API}/column/${columnName[0]._id}/task`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -201,18 +190,15 @@ export const HomeView = ({
         Name: boardName,
       };
 
-      const response = await fetch(
-        `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}`,
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(`${API}/board/${currentBoard._id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
         const updatedData = await response.json();
@@ -233,17 +219,14 @@ export const HomeView = ({
   };
 
   const removeColumn = (colID) => {
-    return fetch(
-      `https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/board/${currentBoard._id}/column/${colID}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    )
+    return fetch(`${API}/board/${currentBoard._id}/column/${colID}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
       .then((res) => {
         if (res.ok) {
           return res.json();

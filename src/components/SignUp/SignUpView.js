@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { API } from "../../constants";
 
 export const SignUpView = () => {
   const [show, setShow] = useState(false);
@@ -18,7 +19,7 @@ export const SignUpView = () => {
       Email: email,
       Password: password,
     };
-    fetch(`https://obscure-river-59850-ea6dbafa2f33.herokuapp.com/register`, {
+    fetch(`${API}/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
