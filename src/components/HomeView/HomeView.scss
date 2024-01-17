@@ -561,6 +561,9 @@ $background-dark-color_5: #20212c;
     flex-direction: column;
     justify-content: space-around;
   }
+  .modal-body {
+    background-color: #3e3f4e;
+  }
   #board-name-input {
     line-height: 3rem;
     font-size: 1.1rem;

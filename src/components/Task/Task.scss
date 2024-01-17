@@ -88,6 +88,103 @@ $background-dark-color_5: #e4ebfa;
   input[type="checkbox"] {
     accent-color: #635fc7;
   }
+
+  .form-create-task {
+    display: flex;
+    flex-direction: column;
+    #name {
+      line-height: 2.2rem;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      border: 2px solid #e4ebfa;
+      color: $color_1;
+    }
+    #description {
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      border: 2px solid #e4ebfa;
+      color: $color_1;
+    }
+    .create-subtask {
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      border: 2px solid #e4ebfa;
+      color: $color_1;
+      line-height: 2.2rem;
+      width: 92%;
+      margin: 0 1rem 0 0;
+    }
+    .add-subtask {
+      margin: 1rem 0 1rem 0;
+      line-height: 3rem;
+      border-radius: 10rem;
+      border: none;
+      background-color: $background-color_5;
+      color: $color_4;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    span {
+      cursor: pointer;
+    }
+  }
+  form {
+    label {
+      color: $color_1;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    #status {
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 2px solid #e4ebfa;
+      color: $color_1;
+      line-height: 2.2rem;
+    }
+  }
+
+  .form-submit {
+    margin: 2rem 0 1rem 0;
+    line-height: 3rem;
+    border-radius: 10rem;
+    border: none;
+    background-color: $background-color_4;
+    color: $color_3;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  #delete-task {
+    h3 {
+      color: $color_2;
+    }
+    button {
+      border: none;
+      width: 40%;
+      line-height: 2.5rem;
+      border-radius: 10rem;
+    }
+    .delete-btn-actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .delete-task-btn {
+      background-color: $background-color_3;
+      color: $color_3;
+    }
+  }
+
+  .task-info-text:hover {
+    h3 {
+      color: $color_4;
+    }
+  }
 }
 
 .dark {
@@ -122,6 +219,9 @@ $background-dark-color_5: #e4ebfa;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    h4 {
+      color: white;
+    }
   }
   .dropdown-task {
     position: absolute;
@@ -137,6 +237,7 @@ $background-dark-color_5: #e4ebfa;
       cursor: pointer;
     }
   }
+
   #modify-task-form {
     display: flex;
     flex-direction: column;
@@ -146,9 +247,12 @@ $background-dark-color_5: #e4ebfa;
     .modify-task-section {
       font-weight: bold;
     }
+    #status {
+      background-color: #2b2c37;
+    }
   }
   .task-checkbox-container {
-    background-color: $background-dark-color_2;
+    background-color: $background-dark-color_1;
     border-radius: 5px;
     margin: 1rem 0;
     label {
@@ -161,70 +265,123 @@ $background-dark-color_5: #e4ebfa;
   input[type="checkbox"] {
     accent-color: #635fc7;
   }
-}
+  #edit-task-modal {
+    h3 {
+      color: white;
+    }
 
+    textarea {
+      background-color: #2b2c37;
+      padding: 0;
+    }
+    .form-create-task {
+      display: flex;
+      flex-direction: column;
+      label {
+        color: white;
+      }
+      #name {
+        line-height: 2.2rem;
+        font-size: 1.1rem;
+        border-radius: 0.5rem;
+        padding: 0 1rem;
+        border: 2px solid #e4ebfa;
+        background-color: #2b2c37;
+        color: $color_1;
+      }
+      #description {
+        font-size: 1.1rem;
+        border-radius: 0.5rem;
+        padding: 0 1rem;
+        border: 2px solid #e4ebfa;
+        background-color: #2b2c37;
+        color: $color_1;
+      }
+
+      .create-subtask {
+        font-size: 1.1rem;
+        border-radius: 0.5rem;
+        padding: 0 1rem;
+        border: 2px solid #e4ebfa;
+        background-color: #2b2c37;
+        color: $color_1;
+        line-height: 2.2rem;
+        width: 92%;
+        margin: 0 1rem 0 0;
+      }
+      .add-subtask {
+        margin: 1rem 0 1rem 0;
+        line-height: 3rem;
+        border-radius: 10rem;
+        border: none;
+        background-color: white;
+        color: $color_4;
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      #status {
+        background-color: $background-dark-color_1;
+      }
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+
+  form {
+    label {
+      color: $color_1;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    #status {
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 2px solid #e4ebfa;
+      color: $color_1;
+      line-height: 2.2rem;
+    }
+  }
+
+  #delete-task {
+    h3 {
+      color: $color_2;
+    }
+    p {
+      color: $color_dark_1;
+    }
+    button {
+      border: none;
+      width: 40%;
+      line-height: 2.5rem;
+      border-radius: 10rem;
+    }
+    .delete-btn-actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .delete-task-btn {
+      background-color: $background-color_3;
+      color: $color_3;
+    }
+  }
+
+  .task-info-text:hover {
+    h3 {
+      color: $color_4;
+    }
+  }
+}
+.subtask-action {
+  margin: 0.5rem 0;
+}
 .form-task {
   display: flex;
   flex-direction: column;
 }
-.form-create-task {
-  display: flex;
-  flex-direction: column;
-  #name {
-    line-height: 2.2rem;
-    font-size: 1.1rem;
-    border-radius: 0.5rem;
-    padding: 0 1rem;
-    border: 2px solid #e4ebfa;
-    color: $color_1;
-  }
-  #description {
-    font-size: 1.1rem;
-    border-radius: 0.5rem;
-    padding: 0 1rem;
-    border: 2px solid #e4ebfa;
-    color: $color_1;
-  }
-  .create-subtask {
-    font-size: 1.1rem;
-    border-radius: 0.5rem;
-    padding: 0 1rem;
-    border: 2px solid #e4ebfa;
-    color: $color_1;
-    line-height: 2.2rem;
-    width: 92%;
-    margin: 0 1rem 0 0;
-  }
-  .add-subtask {
-    margin: 1rem 0 1rem 0;
-    line-height: 3rem;
-    border-radius: 10rem;
-    border: none;
-    background-color: $background-color_5;
-    color: $color_4;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  span {
-    cursor: pointer;
-  }
-}
-form {
-  label {
-    color: $color_1;
-    font-weight: bold;
-    margin-top: 1rem;
-  }
-  #status {
-    font-size: 1.1rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 2px solid #e4ebfa;
-    color: $color_1;
-    line-height: 2.2rem;
-  }
-}
-
 .form-submit {
   margin: 2rem 0 1rem 0;
   line-height: 3rem;
@@ -234,32 +391,4 @@ form {
   color: $color_3;
   font-size: 1.2rem;
   font-weight: bold;
-}
-
-#delete-task {
-  h3 {
-    color: $color_2;
-  }
-  button {
-    border: none;
-    width: 40%;
-    line-height: 2.5rem;
-    border-radius: 10rem;
-  }
-  .delete-btn-actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-  }
-  .delete-task-btn {
-    background-color: $background-color_3;
-    color: $color_3;
-  }
-}
-
-.task-info-text:hover {
-  h3 {
-    color: $color_4;
-  }
 }

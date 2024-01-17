@@ -191,7 +191,7 @@ export const TaskView = ({
         </div>
       </div>
       <Modal
-        colorMode={`${colorMode}`}
+        className={`${colorMode} modify-task-modal`}
         show={showTask}
         onHide={handleTaskCloseAndUpdate}
         centered
@@ -288,13 +288,13 @@ export const TaskView = ({
         </Modal.Body>
       </Modal>
       <Modal
-        colorMode={`${colorMode}`}
+        className={`${colorMode}`}
         show={showEditTask}
         onHide={handleEditTaskClose}
         centered
       >
         <Modal.Body>
-          <div id="edit-task-modal">
+          <div id="edit-task-modal" colorMode={`${colorMode}`}>
             <h3>Edit Task</h3>
             <form
               method="post"
@@ -324,7 +324,7 @@ export const TaskView = ({
 
                 <label htmlFor="subtask">Subtask: </label>
                 {subtasks.map((subtask, i) => (
-                  <div key={i}>
+                  <div className="subtask-action" key={i}>
                     <input
                       type="text"
                       className="create-subtask"
@@ -398,13 +398,13 @@ export const TaskView = ({
         </Modal.Body>
       </Modal>
       <Modal
-        colorMode={`${colorMode}`}
+        className={`${colorMode}`}
         show={showDeleteTask}
         onHide={handleDeleteTaskClose}
         centered
       >
         <Modal.Body>
-          <div id="delete-task">
+          <div id="delete-task" colorMode={`${colorMode}`}>
             <h3>Delete this Task?</h3>
             <p>
               Are you sure you want to delete the ‘{currentTask.Title}’ task and
