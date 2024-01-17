@@ -288,7 +288,7 @@ export const TaskView = ({
         </Modal.Body>
       </Modal>
       <Modal
-        className={`${colorMode}`}
+        className={`${colorMode} edit-task-modal`}
         show={showEditTask}
         onHide={handleEditTaskClose}
         centered
@@ -398,7 +398,7 @@ export const TaskView = ({
         </Modal.Body>
       </Modal>
       <Modal
-        className={`${colorMode}`}
+        className={`${colorMode} delete-task-modal`}
         show={showDeleteTask}
         onHide={handleDeleteTaskClose}
         centered

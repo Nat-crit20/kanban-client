@@ -67,6 +67,15 @@ $background-color_2: #635fc7;
   background-color: $background-color_2;
   color: $color_2;
 }
+
+.dark .create-column {
+  h3 {
+    color: white;
+  }
+  label {
+    color: white;
+  }
+}
 .form-create-column {
   display: flex;
   flex-direction: column;

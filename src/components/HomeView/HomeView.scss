@@ -86,6 +86,9 @@ $background-dark-color_5: #20212c;
       p {
         width: 50%;
       }
+      span {
+        cursor: pointer;
+      }
     }
     .edit-board-form {
       display: flex;
@@ -386,7 +389,7 @@ $background-dark-color_5: #20212c;
   }
   .dropdown-nav {
     position: absolute;
-    background-color: $background-dark-color_2;
+    background-color: #20212c;
     z-index: 2;
     width: 10em;
     border-radius: 1em;
@@ -629,12 +632,23 @@ $background-dark-color_5: #20212c;
     }
   }
   #edit-board-modal {
+    .modal-header {
+      background-color: #3e3f4e;
+      color: white;
+    }
+    #board-name-input {
+      background-color: #2b2c37;
+    }
     .column-rm-btn {
       display: flex;
       flex-direction: row;
       justify-content: center;
       p {
         width: 50%;
+        color: white;
+      }
+      span {
+        cursor: pointer;
       }
     }
     .edit-board-form {
