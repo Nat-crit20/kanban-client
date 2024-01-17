@@ -36,6 +36,7 @@ Users should be able to:
 ![](./Screenshot%202024-01-14%20182934.png)
 
 ### Links
+
 - Backend Repo : [https://github.com/Nat-crit20/Kanban_API](https://github.com/Nat-crit20/Kanban_API)
 - Live Site URL: [https://nat-crit20.github.io/kanban-client/](https://nat-crit20.github.io/kanban-client/)
 
@@ -46,6 +47,8 @@ Users should be able to:
 - Flexbox
 - SCSS
 - [React](https://reactjs.org/) - JS library
+- React Bootstrap
+- SVG images come from Frontent Mentor
 
 ### What I learned
 
