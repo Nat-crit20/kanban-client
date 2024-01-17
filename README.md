@@ -56,9 +56,8 @@ This project served as a pivotal achievement in fortifying my proficiency in Rea
 
 ### Continued development
 
-- I still need to work on the styles for dark mode and form validation.
+- I still need to work on the styles for form validation.
 - In the future, I would also like to add a drag-and-drop feature.
-- Will review the code to clean it up and add extra comments for future development.
 
 ## Author
 
