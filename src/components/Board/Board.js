@@ -17,10 +17,10 @@ export const BoardView = ({
 
   useEffect(() => {
     // Update currentBoardColumns when currentBoard.Columns changes
-    console.log(currentBoard.Columns);
     setCurrentBoardColumns(currentBoard.Columns);
   }, [currentBoard.Columns]);
 
+  //Create column modal
   const handleColumnClose = () => setShowColumn(false);
   const handleColumnShow = () => setShowColumn(true);
 

@@ -13,6 +13,7 @@ export const ColumnsView = ({
 }) => {
   const [currentColumn, setCurrentColumn] = useState(column);
 
+  //Will make sure that the column is always updated
   useEffect(() => {
     setCurrentColumn(column);
   }, [column]);

@@ -26,13 +26,16 @@ export const TaskView = ({
   const [taskStatus, setTaskStatus] = useState(currentColumn);
   const [shouldUpdateTask, setShouldUpdateTask] = useState(false);
 
+  //This will update the task being viewed to match the that is brought down
   useEffect(() => {
     if (task._id !== currentTask._id) {
       setCurrentTask(task);
     }
   }, [task, currentTask]);
 
+  //Update the task and fetch the updated board
   useEffect(() => {
+    //Checks if the task needs to be updated
     if (shouldUpdateTask) {
       fetch(`${API}/column/${currentColumn._id}/task/${task._id}`, {
         method: "PUT",

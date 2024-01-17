@@ -11,6 +11,7 @@ export const SignUpView = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

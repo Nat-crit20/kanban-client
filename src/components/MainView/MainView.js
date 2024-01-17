@@ -13,9 +13,11 @@ export const MainView = () => {
   const [colorMode, setColorMode] = useState("light");
 
   useEffect(() => {
+    //Checks is there is a user and token
     if (!token || !user) {
       return;
     }
+    //Will Fetch the users boards
     fetch(`${API}/user/${user._id}/board`, {
       method: "GET",
       headers: {

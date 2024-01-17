@@ -41,24 +41,32 @@ export const HomeView = ({
   const [columnsToRemove, setColumnsToRemove] = useState([]);
 
   const taskStatus = useRef();
+  //Create Board Modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  //Create task modal
   const [showTask, setShowTask] = useState(false);
   const handleTaskClose = () => setShowTask(false);
   const handleTaskShow = () => setShowTask(true);
+
+  //Delete Board Modal
   const handleDeleteBoardClose = () => setShowDeleteBoard(false);
   const handleDeleteBoardShow = () => setShowDeleteBoard(true);
 
+  //Edit Board Modal
   const handleEditBoardClose = () => {
     setColumnsToRemove([]);
     setShowEditBoard(false);
   };
   const handleEditBoardShow = () => setShowEditBoard(true);
 
+  //Dropdown toggle in the board header
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  //Create board submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -80,6 +88,7 @@ export const HomeView = ({
         }
       })
       .then((data) => {
+        //Will close the create board modal and update the user data
         handleClose();
         updateUser(data);
       })
@@ -114,6 +123,7 @@ export const HomeView = ({
       });
   };
 
+  //Will fetch the updated board
   const fetchBoard = (id) => {
     fetch(`${API}/board/${id}`, {
       method: "GET",
@@ -184,7 +194,6 @@ export const HomeView = ({
 
   const handleEditBoardSubmit = async (e) => {
     e.preventDefault();
-    console.log(boardName, columnsToRemove);
     try {
       const data = {
         Name: boardName,
@@ -206,6 +215,7 @@ export const HomeView = ({
         handleEditBoardClose();
       }
 
+      //Will go through each column in columsToRemove and remove them from the board
       if (columnsToRemove.length > 0) {
         await Promise.all(
           columnsToRemove.map(async (colId) => {
