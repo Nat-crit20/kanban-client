@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { API } from "../../constants";
+import "./LoginView.scss";
 
 export const LoginView = ({ onLogin }) => {
   const [show, setShow] = useState(false);
@@ -55,8 +56,8 @@ export const LoginView = ({ onLogin }) => {
         </Modal.Header>
         <Modal.Body>
           <Modal.Body>
-            <form method="post" className="form-signup" onSubmit={handleSubmit}>
-              <div className="form-signup">
+            <form method="post" className="form-login" onSubmit={handleSubmit}>
+              <div className="form-login-username">
                 <label htmlFor="name">Enter your username: </label>
                 <input
                   type="text"
@@ -67,7 +68,7 @@ export const LoginView = ({ onLogin }) => {
                   required
                 />
               </div>
-              <div className="form-signup">
+              <div className="form-login-password">
                 <label htmlFor="password">Password: </label>
                 <input
                   type="password"
@@ -78,8 +79,12 @@ export const LoginView = ({ onLogin }) => {
                   required
                 />
               </div>
-              <div className="form-signup">
-                <input type="submit" value="Submit" />
+              <div className="form-login-submit-container">
+                <input
+                  className="form-login-submit"
+                  type="submit"
+                  value="Submit"
+                />
               </div>
             </form>
           </Modal.Body>

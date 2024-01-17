@@ -1,0 +1,33 @@
+.form-login {
+  display: flex;
+  flex-direction: column;
+  div {
+    margin: 0.5rem 0;
+  }
+  .form-login-username {
+    font-size: 1.1rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+  }
+  .form-login-password {
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+  }
+  .form-login-submit-container {
+    display: flex;
+    justify-content: center;
+    .form-login-submit {
+      margin: 2rem 0 1rem 0;
+      line-height: 3rem;
+      border-radius: 10rem;
+      border: none;
+      background-color: #635fc7;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      width: 60vw;
+    }
+  }
+}
