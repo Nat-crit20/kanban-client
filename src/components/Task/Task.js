@@ -262,30 +262,22 @@ export const TaskView = ({
               </div>
               <p className="modify-task-section">Current Status</p>
               {currentColumn && boardColumns ? (
-                <select id="status" name="status" onChange={handleColumnChange}>
+                <select
+                  id="status"
+                  name="status"
+                  onChange={handleColumnChange}
+                  defaultValue={currentTask.Status.columnID}
+                >
                   {boardColumns.map((column) => {
-                    if (currentTask.Status.columnID === column._id) {
-                      return (
-                        <option
-                          key={column._id}
-                          value={column._id}
-                          data-name={column.Name}
-                          selected
-                        >
-                          {column.Name}
-                        </option>
-                      );
-                    } else {
-                      return (
-                        <option
-                          key={column._id}
-                          value={column._id}
-                          data-name={column.Name}
-                        >
-                          {column.Name}
-                        </option>
-                      );
-                    }
+                    return (
+                      <option
+                        key={column._id}
+                        value={column._id}
+                        data-name={column.Name}
+                      >
+                        {column.Name}
+                      </option>
+                    );
                   })}
                 </select>
               ) : (
@@ -377,30 +369,18 @@ export const TaskView = ({
                     id="status"
                     name="status"
                     onChange={handleEditColumnChange}
+                    defaultValue={currentTask.Status.columnID}
                   >
                     {boardColumns.map((column) => {
-                      if (currentTask.Status.columnID === column._id) {
-                        return (
-                          <option
-                            key={column._id}
-                            value={column._id}
-                            data-name={column.Name}
-                            selected
-                          >
-                            {column.Name}
-                          </option>
-                        );
-                      } else {
-                        return (
-                          <option
-                            key={column._id}
-                            value={column._id}
-                            data-name={column.Name}
-                          >
-                            {column.Name}
-                          </option>
-                        );
-                      }
+                      return (
+                        <option
+                          key={column._id}
+                          value={column._id}
+                          data-name={column.Name}
+                        >
+                          {column.Name}
+                        </option>
+                      );
                     })}
                   </select>
                 ) : (
