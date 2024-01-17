@@ -559,6 +559,21 @@ $background-dark-color_5: #20212c;
       background: #aaa;
     }
   }
+  #create-board-modal {
+    .modal-header {
+      background-color: #3e3f4e;
+      color: white;
+    }
+    #board-name-input {
+      line-height: 3rem;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      background-color: $background-dark-color_1;
+      border: 2px solid #e4ebfa;
+      color: $color_dark_1;
+    }
+  }
   .create-board-form {
     display: flex;
     flex-direction: column;
@@ -567,14 +582,7 @@ $background-dark-color_5: #20212c;
   .modal-body {
     background-color: #3e3f4e;
   }
-  #board-name-input {
-    line-height: 3rem;
-    font-size: 1.1rem;
-    border-radius: 0.5rem;
-    padding: 0 1rem;
-    border: 2px solid #e4ebfa;
-    color: $color_dark_1;
-  }
+
   .form-submit {
     margin: 2rem 0 1rem 0;
     line-height: 3rem;
@@ -589,9 +597,15 @@ $background-dark-color_5: #20212c;
     display: flex;
     flex-direction: column;
   }
+  #create-task-modal {
+    h3 {
+      color: white;
+    }
+  }
   .form-create-task {
     display: flex;
     flex-direction: column;
+
     #name {
       line-height: 2.2rem;
       font-size: 1.1rem;
@@ -599,6 +613,7 @@ $background-dark-color_5: #20212c;
       padding: 0 1rem;
       border: 2px solid #e4ebfa;
       color: $color_dark_1;
+      background-color: #2b2c37;
     }
     #description {
       font-size: 1.1rem;
@@ -606,6 +621,10 @@ $background-dark-color_5: #20212c;
       padding: 0 1rem;
       border: 2px solid #e4ebfa;
       color: $color_dark_1;
+      background-color: #2b2c37;
+    }
+    .create-subtask-action {
+      margin: 0.5rem 0;
     }
     .create-subtask {
       font-size: 1.1rem;
@@ -613,6 +632,7 @@ $background-dark-color_5: #20212c;
       padding: 0 1rem;
       border: 2px solid #e4ebfa;
       color: $color_dark_1;
+      background-color: #2b2c37;
       line-height: 2.2rem;
       width: 92%;
       margin: 0 1rem 0 0;
@@ -627,6 +647,9 @@ $background-dark-color_5: #20212c;
       font-size: 1.2rem;
       font-weight: bold;
     }
+    .add-subtask:hover {
+      color: #a8a4ff;
+    }
     span {
       cursor: pointer;
     }
@@ -637,7 +660,13 @@ $background-dark-color_5: #20212c;
       color: white;
     }
     #board-name-input {
-      background-color: #2b2c37;
+      line-height: 3rem;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      background-color: $background-dark-color_1;
+      border: 2px solid #e4ebfa;
+      color: $color_dark_1;
     }
     .column-rm-btn {
       display: flex;
@@ -680,6 +709,7 @@ $background-dark-color_5: #20212c;
       border: 2px solid #e4ebfa;
       color: $color_dark_1;
       line-height: 2.2rem;
+      background-color: #2b2c37;
     }
   }
 }
@@ -710,4 +740,7 @@ $background-dark-color_5: #20212c;
 }
 .hide-sidebar:hover p {
   color: #a8a4ff;
+}
+.form-submit:hover {
+  background-color: #a8a4ff;
 }

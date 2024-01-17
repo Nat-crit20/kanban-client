@@ -102,7 +102,8 @@ export const BoardView = ({
               )}
             </div>
             <Modal
-              className={`${colorMode} create-column`}
+              className={`${colorMode}`}
+              id="create-column"
               show={showColumn}
               onHide={handleColumnClose}
               centered

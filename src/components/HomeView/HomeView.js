@@ -557,7 +557,7 @@ export const HomeView = ({
 
                 <label htmlFor="subtask">Subtask: </label>
                 {subtasks.map((subtask, i) => (
-                  <div key={i}>
+                  <div className="create-subtask-action" key={i}>
                     <input
                       type="text"
                       className="create-subtask"

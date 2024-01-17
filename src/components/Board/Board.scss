@@ -68,23 +68,37 @@ $background-color_2: #635fc7;
   color: $color_2;
 }
 
-.dark .create-column {
-  h3 {
-    color: white;
-  }
-  label {
-    color: white;
+.light {
+  .form-create-column {
+    display: flex;
+    flex-direction: column;
+    #column-name {
+      line-height: 2.2rem;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      border: 2px solid #e4ebfa;
+      color: $color_1;
+    }
   }
 }
-.form-create-column {
-  display: flex;
-  flex-direction: column;
-  #column-name {
-    line-height: 2.2rem;
-    font-size: 1.1rem;
-    border-radius: 0.5rem;
-    padding: 0 1rem;
-    border: 2px solid #e4ebfa;
-    color: $color_1;
+.dark {
+  #create-column {
+    h3 {
+      color: white;
+    }
+  }
+  .form-create-column {
+    display: flex;
+    flex-direction: column;
+    #column-name {
+      line-height: 2.2rem;
+      font-size: 1.1rem;
+      border-radius: 0.5rem;
+      padding: 0 1rem;
+      border: 2px solid #e4ebfa;
+      background-color: #2b2c37;
+      color: $color_1;
+    }
   }
 }
