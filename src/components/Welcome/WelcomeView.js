@@ -9,6 +9,7 @@ export const WelcomeView = ({ onLogin }) => {
         <SignUpView />
         <LoginView onLogin={onLogin} />
       </div>
+      <div className="image"></div>
     </div>
   );
 };

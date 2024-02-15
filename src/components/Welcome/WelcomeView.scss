@@ -1,22 +1,27 @@
 .welcome-view {
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: rgb(99, 95, 199);
-  // background: radial-gradient(
-  //   circle,
-  //   rgba(99, 95, 199, 1) 0%,
-  //   rgba(23, 13, 15, 1) 100%
-  // );
-  background-image: url("../../assets/pm-banner-feature-image.svg");
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: auto;
+  background: radial-gradient(
+    circle,
+    rgba(99, 95, 199, 1) 0%,
+    rgba(23, 13, 15, 1) 100%
+  );
+
   h1 {
     color: white;
     font-weight: bold;
+  }
+  .image {
+    height: 100vh;
+    width: 100%;
+    background-image: url("../../assets/pm-banner-feature-image.svg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: auto;
   }
 }
 
