@@ -11,10 +11,22 @@
   #home {
     background: rgb(99, 95, 199);
     width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    div {
+      width: 40%;
+      p {
+        color: white;
+        font-weight: normal;
+        font-size: 1rem;
+      }
+    }
   }
   .image {
-    height: 100vh;
-    width: 100%;
+    height: 80vh;
+    width: 50%;
     background-image: url("../../assets/pm-banner-feature-image.svg");
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -26,7 +38,7 @@
     .welcome-actions {
       width: 100%;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-around;
       align-items: space-around;
       h2 {
@@ -34,6 +46,12 @@
       }
       h3 {
         color: white;
+      }
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: space-around;
       }
     }
   }

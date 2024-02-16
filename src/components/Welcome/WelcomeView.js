@@ -24,7 +24,16 @@ export const WelcomeView = ({ onLogin }) => {
         </Container>
       </Navbar>
       <div id="home">
-        <h1>Welcome to Kanban</h1>
+        <div>
+          <h1>Kanban Board</h1>
+          <p>
+            Lorem ipsum dolor sit amet, duo aliquam delicata an, id primis
+            definitionem eum. Usu perfecto consulatu ne, dicat legere volutpat
+            vix ut. Diam inciderint ne ius, ei est malorum nominati. Duo at
+            assentior expetendis conclusionemque, exerci appetere ius ut.
+          </p>
+        </div>
+
         <div className="image"></div>
       </div>
       <div className="spacer layer1"></div>
