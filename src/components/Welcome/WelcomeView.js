@@ -10,6 +10,7 @@ export const WelcomeView = ({ onLogin }) => {
         <LoginView onLogin={onLogin} />
       </div>
       <div className="image"></div>
+      <div className="spacer layer1"></div>
     </div>
   );
 };
