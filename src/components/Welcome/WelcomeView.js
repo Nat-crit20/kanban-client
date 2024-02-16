@@ -17,19 +17,24 @@ export const WelcomeView = ({ onLogin }) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Contact</Nav.Link>
-              <Nav.Link href="#link">Get started</Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
+              <Nav.Link href="#login">Get started</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <h1>Welcome to Kanban</h1>
-      <div className="welcome-actions">
-        <SignUpView />
-        <LoginView onLogin={onLogin} />
+      <div id="home">
+        <h1>Welcome to Kanban</h1>
+
+        <div className="image"></div>
       </div>
-      <div className="image"></div>
       <div className="spacer layer1"></div>
+      <div id="login">
+        <div className="welcome-actions">
+          <SignUpView />
+          <LoginView onLogin={onLogin} />
+        </div>
+      </div>
     </div>
   );
 };
