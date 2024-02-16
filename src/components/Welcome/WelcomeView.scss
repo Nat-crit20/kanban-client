@@ -4,10 +4,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(99, 95, 199);
   h1 {
     color: white;
     font-weight: bold;
+  }
+  #home {
+    background: rgb(99, 95, 199);
+    width: 100%;
   }
   .image {
     height: 100vh;
@@ -17,10 +20,14 @@
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: auto;
   }
+  #login {
+    background: #252531;
+    width: 100%;
+  }
 }
 
 .spacer {
-  aspect-ratio: 900/450;
+  aspect-ratio: 960/350;
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
