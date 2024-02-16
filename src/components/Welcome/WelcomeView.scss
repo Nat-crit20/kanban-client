@@ -23,6 +23,19 @@
   #login {
     background: #252531;
     width: 100%;
+    .welcome-actions {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: space-around;
+      h2 {
+        color: white;
+      }
+      h3 {
+        color: white;
+      }
+    }
   }
 }
 
@@ -35,11 +48,4 @@
 }
 .layer1 {
   background-image: url("../../assets/layered-waves-haikei.svg");
-}
-.welcome-actions {
-  width: 10rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: space-around;
 }

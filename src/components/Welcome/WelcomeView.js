@@ -25,14 +25,17 @@ export const WelcomeView = ({ onLogin }) => {
       </Navbar>
       <div id="home">
         <h1>Welcome to Kanban</h1>
-
         <div className="image"></div>
       </div>
       <div className="spacer layer1"></div>
       <div id="login">
         <div className="welcome-actions">
-          <SignUpView />
-          <LoginView onLogin={onLogin} />
+          <h2>You can get started by:</h2>
+          <div>
+            <SignUpView />
+            <h3>or</h3>
+            <LoginView onLogin={onLogin} />
+          </div>
         </div>
       </div>
     </div>
