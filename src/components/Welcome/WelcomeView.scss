@@ -55,9 +55,20 @@
 
   #about {
     display: flex;
-
+    background-color: #252531;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    .info-card {
+      background-color: white;
+      width: 20rem;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      margin: 1rem 0;
+      text-align: left;
+    }
     .about-image-container img {
-      width: 40rem;
+      width: 45rem;
       border-radius: 1rem;
     }
   }
