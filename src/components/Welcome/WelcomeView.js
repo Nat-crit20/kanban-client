@@ -44,27 +44,33 @@ export const WelcomeView = ({ onLogin }) => {
       </div>
       <div className="spacer layer1"></div>
       <div id="about">
-        <div>
-          <p>Boards</p>
-          <p>
-            Keep all of your tasks organized and work moving forward. In a
-            glance, see everything from "things to do" to "aww yeah, we did it!"
-          </p>
+        <div className="kanban-info">
+          <div className="info-card">
+            <p>Boards</p>
+            <p>
+              Keep all of your tasks organized and work moving forward. In a
+              glance, see everything from "things to do" to "aww yeah, we did
+              it!"
+            </p>
+          </div>
+          <div className="info-card">
+            <p>Lists</p>
+            <p>
+              The different stages of a task. Start as simple as To Do, Doing or
+              Done-or build a workflow custom fit to your needs.
+            </p>
+          </div>
+          <div className="info-card">
+            <p>Cards</p>
+            <p>
+              Cards represent tasks and idead and hold all the information to
+              get the job done. As you make progress, move cards across lists to
+              show their status.
+            </p>
+          </div>
         </div>
-        <div>
-          <p>Lists</p>
-          <p>
-            The different stages of a task. Start as simple as To Do, Doing or
-            Done-or build a workflow custom fit to your needs.
-          </p>
-        </div>
-        <div>
-          <p>Cards</p>
-          <p>
-            Cards represent tasks and idead and hold all the information to get
-            the job done. As you make progress, move cards across lists to show
-            their status.
-          </p>
+        <div className="about-image-container">
+          <img src={require("../../assets/preview.jpg")} alt="" />
         </div>
       </div>
     </div>
