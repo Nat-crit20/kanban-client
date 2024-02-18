@@ -29,10 +29,8 @@ export const WelcomeView = ({ onLogin }) => {
         <div>
           <h1>Kanban Board</h1>
           <p>
-            Lorem ipsum dolor sit amet, duo aliquam delicata an, id primis
-            definitionem eum. Usu perfecto consulatu ne, dicat legere volutpat
-            vix ut. Diam inciderint ne ius, ei est malorum nominati. Duo at
-            assentior expetendis conclusionemque, exerci appetere ius ut.
+            Brings all your tasks, teammates, and tools together. Keep
+            everything in the same place—even if your team isn’t.
           </p>
           <div className="welcome-actions">
             <div>
@@ -45,7 +43,30 @@ export const WelcomeView = ({ onLogin }) => {
         <div className="image"></div>
       </div>
       <div className="spacer layer1"></div>
-      <div id="login"></div>
+      <div id="about">
+        <div>
+          <p>Boards</p>
+          <p>
+            Keep all of your tasks organized and work moving forward. In a
+            glance, see everything from "things to do" to "aww yeah, we did it!"
+          </p>
+        </div>
+        <div>
+          <p>Lists</p>
+          <p>
+            The different stages of a task. Start as simple as To Do, Doing or
+            Done-or build a workflow custom fit to your needs.
+          </p>
+        </div>
+        <div>
+          <p>Cards</p>
+          <p>
+            Cards represent tasks and idead and hold all the information to get
+            the job done. As you make progress, move cards across lists to show
+            their status.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
