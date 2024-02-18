@@ -17,7 +17,7 @@ export const WelcomeView = ({ onLogin }) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#contact">Contact</Nav.Link>
-              <Nav.Link href="#login">Get started</Nav.Link>
+              <Nav.Link href="#about">About</Nav.Link>
               <Nav.Link href="https://nat-crit20.github.io/Portfolio_Website/">
                 Portfolio
               </Nav.Link>
@@ -34,21 +34,18 @@ export const WelcomeView = ({ onLogin }) => {
             vix ut. Diam inciderint ne ius, ei est malorum nominati. Duo at
             assentior expetendis conclusionemque, exerci appetere ius ut.
           </p>
+          <div className="welcome-actions">
+            <div>
+              <SignUpView />
+              <LoginView onLogin={onLogin} />
+            </div>
+          </div>
         </div>
 
         <div className="image"></div>
       </div>
       <div className="spacer layer1"></div>
-      <div id="login">
-        <div className="welcome-actions">
-          <h2>You can get started by:</h2>
-          <div>
-            <SignUpView />
-            <h3>or</h3>
-            <LoginView onLogin={onLogin} />
-          </div>
-        </div>
-      </div>
+      <div id="login"></div>
     </div>
   );
 };
