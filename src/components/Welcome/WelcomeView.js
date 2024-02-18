@@ -3,7 +3,6 @@ import { SignUpView } from "../SignUp/SignUpView";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { ReactComponent as LogoForLight } from "../../assets/logo-dark.svg";
 import "./WelcomeView.scss";
 export const WelcomeView = ({ onLogin }) => {
@@ -19,6 +18,9 @@ export const WelcomeView = ({ onLogin }) => {
             <Nav className="me-auto">
               <Nav.Link href="#contact">Contact</Nav.Link>
               <Nav.Link href="#login">Get started</Nav.Link>
+              <Nav.Link href="https://nat-crit20.github.io/Portfolio_Website/">
+                Portfolio
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
