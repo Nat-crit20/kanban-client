@@ -4,6 +4,9 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { ReactComponent as LogoForLight } from "../../assets/logo-dark.svg";
+import { ReactComponent as GitHub } from "../../assets/github.svg";
+import { ReactComponent as Facebook } from "../../assets/facebook.svg";
+import { ReactComponent as Linkedin } from "../../assets/linkedin.svg";
 import "./WelcomeView.scss";
 export const WelcomeView = ({ onLogin }) => {
   return (
@@ -86,7 +89,7 @@ export const WelcomeView = ({ onLogin }) => {
             href="https://github.com/Nat-crit20"
             target="_blank"
           >
-            <img src="./images/github.svg" alt="" />
+            <img src="" alt="" />
           </a>
           <a
             class="logo_link"
