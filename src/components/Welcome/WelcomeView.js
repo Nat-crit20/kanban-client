@@ -5,7 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { ReactComponent as LogoForLight } from "../../assets/logo-dark.svg";
 import { ReactComponent as GitHub } from "../../assets/github.svg";
-import { ReactComponent as Facebook } from "../../assets/facebook.svg";
 import { ReactComponent as Linkedin } from "../../assets/linkedin.svg";
 import "./WelcomeView.scss";
 export const WelcomeView = ({ onLogin }) => {
@@ -78,7 +77,8 @@ export const WelcomeView = ({ onLogin }) => {
       </div>
       <footer id="contact">
         <p>
-          Feel free to contact me on <a href="">Linkedin</a>
+          Feel free to contact me on{" "}
+          <a href="https://www.linkedin.com/in/nathan-greuel/">Linkedin</a>
         </p>
         <p>
           Or <a href="mailto: greuelnathan74@gmail.com">Send Email</a>
@@ -89,21 +89,14 @@ export const WelcomeView = ({ onLogin }) => {
             href="https://github.com/Nat-crit20"
             target="_blank"
           >
-            <img src="" alt="" />
+            <GitHub />
           </a>
           <a
             class="logo_link"
             href="https://www.linkedin.com/in/nathan-greuel/"
             target="_blank"
           >
-            <img src="./images/linkedin.svg" alt="" />
-          </a>
-          <a
-            class="logo_link"
-            href="https://medium.com/@greuel.nahtan"
-            target="_blank"
-          >
-            <img src="./images/medium-icon-svgrepo-com.svg" alt="" />
+            <Linkedin />
           </a>
         </div>
       </footer>
