@@ -73,7 +73,37 @@ export const WelcomeView = ({ onLogin }) => {
           <img src={require("../../assets/preview.jpg")} alt="" />
         </div>
       </div>
-      <footer id="contact"></footer>
+      <footer id="contact">
+        <p>
+          Feel free to contact me on <a href="">Linkedin</a>
+        </p>
+        <p>
+          Or <a href="mailto: greuelnathan74@gmail.com">Send Email</a>
+        </p>
+        <div>
+          <a
+            class="logo_link"
+            href="https://github.com/Nat-crit20"
+            target="_blank"
+          >
+            <img src="./images/github.svg" alt="" />
+          </a>
+          <a
+            class="logo_link"
+            href="https://www.linkedin.com/in/nathan-greuel/"
+            target="_blank"
+          >
+            <img src="./images/linkedin.svg" alt="" />
+          </a>
+          <a
+            class="logo_link"
+            href="https://medium.com/@greuel.nahtan"
+            target="_blank"
+          >
+            <img src="./images/medium-icon-svgrepo-com.svg" alt="" />
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };
