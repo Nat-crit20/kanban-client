@@ -73,6 +73,7 @@ export const WelcomeView = ({ onLogin }) => {
           <img src={require("../../assets/preview.jpg")} alt="" />
         </div>
       </div>
+      <footer id="contact"></footer>
     </div>
   );
 };
