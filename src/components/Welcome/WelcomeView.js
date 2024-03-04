@@ -36,9 +36,7 @@ export const WelcomeView = ({ onLogin }) => {
             everything in the same place—even if your team isn’t.
           </p>
           <div className="welcome-actions">
-            <div>
-              <SignUpView />
-            </div>
+            <SignUpView />
           </div>
         </div>
 
@@ -85,14 +83,14 @@ export const WelcomeView = ({ onLogin }) => {
         </p>
         <div>
           <a
-            class="logo_link"
+            className="logo_link"
             href="https://github.com/Nat-crit20"
             target="_blank"
           >
             <GitHub />
           </a>
           <a
-            class="logo_link"
+            className="logo_link"
             href="https://www.linkedin.com/in/nathan-greuel/"
             target="_blank"
           >
