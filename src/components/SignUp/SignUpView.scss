@@ -9,6 +9,13 @@
   font-size: 1.2rem;
   font-weight: bold;
   width: 10vw;
+  padding: 2px;
+}
+.signup-btn:hover {
+  background-color: #635fc7;
+  color: white;
+  border: solid 2px white;
+  cursor: pointer;
 }
 
 .form-signup {
