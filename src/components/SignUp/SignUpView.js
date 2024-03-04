@@ -42,9 +42,9 @@ export const SignUpView = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <button className="signup-btn" onClick={handleShow}>
         Sign up
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
