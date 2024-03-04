@@ -1,3 +1,21 @@
+.login-btn {
+  background-color: #635fc7;
+  color: white;
+  border: none;
+  line-height: 2rem;
+  border-radius: 10rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 10vw;
+  transition: background-color 0.5s, color 0.5s, border 0.5s;
+}
+.login-btn:hover {
+  background-color: white;
+  color: #635fc7;
+  border: solid 2px #635fc7;
+  cursor: pointer;
+}
 .form-login {
   display: flex;
   flex-direction: column;

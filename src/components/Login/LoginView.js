@@ -46,9 +46,9 @@ export const LoginView = ({ onLogin }) => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <button className="login-btn" onClick={handleShow}>
         Login
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
