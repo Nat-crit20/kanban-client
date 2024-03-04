@@ -10,6 +10,7 @@
   font-weight: bold;
   width: 10vw;
   padding: 2px;
+  transition: background-color 0.5s, color 0.5s, border 0.5s;
 }
 .signup-btn:hover {
   background-color: #635fc7;
