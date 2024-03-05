@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { ReactComponent as VerticalEllipse } from "../../assets/icon-vertical-ellipsis.svg";
 import { ReactComponent as IconCross } from "../../assets/icon-cross.svg";
 import { API } from "../../constants";
-
 import Modal from "react-bootstrap/Modal";
 import "./Task.scss";
 export const TaskView = ({
