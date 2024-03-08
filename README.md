@@ -20,8 +20,6 @@ This is a solution to the [Kanban task management web app challenge on Frontend 
 
 Users should be able to:
 
-<!-- - View the optimal layout for the app depending on the device's screen size -->
-
 - See hover states for all interactive elements on the page
 - Create, read, update, and delete boards and tasks
 - Receive form validations when trying to create/edit boards and tasks
@@ -29,8 +27,6 @@ Users should be able to:
 - Hide/show the board sidebar
 - Toggle the theme between light/dark modes
 - Keep track of any changes, even after refreshing the browser
-<!-- - **Bonus**: Allow users to drag and drop tasks to change their status and re-order them in a column
-- **Bonus**: Build this project as a full-stack application -->
 
 ### Screenshot
 
@@ -59,6 +55,7 @@ This project served as a pivotal achievement in fortifying my proficiency in Rea
 
 - I still need to work on the styles for form validation.
 - In the future, I would also like to add a drag-and-drop feature.
+- View the optimal layout for the app depending on the device's screen size
 
 ## Author
 
