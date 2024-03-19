@@ -63,7 +63,7 @@ export const WelcomeView = ({ onLogin }) => {
           <div className="info-card">
             <p>Cards</p>
             <p>
-              Cards represent tasks and idead and hold all the information to
+              Cards represent tasks and ideas and hold all the information to
               get the job done. As you make progress, move cards across lists to
               show their status.
             </p>
