@@ -1,4 +1,4 @@
-# Kanban task management web app solution
+# Kanban task management web app
 
 ## Table of contents
 
@@ -58,4 +58,4 @@ This project served as a pivotal achievement in fortifying my proficiency in Rea
 ## Author
 
 - Website - [Nathan Greuel](https://nat-crit20.github.io/Portfolio_Website/)
-- Frontend Mentor -[@Nat-crit20](https://www.frontendmentor.io/profile/Nat-crit20)
+
