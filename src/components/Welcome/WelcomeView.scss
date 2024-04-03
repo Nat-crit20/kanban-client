@@ -45,6 +45,7 @@
     background-color: #252531;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
     .info-card {
       background-color: white;
@@ -58,7 +59,7 @@
         rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     }
     .about-image-container img {
-      width: 45rem;
+      width: 35rem;
       border-radius: 1rem;
     }
   }
