@@ -53,7 +53,7 @@ export const SignUpView = () => {
         <Modal.Body>
           <form action="post" className="form-signup" onSubmit={handleSubmit}>
             <div className="form-signup-username">
-              <label htmlFor="name">Enter your username: </label>
+              <label htmlFor="username">Enter your username: </label>
               <input
                 type="text"
                 name="username"
