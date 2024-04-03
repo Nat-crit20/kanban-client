@@ -86,6 +86,7 @@ export const WelcomeView = ({ onLogin }) => {
             className="logo_link"
             href="https://github.com/Nat-crit20"
             target="_blank"
+            rel="noreferrer"
           >
             <GitHub />
           </a>
@@ -93,6 +94,7 @@ export const WelcomeView = ({ onLogin }) => {
             className="logo_link"
             href="https://www.linkedin.com/in/nathan-greuel/"
             target="_blank"
+            rel="noreferrer"
           >
             <Linkedin />
           </a>
