@@ -23,8 +23,9 @@ export const WelcomeView = ({ onLogin }) => {
               <Nav.Link href="https://nat-crit20.github.io/Portfolio_Website/">
                 Portfolio
               </Nav.Link>
-
-              <LoginView onLogin={onLogin} />
+              <Navbar.Text>
+                <LoginView onLogin={onLogin} />
+              </Navbar.Text>
             </Nav>
           </Navbar.Collapse>
         </Container>
