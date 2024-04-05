@@ -60,6 +60,10 @@ $background-dark-color_5: #20212c;
     margin: 0;
     justify-self: start;
   }
+  // board-actions mess with the mobile display
+  .board-actions {
+    display: block;
+  }
   .vertical-ellipse {
     cursor: pointer;
     margin: 1rem;
