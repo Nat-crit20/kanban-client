@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/kanban-client/static/css/main.4ac95600.css",
-    "main.js": "/kanban-client/static/js/main.1757fc56.js",
+    "main.css": "/kanban-client/static/css/main.e7e770bf.css",
+    "main.js": "/kanban-client/static/js/main.c2cad16e.js",
     "static/js/787.f67a8070.chunk.js": "/kanban-client/static/js/787.f67a8070.chunk.js",
     "static/media/preview.jpg": "/kanban-client/static/media/preview.78d88e7757b002c375d4.jpg",
     "static/media/pm-banner-feature-image.svg": "/kanban-client/static/media/pm-banner-feature-image.6ade657aed3c54afa3e0.svg",
     "static/media/layered-waves-haikei.svg": "/kanban-client/static/media/layered-waves-haikei.6703dee3890e43591a81.svg",
     "static/media/logo-dark.svg": "/kanban-client/static/media/logo-dark.ac4c8e487da046e58b1d44d8797a975e.svg",
     "static/media/logo-light.svg": "/kanban-client/static/media/logo-light.1e20d87d61c965503a5323cc3bd2c827.svg",
+    "static/media/task-list-add.svg": "/kanban-client/static/media/task-list-add.304d9dcbcd694dd8467b.svg",
     "index.html": "/kanban-client/index.html",
     "static/media/icon-light-theme.svg": "/kanban-client/static/media/icon-light-theme.b98efecd506358014a7ae1eadb34e36c.svg",
     "static/media/github.svg": "/kanban-client/static/media/github.197212f02efa31cf1fd6ce8f39191593.svg",
@@ -18,12 +19,12 @@
     "static/media/linkedin.svg": "/kanban-client/static/media/linkedin.27a3f479ca1bbb0ceef19e395081fb94.svg",
     "static/media/icon-vertical-ellipsis.svg": "/kanban-client/static/media/icon-vertical-ellipsis.5c8996197d4a9dd7a7adfa20ce4abef9.svg",
     "static/media/icon-cross.svg": "/kanban-client/static/media/icon-cross.d4ca9e0d2a82f7ea4ae08238a42f84ed.svg",
-    "main.4ac95600.css.map": "/kanban-client/static/css/main.4ac95600.css.map",
-    "main.1757fc56.js.map": "/kanban-client/static/js/main.1757fc56.js.map",
+    "main.e7e770bf.css.map": "/kanban-client/static/css/main.e7e770bf.css.map",
+    "main.c2cad16e.js.map": "/kanban-client/static/js/main.c2cad16e.js.map",
     "787.f67a8070.chunk.js.map": "/kanban-client/static/js/787.f67a8070.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ac95600.css",
-    "static/js/main.1757fc56.js"
+    "static/css/main.e7e770bf.css",
+    "static/js/main.c2cad16e.js"
   ]
 }
