@@ -68,6 +68,7 @@ $background-dark-color_5: #20212c;
     cursor: pointer;
     margin: 1rem;
   }
+
   .dropdown-nav {
     position: absolute;
     background-color: $background-color_2;
@@ -352,6 +353,33 @@ $background-dark-color_5: #20212c;
       border: 2px solid #e4ebfa;
       color: $color_1;
       line-height: 2.2rem;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .board-title {
+      font-size: 2rem;
+      margin: 1rem;
+    }
+    .logo {
+      display: none;
+    }
+    .board-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .addTask-btn {
+        width: 2.5rem;
+        line-height: 2rem;
+        margin: 0;
+        font-size: 0;
+        background-image: url("../../assets/task-list-add.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-x: center;
+      }
+    }
+    .sidebar {
+      width: 100rem;
     }
   }
 }
@@ -714,6 +742,34 @@ $background-dark-color_5: #20212c;
       color: $color_dark_1;
       line-height: 2.2rem;
       background-color: #2b2c37;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .board-title {
+      font-size: 2rem;
+      margin: 1rem;
+    }
+    .logo {
+      display: none;
+    }
+    .board-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .addTask-btn {
+        width: 2.5rem;
+        line-height: 2rem;
+        margin: 0;
+        font-size: 0;
+        background-image: url("../../assets/task-list-add.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-x: center;
+      }
+    }
+    .sidebar {
+      width: 100rem;
     }
   }
 }
