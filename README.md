@@ -43,7 +43,7 @@ Users should be able to:
 - SCSS
 - [React](https://reactjs.org/) - JS library
 - React Bootstrap
-- SVG images come from Frontent Mentor
+- SVG images come from Frontend Mentor
 
 ### What I learned
 
@@ -53,7 +53,6 @@ This project served as a pivotal achievement in fortifying my proficiency in Rea
 
 - I still need to work on the styles for form validation.
 - In the future, I would also like to add a drag-and-drop feature.
-- View the optimal layout for the app depending on the device's screen size
 
 ## Author
 
